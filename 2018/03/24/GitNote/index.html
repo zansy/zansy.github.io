@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Git 笔记 | Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Git 笔记</h2>
+  <p class="post-date">2018-03-24</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>Git是分布式版本控制系统，没有“中央服务器”，每个人的电脑上都是一个完整的版本库。通常有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改。</p>
+<span id="more"></span>
+
+
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><ul>
+<li><p>选择一个合适目录，通过git init命令把这个目录变成Git可以管理的仓库：<code>$ git init</code></p>
+</li>
+<li><p>把一个文件放到Git仓库</p>
+<ul>
+<li>把文件添加到仓库：<code>$ git add readme.txt</code>; </li>
+<li>把文件提交到仓库：<code>git commit -m &quot;wrote a readme file&quot; #-m后面输入的是本次提交的说明</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><ul>
+<li><p><code>git status</code>命令提示文件是否被修改过，随时掌握工作区的状态。</p>
+</li>
+<li><p><code>git diff readme.txt</code>查看具体修改了什么内容 &#x2F;&#x2F;之后还想提交继续<code>git add &lt;file&gt;</code> 和 <code>git commit</code> 两步</p>
+</li>
+</ul>
+<p><font color="green">注意</font>：<code>git add</code>命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，执行<code>git commit</code>就可以一次性把暂存区的所有修改提交到分支。</p>
+<ul>
+<li><code>git log</code>命令查看历史记录 &#x2F;&#x2F;后加 <code>--pretty=oneline</code> 简化显示结果</li>
+</ul>
+<h3 id="回退"><a href="#回退" class="headerlink" title="回退"></a>回退</h3><ul>
+<li><p>回退版本：<code>git reset --hard HEAD^</code> 注意其中<code>^</code>的数量会变动，如上上一个版本就是<code>HEAD^^</code>； 或者把<code>HEAD^</code>直接改为目标版本的commit id。</p>
+</li>
+<li><p><code>git reflog</code>用来记录用户的每一次命令</p>
+</li>
+<li><p>提交后，用<code>git diff HEAD -- &lt;filename&gt;</code>命令可以查看工作区和版本库里面最新版本的区别</p>
+</li>
+</ul>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><ul>
+<li><p><code>git checkout -- file</code>可以丢弃工作区的修改<br>(让这个文件回到最近一次git commit或git add时的状态。)</p>
+</li>
+<li><p><code>git reset HEAD &lt;file&gt;</code>可以把暂存区的修改撤销掉（unstage），重新放回工作区：</p>
+</li>
+<li><p>（已经提交到版本库但后续删除了的文件）<br>删除版本库中的该文件：1. <code>git rm &lt;filename&gt;</code>；2. <code>git commit -m &quot;balabala&quot;</code><br>根据版本库恢复该文件：<code>git checkout -- &lt;filename&gt;</code> （git checkout其实是用版本库里的版本替换工作区的版本）</p>
+</li>
+</ul>
+<h3 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h3><ul>
+<li>Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上。最早，肯定只有一台机器有一个原始版本库，此后，别的机器可以“克隆”这个原始版本库，而且每台机器的版本库其实都是一样的，并没有主次之分。</li>
+</ul>
+<h4 id="创建ssh-key"><a href="#创建ssh-key" class="headerlink" title="创建ssh key"></a>创建ssh key</h4><ul>
+<li>在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：<br><code>$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</code><br>一路回车，使用默认值即可<br>之后把id_rsa.pub中的内容设置到GitHub账户设置中就行了</li>
+</ul>
+<h4 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h4><ol>
+<li>把创建好的SSH公钥放入Github账户设置中</li>
+<li>在Github上新建一个repo</li>
+<li>在本地想要推送的文件中：<code>git remote add &lt;origin&gt; git@github.com:&lt;username&gt;/&lt;repo&#39;s name&gt;.git</code></li>
+<li>关联后，使用命令<code>git push -u &lt;origin&gt; master</code>第一次推送master分支的所有内容；</li>
+<li>之后<code>git push &lt;origin&gt; master</code>推送最新修改</li>
+</ol>
+<h3 id="参与开源项目"><a href="#参与开源项目" class="headerlink" title="参与开源项目"></a>参与开源项目</h3><ul>
+<li><p>访问它的项目GitHub主页，点“Fork”就在自己的账号下克隆了一个仓库，然后，从自己的账号下clone <code>git clone git@github.com:&lt;username&gt;/&lt;repo&#39;s name&gt;.git</code> <font color = "green">一定要从自己的账号下clone仓库，这样你才能推送修改。</font></p>
+</li>
+<li><p>如果希望官方库能接受自己的修改，可以在GitHub上发起一个pull request。当然，对方是否接受pull request就不一定了</p>
+</li>
+<li><p>已关联GitHub远程库的文件夹再关联码云</p>
+<ol>
+<li>码云中添加ssh公钥</li>
+<li>码云中创建项目</li>
+<li>本地中先用git remote -v查看远程库信息</li>
+<li>删除已有的GitHub远程库：<code>git remote rm origin</code></li>
+<li>在本地库上使用命令git remote add把它和码云的远程库连接：<code>git remote add origin git@gitee.com:&lt;username&gt;/&lt;repo&#39;s name&gt;.git</code></li>
+<li>通过<code>git push</code>命令就可以把本地库推送到Gitee上</li>
+</ol>
+</li>
+<li><p><font color = "green">一个本地库能既关联GitHub，又关联码云。如果有多个远程库，需要用不同的名称来标识不同的远程库</font></p>
+<ol>
+<li>先删除已关联的名为origin的远程库 <code>git remote rm origin</code></li>
+<li>先关联GitHub的远程库：<code>git remote add github git@github.com:&lt;username&gt;/&lt;repo&#39;s name&gt;.git</code><font color = "green">注意，远程库的名称叫github，不叫origin了</font></li>
+<li>再关联码云的远程库：git remote add gitee <a href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#105;&#x74;&#101;&#x65;&#x2e;&#x63;&#111;&#x6d;">&#x67;&#x69;&#116;&#x40;&#x67;&#105;&#x74;&#101;&#x65;&#x2e;&#x63;&#111;&#x6d;</a>:<username>&#x2F;&lt;repo’s name&gt;.git</li>
+<li>如果要推送到GitHub，使用命令：<code>git push github master</code></li>
+</ol>
+</li>
+<li><p><code>git stash</code>保存当前工作现场；<code>git stash list</code>查看刚才存储工作现场的具体位置；<code>git stash pop</code>恢复工作现场</p>
+</li>
+</ul>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><ul>
+<li><p>创建dev分支，然后切换到分支：<code>git checkout -b dev</code> 包含了如下两个命令</p>
+<ul>
+<li>创建：<code>git branch dev</code></li>
+<li>切换：<code>git checkout dev</code></li>
+</ul>
+</li>
+<li><p>用<code>git branch</code>命令查看当前分支，当前分支前面会标一个*号</p>
+</li>
+<li><p>把dev分支的工作成果合并到master分支：先用checkout命令切换到master分支，再<code>git merge dev</code>合并指定分支到当前分支</p>
+</li>
+<li><p><code>git branch -d &lt;name&gt;</code> 删除一分支</p>
+</li>
+<li><p><code>git branch -D feature-vulcan</code> 强行删除未合并的分支</p>
+</li>
+<li><p>解决冲突：当两个分支各自分别有新的提交，这种情况下，Git无法执行“快速合并”，需要手动合并后提交。</p>
+</li>
+<li><p>通常合并分支时Git会用Fast forward模式，删除分支后会丢掉分支信息。如果要强制禁用Fast forward模式，从分支历史上就可以看出分支信息，则使用命令（示例在master分支上合并自建分支dev的内容）：<code>git merge --no-ff -m &quot;merge with no-ff&quot; dev</code></p>
+</li>
+<li><p><code>git stash</code> 把当前工作现场“储藏”起来，等以后恢复现场后继续工作。有两种恢复方式：</p>
+<ul>
+<li><p><code>git stash apply</code>恢复，stash内容并不删除，需要用<code>git stash drop</code>来删除；</p>
+</li>
+<li><p>另一种方式是用<code>git stash pop</code>，恢复的同时把stash内容也删了：</p>
+</li>
+</ul>
+</li>
+<li><p><code>git push origin &lt;分支名字&gt;</code>把该分支上的所有本地提交推送到远程库</p>
+</li>
+<li><p>在本地创建和远程分支对应的分支，使用<code>git checkout -b &lt;branch-name&gt; origin/&lt;branch-name&gt;</code>，本地和远程分支的名称最好一致；建立本地分支和远程分支的关联，使用<code>git branch --set-upstream &lt;branch-name&gt; origin/&lt;branch-name&gt;</code>；</p>
+</li>
+<li><p>多人协作的工作模式通常是这样：</p>
+<ol>
+<li>首先，可以试图用<code>git push origin &lt;branch-name&gt;</code>推送自己的修改；</li>
+<li>如果推送失败，则因为远程分支比你的本地更新，需要先用<code>git pull</code>（抓取冲突）试图合并；</li>
+<li>如果合并有冲突，则解决冲突，并在本地提交；没有冲突或者解决掉冲突后，再用<code>git push origin &lt;branch-name&gt;</code>推送就能成功！</li>
+<li>如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令<code>git branch --set-upstream &lt;branch-name&gt; origin/&lt;branch-name&gt;</code>。</li>
+</ol>
+</li>
+</ul>
+<h3 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h3><p>Git的标签虽然是版本库的快照，但其实它就是指向某个commit的指针。创建和删除标签都是瞬间完成的。</p>
+<ul>
+<li><p>在Git中打标签</p>
+<ol>
+<li>切换到需要打标签的分支上；</li>
+<li><code>git tag v1.0</code>打标签</li>
+<li><code>git tag</code> 查看标签</li>
+<li>给特定的commit打标签：<code>git tag &lt;name&gt; &lt;commit-id&gt;</code>（commit-id可以用<code>git log --pretty=oneline --abbrev-commit</code>查看）</li>
+</ol>
+</li>
+<li><p><code>git show &lt;tagname&gt;</code>查看标签信息 <code>&lt;tagname&gt;</code>如 v1.0</p>
+</li>
+<li><p><code>git tag -a v0.1 -m &quot;version 0.1 released&quot; 3628164</code> 创建带有说明的标签，用-a指定标签名，-m指定说明文字</p>
+</li>
+<li><p>操作标签</p>
+<ol>
+<li><code>git push origin &lt;tagname&gt;</code>可以推送一个本地标签</li>
+<li><code>git push origin --tags</code>可以推送全部未推送过的本地标签</li>
+<li><code>git tag -d &lt;tagname&gt;</code>可以删除一个本地标签</li>
+<li><code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签（注意若想删除的标签已推送远程，需先删除本地标签再删除远程标签）</li>
+</ol>
+</li>
+<li><p><code>git check-ignore -v &lt;App&gt;.&lt;class&gt;</code>找出该类型文件关联了.gitignore哪个规则</p>
+</li>
+</ul>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><ul>
+<li><p>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。<img src="https://wx4.sinaimg.cn/mw690/b11f7046gy1fpn11w0pvlj20cq06iaa8.jpg"></p>
+</li>
+<li><p>（回退）<br>场景1：想直接丢弃工作区的修改时：<code>git checkout -- file</code>。<br>场景2：改乱了工作区并添加到了暂存区时，想丢弃修改：第一步用命令<code>git reset HEAD file</code>，第二步见场景1。<br>场景3：已经提交了不合适的修改到版本库时想要撤销：<code>git reset --hard HEAD^</code></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000">创建SSH key</a></p>
+</li>
+<li><p>忽略某些文件时，需要编写.gitignore；.gitignore文件本身要放到版本库里，并且可以对.gitignore做版本管理；<code>-f</code>强制添加已忽略格式类型的文件：<code>git add -f &lt;App&gt;.&lt;class&gt;</code></p>
+</li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/03/14/computerNetwork/">
+        <span class="nav-arrow">← </span>
+        
+          计算机网络
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/03/25/Animal-Farm-Note/">
+        
+          Animal Farm 摘录
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%91%BD%E4%BB%A4"><span class="toc-nav-text">命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%9B%E5%BB%BA%E7%89%88%E6%9C%AC%E5%BA%93"><span class="toc-nav-text">创建版本库</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BF%AE%E6%94%B9"><span class="toc-nav-text">修改</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9B%9E%E9%80%80"><span class="toc-nav-text">回退</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9"><span class="toc-nav-text">撤销修改</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-nav-text">远程仓库</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%9B%E5%BB%BAssh-key"><span class="toc-nav-text">创建ssh key</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E5%BA%93"><span class="toc-nav-text">添加远程库</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%82%E4%B8%8E%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE"><span class="toc-nav-text">参与开源项目</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%86%E6%94%AF"><span class="toc-nav-text">分支</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86"><span class="toc-nav-text">标签管理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-nav-text">补充</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2018/03/24/GitNote/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

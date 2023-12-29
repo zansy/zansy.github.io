@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Java EE 笔记 | Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Java EE 笔记</h2>
+  <p class="post-date">2018-04-03</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>学习笔记，未完待续。</p>
+<span id="more"></span>
+<h2 id="关于Java-EE"><a href="#关于Java-EE" class="headerlink" title="关于Java EE"></a>关于Java EE</h2><p>Java 平台企业版。</p>
+<p>Java EE 应用程序的模型框架分为：</p>
+<ul>
+<li>Domain Object（领域对象）层：由系列的普通Java对象组成，往往包含了各自所需要的逻辑方法</li>
+<li>DAO（Data Access Object，数据访问对象）层：由系列的DAO组件组成，实现了对数据库的查询、更新、删除和创建等原子操作。</li>
+<li>业务逻辑层：实现了系统所需的业务逻辑方法（JavaBean&#x2F;EJB）</li>
+<li>控制层：拦截用户请求，并调用业务逻辑组件的业务逻辑方法，处理用户请求，并根据处理结果转发到不同的表现层组件（Servlet、监听器、拦截器）</li>
+<li>表现层：主要负责收集用户请求，并显示处理结果。（HTML&#x2F;JS&#x2F;CSS&#x2F;JSP）</li>
+</ul>
+<h3 id="Java-EE-环境配置"><a href="#Java-EE-环境配置" class="headerlink" title="Java EE 环境配置"></a>Java EE 环境配置</h3><ol>
+<li><a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">下载JDK程序包</a>（Java 开发工具包，包含了运行环境和开发工具及基础类库）并安装</li>
+<li>设置JDK环境变量<ul>
+<li>我的电脑-属性-系统属性-高级-环境变量；在“系统变量”中找到JAVA_HOME变量，没有则新建并设置变量值为JDK安装路径<code>C:\Program Files\Java\jdk1.8.0_162</code>；</li>
+<li>设置“系统变量”中的Path值，添加<code>;%JAVA_HOME%\bin;%JAVA_HOME%\lib;</code></li>
+<li>添加classPath变量，设置其值<code>%JAVA_HOME%\lib;</code></li>
+</ul>
+</li>
+<li>进入cmd命令行洁面，输入javac查看是否安装并设置成功</li>
+<li><a target="_blank" rel="noopener" href="http://tomcat.apache.org/">下载安装Tomcat</a>（支持Web程序运行的服务器，Tomcat是一个Servlet容器）</li>
+<li>配置Tomcat<ul>
+<li>计算机→属性→高级系统设置→高级→环境变量；系统变量中添加TOMCAT_HOME变量，变量值<code>C:\apache-tomcat-8.5.29</code></li>
+<li>新建CATALINA_HOME变量，变量值<code>C:\apache-tomcat-8.5.29</code></li>
+<li>修改变量Path，变量值后添加<code>;%CATALINA_HOME%\bin;%CATALINA_HOME%\lib</code></li>
+</ul>
+</li>
+<li>在cmd窗口中输入<code>startup</code>回车，在浏览器地址栏中输入<a href="http://localhost:8080，如果打开Tomcat的默认主页，表示安装成功">http://localhost:8080，如果打开Tomcat的默认主页，表示安装成功</a></li>
+<li>设置工作编码方式<ul>
+<li>Window-&gt;Preferences-&gt;General-&gt;Workspace-&gt;Text file encoding 选择UTF-8</li>
+<li>Window-&gt;Preferences-&gt;Web-&gt;JSP Files 选择UTF-8</li>
+</ul>
+</li>
+<li>新建Server：打开右下方的Servers视图，右击添加新Server</li>
+<li>新建工程-&gt;新建文件编写代码</li>
+<li>启动服务器：Servers视图右上角运行按钮</li>
+<li>添加并发布项目：在Servers窗口下右击选择Add and Remove。选择Publish命令可发布项目；从服务器移走已部署发布的项目：右击选择Clean命令</li>
+</ol>
+<h2 id="Java-EE-Web应用开发基础技术"><a href="#Java-EE-Web应用开发基础技术" class="headerlink" title="Java EE Web应用开发基础技术"></a>Java EE Web应用开发基础技术</h2><h3 id="表示层技术"><a href="#表示层技术" class="headerlink" title="表示层技术"></a>表示层技术</h3><p>HTML&#x2F;CSS&#x2F;JavaScript&#x2F;JSP&#x2F;EL表达式</p>
+<h3 id="控制层技术"><a href="#控制层技术" class="headerlink" title="控制层技术"></a>控制层技术</h3><h4 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h4><p>Servlet可以用来处理客户端传来的HTTP请求，并返回响应。</p>
+<h4 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h4><p>过滤器Fliter是一种特殊的Servlet技术，对用户的请求信息和响应信息进行过滤，常被用于权限检查和参数编码统一设置等。</p>
+<h4 id="监听器"><a href="#监听器" class="headerlink" title="监听器"></a>监听器</h4><p>监听器Listener可以监听Web应用的上下文信息、Servlet请求信息和Servlet回话信息，并自动根据不同情况，在后台调用相应的处理程序。<br>根据监听对象的不同，监听器可以划分为3种：</p>
+<ul>
+<li>ServletContext事件监听器：用于监听应用程序环境对象。</li>
+<li>HttpSession事件监听器：用于监听用户会话对象。</li>
+<li>ServletRequest事件监听器：用于监听请求消息对象。</li>
+</ul>
+<h3 id="业务逻辑层技术"><a href="#业务逻辑层技术" class="headerlink" title="业务逻辑层技术"></a>业务逻辑层技术</h3><p>由JavaBean实现。JavaBean是JavaWeb程序的重要组件，它是一些封装了数据和操作的功能类，供JSP或Servlet调用，完成数据封装和数据处理等功能。<br>设计JavaBean就是编写Java类，通常遵守以下规则：</p>
+<ul>
+<li>是一个公共类</li>
+<li>具有一个公共的无参的构造方法</li>
+<li>所有的属性均定义为私有</li>
+<li>需要对每个属性提供两个公共方法：getter&#x2F;setter</li>
+</ul>
+<h3 id="持久层技术"><a href="#持久层技术" class="headerlink" title="持久层技术"></a>持久层技术</h3><p>由JDBC技术实现。在Java Web 应用程序中，数据库访问是通过Java数据库连接实现的</p>
+<h3 id="MVC和DAO设计模式"><a href="#MVC和DAO设计模式" class="headerlink" title="MVC和DAO设计模式"></a>MVC和DAO设计模式</h3><p>MVC设计模式：用JSP设计页面，用Servlet实现控制逻辑，用JavaBean实现业务逻辑处理，把一个系统的功能分为三种不同类型的组件。<br>DAO设计模式：把对数据库表的操作转化为对Java类的操作。</p>
+<h2 id="Strut-2-框架基础"><a href="#Strut-2-框架基础" class="headerlink" title="Strut 2 框架基础"></a>Strut 2 框架基础</h2><p>Struts 2是基于MVC模式的Web框架，主要包括：</p>
+<ol>
+<li>模型组件：实现业务逻辑的模块，主要由JavaBean组成</li>
+<li>视图组件：主要有HTML&#x2F;JSP&#x2F;Struts 2标签 等视图技术</li>
+<li>控制器组件：主要由核心控制器和业务控制器Action组成</li>
+</ol>
+<h3 id="搭建-Struts-2开发环境"><a href="#搭建-Struts-2开发环境" class="headerlink" title="搭建 Struts 2开发环境"></a>搭建 Struts 2开发环境</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://struts.apache.org/download.cgi#struts2516">下载Struts 2(2.3.24-all-zip)文件</a></li>
+<li>将其中 apps&#x2F;struts2-blank&#x2F;WEB_INF&#x2F;lib 下所有jar包放到 当前Eclipse（Version: Oxygen.3 Release (4.7.3)）工程中-&gt;WebContent-&gt;WEB-INF-&gt;lib 中。</li>
+<li>复制 apps&#x2F;struts2-blank&#x2F;WEB_INF&#x2F;web.xml 文件中的过滤器配置到 当前Eclipse工程中-&gt;WebContent-&gt;WEB-INF-&gt;web.xml 中。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;struts2&lt;/filter-name&gt;</span><br><span class="line">    &lt;filter-class&gt;org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter&lt;/filter-class&gt;</span><br><span class="line">&lt;/filter&gt;</span><br><span class="line"></span><br><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">    &lt;filter-name&gt;struts2&lt;/filter-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;</span><br><span class="line">&lt;/filter-mapping&gt;</span><br></pre></td></tr></table></figure></li>
+<li>复制  apps&#x2F;struts2-blank&#x2F;WEB_INF&#x2F;classes 下的struts.xml文件到 当前Eclipse工程中-&gt;JavaResources-&gt;src 中。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;struts&gt;</span><br><span class="line">    &lt;constant name=&quot;struts.enable.DynamicMethodInvocation&quot; value=&quot;false&quot; /&gt;</span><br><span class="line">    &lt;constant name=&quot;struts.devMode&quot; value=&quot;true&quot; /&gt;</span><br><span class="line"></span><br><span class="line">    &lt;package name=&quot;default&quot; namespace=&quot;/&quot; extends=&quot;struts-default&quot;&gt;</span><br><span class="line">		&lt;action name=&quot;optriangular&quot; class=&quot;com.action.IsTriangular&quot; method=&quot;executeIs&quot;&gt;</span><br><span class="line">			&lt;result name=&quot;yes&quot;&gt;positive.jsp&lt;/result&gt;</span><br><span class="line">			&lt;result name=&quot;no&quot;&gt;input.jsp&lt;/result&gt;</span><br><span class="line">		&lt;/action&gt;</span><br><span class="line">    &lt;/package&gt;</span><br><span class="line"></span><br><span class="line">    &lt;include file=&quot;example.xml&quot;/&gt;</span><br><span class="line">    &lt;!-- Add packages here --&gt;</span><br><span class="line">&lt;/struts&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/03/29/Leetcode-771/">
+        <span class="nav-arrow">← </span>
+        
+          Leetcode 771. Jewels and Stones
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/04/11/CloudComputing/">
+        
+          云计算
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%B3%E4%BA%8EJava-EE"><span class="toc-nav-text">关于Java EE</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Java-EE-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-nav-text">Java EE 环境配置</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Java-EE-Web%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E6%8A%80%E6%9C%AF"><span class="toc-nav-text">Java EE Web应用开发基础技术</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%A1%A8%E7%A4%BA%E5%B1%82%E6%8A%80%E6%9C%AF"><span class="toc-nav-text">表示层技术</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8E%A7%E5%88%B6%E5%B1%82%E6%8A%80%E6%9C%AF"><span class="toc-nav-text">控制层技术</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Servlet"><span class="toc-nav-text">Servlet</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-nav-text">过滤器</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%9B%91%E5%90%AC%E5%99%A8"><span class="toc-nav-text">监听器</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E5%B1%82%E6%8A%80%E6%9C%AF"><span class="toc-nav-text">业务逻辑层技术</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8C%81%E4%B9%85%E5%B1%82%E6%8A%80%E6%9C%AF"><span class="toc-nav-text">持久层技术</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MVC%E5%92%8CDAO%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-nav-text">MVC和DAO设计模式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Strut-2-%E6%A1%86%E6%9E%B6%E5%9F%BA%E7%A1%80"><span class="toc-nav-text">Strut 2 框架基础</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%90%AD%E5%BB%BA-Struts-2%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-nav-text">搭建 Struts 2开发环境</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2018/04/03/Java-EE-Note/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

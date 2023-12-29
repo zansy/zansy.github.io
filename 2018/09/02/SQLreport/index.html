@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      “SQL语句分块解析”程序方法报告 | Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>“SQL语句分块解析”程序方法报告</h2>
+  <p class="post-date">2018-09-02</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>实现了从数据库中读取特定表的存放SQL语句特定字段，分解SQL语句，提取出所需信息形成字段，并与“元数据表信息”表、“元数据表字段信息”表进行关联，形成新的“表信息映射”表。新表的字段分别为“表ID”、“表中文名”、“表英文名”、“字段ID”、“字段中文名”、“字段英文名”、“字段来源”、“字段处理过程”。</p>
+<span id="more"></span>
+<h2 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h2><p>目前实现了从数据库中读取特定表的存放SQL语句特定字段，分解SQL语句，提取出所需信息形成字段，并与“元数据表信息”表、“元数据表字段信息”表进行关联，形成新的“表信息映射”表。新表的字段分别为“表ID”、“表中文名”、“表英文名”、“字段ID”、“字段中文名”、“字段英文名”、“字段来源”、“字段处理过程”。</p>
+<h3 id="测试样例："><a href="#测试样例：" class="headerlink" title="测试样例："></a>测试样例：</h3><p> <img src="/images/pasted-18.png" alt="SQL语句表"></p>
+<p>在status为0的SQL语句字段批量读取、分析、存入成功后，重点设立了STATUS为2的SQL语句字段进行检验整个程序。<br>该字段完整内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">INSERT OVERWRITE TABLE std_busi_event_zfqlyg</span><br><span class="line">SELECT /*+mapjoin(c1,c2,c3,c4,c5,c6)*/ uuid(), a.CASEINFO_ID, &#x27;一般案卷&#x27;, a.CASENUM, NULL</span><br><span class="line">    , NULL, NULL, a.TYPECODE, a.TYPE1</span><br><span class="line">    , tocname(a.TYPE1, c1.TYPENAME), a.TYPE2</span><br><span class="line">    , tocname(a.TYPE2, c2.TYPENAME), a.TYPE3</span><br><span class="line">    , tocname(a.TYPE3, c3.TYPENAME), a.TYPENAME</span><br><span class="line">    , a.CURRSTATECODE, NULL, a.SRC_ID, a.SRCNAME, a.SUBSRC1</span><br><span class="line">    , a.SUBSRC2, a.SUBSRC3, a.DEPARTMENT, a.PARTY, a.ISSUETIME</span><br><span class="line">    , a.ADDRESS, a.REGION</span><br><span class="line">    , CASE a.REGION</span><br><span class="line">        WHEN 1 THEN &#x27;背街小巷&#x27;</span><br><span class="line">        WHEN 2 THEN &#x27;次要道路&#x27;</span><br><span class="line">        WHEN 3 THEN &#x27;主要道路&#x27;</span><br><span class="line">        ELSE NULL</span><br><span class="line">    END, a.REGIONLEVEL, a.UNDERTAKEPEOPLE, NULL, a.VIOLATELAW</span><br><span class="line">    , a.PUNISHLAW, a.PUNISHDESC, a.DESCRIPTION, NULL, NULL</span><br><span class="line">    , a.RECORDTIME, a.ISNOPUNISH</span><br><span class="line">    , CASE a.ISNOPUNISH</span><br><span class="line">        WHEN 0 THEN &#x27;处罚&#x27;</span><br><span class="line">        WHEN 1 THEN &#x27;不予处罚&#x27;</span><br><span class="line">        ELSE NULL</span><br><span class="line">    END, a.PENALTYOVERLIMIT</span><br><span class="line">    , CASE a.PENALTYOVERLIMIT</span><br><span class="line">        WHEN 0 THEN &#x27;否&#x27;</span><br><span class="line">        WHEN 1 THEN &#x27;处罚金额低于自由裁量标准&#x27;</span><br><span class="line">        WHEN 2 THEN &#x27;处罚金额高于自由裁量标准&#x27;</span><br><span class="line">        WHEN 3 THEN &#x27;自由裁量计算值与处罚金额不一致&#x27;</span><br><span class="line">        ELSE NULL</span><br><span class="line">    END, a.ENTERCURRPROTIME, a.EXPIREDATE, a.QUICKCASE</span><br><span class="line">    , CASE a.QUICKCASE</span><br><span class="line">        WHEN 0 THEN &#x27;否&#x27;</span><br><span class="line">        WHEN 1 THEN &#x27;是&#x27;</span><br><span class="line">        ELSE NULL</span><br><span class="line">    END, a.ISNATUREPERSON, a.RECORDPEOPLE, a.GISX, a.GISY</span><br><span class="line">    , a.CASESERIAL, a.PARTYNAME, a.PARTIESID, a.ZJCODE, NULL</span><br><span class="line">    , tocname(a.caseinfo_id, c4.department)</span><br><span class="line">    , tocname(a.caseinfo_id, c5.excuteresult)</span><br><span class="line">    , tocname(a.caseinfo_id, c6.APPROVETIME)</span><br><span class="line">    , tocname(a.caseinfo_id, c6.EXCUTETIME)</span><br><span class="line">    , tocname(a.caseinfo_id, c5.CLOSECASEREPORTTIME)</span><br><span class="line">    , tocname(a.caseinfo_id, c5.CLOSETIME)</span><br><span class="line">FROM INFO_ZFQLYG_CASEINFO a</span><br><span class="line">LEFT OUTER JOIN INFO_ZFQLYG_CASETYPE c1</span><br><span class="line">ON a.type1 = c1.typecode</span><br><span class="line">LEFT OUTER JOIN INFO_ZFQLYG_CASETYPE c2</span><br><span class="line">ON a.type2 = c2.typecode</span><br><span class="line">LEFT OUTER JOIN INFO_ZFQLYG_CASETYPE c3</span><br><span class="line">ON a.type3 = c3.typecode</span><br><span class="line">LEFT OUTER JOIN INFO_ZFQLYG_CASEUNDERTAKER c4</span><br><span class="line">ON a.caseinfo_id = c4.caseinfo_id</span><br><span class="line">LEFT OUTER JOIN INFO_ZFQLYG_CLOSECASE c5</span><br><span class="line">ON a.caseinfo_id = c5.caseinfo_id</span><br><span class="line">LEFT OUTER JOIN INFO_ZFQLYG_CLOSECASEREPORT c6</span><br><span class="line">ON a.caseinfo_id = c6.caseinfo_id;</span><br><span class="line">insert into table STD_OBJ_OTHER_CURB_AND_GUTTER</span><br><span class="line">SELECT uuid(), a.NAME, a.ROAD_NAME, a.ORIGIN_INSERTION, a.LENGTH</span><br><span class="line">       , a.MATERIAL, a.COUNT_NUM, a.ID, a.STATUS, a.POTENTIAL</span><br><span class="line">       , a.START_TIME, a.UPDATE_TIME, a.FUNDS_PROVID, a.UPDATE_LIST, a.DEPT</span><br><span class="line">       , a.PROPERTY, a.ADMINITRATION, a.MANAGEMENT, a.MAINTENANCE_UNIT, a.MANAGEMENT_UNIT_1</span><br><span class="line">       , a.TRUSTEESHIP, a.SUPERVISION, a.TELEPHONE, a.CONTACTS, a.MAINTENANCE_CYCLE</span><br><span class="line">       , a.CLEANING_INTERVAL, a.NOTICE_DEPT, a.COORDINATION_FIRST, a.COORDINATION_SENDCOND, a.REGION_INFO</span><br><span class="line">       , a.STREET, a.COMMUNITY, a.GRID, a.POSITION_DESC, CAST(getlon(a.shape) AS DOUBLE)</span><br><span class="line">       , CAST(getlat(a.shape) AS DOUBLE), &#x27;GIS服务中心&#x27;, &#x27;萧山道路平侧石&#x27;</span><br><span class="line">FROM INFO_GIS_CURB_AND_GUTTER a;</span><br></pre></td></tr></table></figure>
+<h3 id="最终映射表成果："><a href="#最终映射表成果：" class="headerlink" title="最终映射表成果："></a>最终映射表成果：</h3><p><img src="/images/pasted-19.png" alt="映射表"></p>
+<h2 id="存在问题"><a href="#存在问题" class="headerlink" title="存在问题"></a>存在问题</h2><ol>
+<li>   测试样本量不多。</li>
+<li>   有大量函数，但目前没有拿到函数清单，在代码中只检测设计了一个简单的TOCNAME的函数。在对函数的处理上存在不足。</li>
+</ol>
+<h2 id="代码思路："><a href="#代码思路：" class="headerlink" title="代码思路："></a>代码思路：</h2><h3 id="数据库读取函数"><a href="#数据库读取函数" class="headerlink" title="数据库读取函数"></a>数据库读取函数</h3><p>因为一个SQL字段中可能有多个以“;”分割的SQL语句，因此设定了一个读取方法边分解边读：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;String&gt; getSQLs()&#123;</span><br><span class="line">    List&lt;TaskSqlInfo&gt; all = service.getObjects(TaskSqlInfo.class,&quot;status = &#x27;2&#x27;&quot;,null,null);//0</span><br><span class="line">    List&lt;String&gt; SQLs = new LinkedList&lt;&gt;();</span><br><span class="line">    for(TaskSqlInfo s : all)&#123;</span><br><span class="line">        //开始拆分一个SQL行中的十多个以;分割的SQL语句</span><br><span class="line">        String part[] = s.getSqls().trim().split(&quot;;&quot;);</span><br><span class="line">        if(part.length&gt;1)&#123;</span><br><span class="line">            for(String string:part)&#123;</span><br><span class="line">                SQLs.add(string+&quot;;&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            SQLs.add(s.getSqls());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return SQLs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="主要的分析处理函数"><a href="#主要的分析处理函数" class="headerlink" title="主要的分析处理函数"></a>主要的分析处理函数</h3><p>事实上就是对SQL语句进行字符串处理，截取出insert部分、select部分，from部分。具体写在注释中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;MdTableMapping&gt; SQLToExcel(String sql) &#123;</span><br><span class="line">    List&lt;MdTableMapping&gt; mdTableMappingsList = new LinkedList&lt;&gt;();</span><br><span class="line">    try &#123;</span><br><span class="line">        int begin = 0,end = 0;</span><br><span class="line">        //去除SQL语句中的所有注释部分</span><br><span class="line">        begin = sql.indexOf(&quot;/*+&quot;);</span><br><span class="line">        if(begin!=-1)&#123;</span><br><span class="line">            end = sql.indexOf(&quot;*/&quot;);</span><br><span class="line">            sql = sql.replace(sql.substring(begin,end+2),&quot;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        String sqlToUpper = sql.toUpperCase();</span><br><span class="line">        String sqlWithoutSpaceAndToUpper = sql.replaceAll(&quot;\\s*&quot;, &quot;&quot;).toUpperCase();//全部转为大写，并去除空格</span><br><span class="line">        //开始提取需要插入的主表表名，即 insert 语句</span><br><span class="line">        begin = sqlToUpper.indexOf(&quot;INSERT OVERWRITE TABLE &quot;);</span><br><span class="line">        String mainTable;</span><br><span class="line">        if(begin != -1)&#123;</span><br><span class="line">            end = sqlToUpper.indexOf(&quot;SELECT&quot;);</span><br><span class="line">            mainTable = sqlToUpper.substring(begin + 23, end).trim();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            begin = sqlToUpper.indexOf(&quot;INSERT INTO TABLE &quot;);</span><br><span class="line">            end = sqlToUpper.indexOf(&quot;SELECT&quot;);</span><br><span class="line">            mainTable = sqlToUpper.substring(begin + 18, end).trim();</span><br><span class="line">        &#125;</span><br><span class="line">        //获得该insert表中全部所需数据（表ID 表名中英文 字段ID 字段中英文等）</span><br><span class="line">        List&lt;Map&lt;Object, Object&gt;&gt; sqlResults = service.getObjectsBySql(&quot;SELECT a.ID,a.CNAME,&quot; +</span><br><span class="line">                        &quot;a.ENAME,b.ID as fid,b.CNAME as fcname,b.ENAME as fename from md_table_info a &quot; +</span><br><span class="line">                        &quot;left outer join md_table_fields b on a.ID = b.TID where a.ENAME = ? ORDER BY b.SEQNUM&quot;,</span><br><span class="line">                new Object[]&#123;mainTable&#125;);</span><br><span class="line">        //形成一个map。key为123等，指代等待insert表的第1234个标准字段；value为一个MdTableMapping对象，其中包含了这个字段的表ID 表名中英文 字段ID 字段中英文等</span><br><span class="line">        int fieldsNum = 0;Map&lt;Integer,MdTableMapping&gt; mapMdTableMapping = new HashMap&lt;&gt;();</span><br><span class="line">        for(Map&lt;Object, Object&gt; m:sqlResults)&#123;</span><br><span class="line">            fieldsNum++; MdTableMapping mdTableMapping = new MdTableMapping();</span><br><span class="line">            mdTableMapping.setTename(mainTable);</span><br><span class="line">            String s = &quot;ID&quot;;Object b = s;</span><br><span class="line">            mdTableMapping.setTid(m.get(b).toString());</span><br><span class="line">            s = &quot;CNAME&quot;;b = s;</span><br><span class="line">            mdTableMapping.setTcname(m.get(b).toString());</span><br><span class="line">            s = &quot;ENAME&quot;; b =s;</span><br><span class="line">            mdTableMapping.setTename(m.get(b).toString());</span><br><span class="line">            s = &quot;fid&quot;; b =s;</span><br><span class="line">            mdTableMapping.setFid(m.get(b).toString());</span><br><span class="line">            s = &quot;fename&quot;; b =s;</span><br><span class="line">            mdTableMapping.setFename(m.get(b).toString());</span><br><span class="line">            s = &quot;fcname&quot;; b =s;</span><br><span class="line">            mdTableMapping.setFcname(m.get(b).toString());</span><br><span class="line">            mapMdTableMapping.put(fieldsNum,mdTableMapping);</span><br><span class="line">        &#125;</span><br><span class="line">        // 提取select和from部分</span><br><span class="line">        begin = sqlWithoutSpaceAndToUpper.indexOf(&quot;SELECT&quot;);</span><br><span class="line">        end = sqlWithoutSpaceAndToUpper.indexOf(&quot;FROM&quot;);</span><br><span class="line">        String selectToFrom = sqlWithoutSpaceAndToUpper.substring(begin + 6,end);</span><br><span class="line">        //提取left outer join 部分</span><br><span class="line">        begin = sqlToUpper.indexOf(&quot;FROM&quot;);</span><br><span class="line">        end = sqlToUpper.indexOf(&quot;;&quot;);</span><br><span class="line">        String fromToEnd = sqlToUpper.substring(begin + 4);</span><br><span class="line">        String[] fromToEndArray = fromToEnd.split(&quot;LEFT OUTER JOIN&quot;);//INFO_ZFQLYG_CASEINFO a,INFO_ZFQLYG_CASETYPE c1 ON a.type1 = c1.typecode</span><br><span class="line">        //从left outer join 中提取关联表以及关联表的别名，以此生成一个表和别名对照的Map</span><br><span class="line">        Map&lt;String, String&gt; tableAndAlias = new HashMap&lt;&gt;();</span><br><span class="line">        if(fromToEndArray.length&gt;1) &#123;</span><br><span class="line">            for (String s : fromToEndArray) &#123;</span><br><span class="line">                String[] tableNames = s.split(&quot;ON&quot;);//INFO_ZFQLYG_CASEINFO a,INFO_ZFQLYG_CASETYPE c1 ,a.type1 = c1.typecode</span><br><span class="line">                String[] tableAndAliasArray = tableNames[0].split(&quot; &quot;);</span><br><span class="line">                if (!tableAndAliasArray[0].equals(&quot;&quot;)) &#123;</span><br><span class="line">                    tableAndAlias.put(tableAndAliasArray[1].trim().toUpperCase(), tableAndAliasArray[0].toUpperCase());//a作为key，方便后续取</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    tableAndAlias.put(tableAndAliasArray[2].trim().toUpperCase(), tableAndAliasArray[1].toUpperCase());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else if(fromToEnd.split(&quot;;&quot;)[0].trim().split(&quot; &quot;).length&gt;1)&#123;</span><br><span class="line">            tableAndAlias.put(fromToEnd.split(&quot;;&quot;)[0].trim().split(&quot; &quot;)[1],fromToEnd.trim().split(&quot; &quot;)[0]);</span><br><span class="line">        &#125;</span><br><span class="line">        //同样，读出它们的关联键，存入名为conditions的map中</span><br><span class="line">        Map&lt;String,String&gt; conditions = new HashMap&lt;&gt;();</span><br><span class="line">        if(fromToEndArray.length&gt;1) &#123;</span><br><span class="line">            for (String s : fromToEndArray) &#123;</span><br><span class="line">                String[] tableNames = s.split(&quot;ON&quot;);</span><br><span class="line">                if(tableNames.length &gt; 1)&#123;</span><br><span class="line">                    String[] on = tableNames[1].replace(&quot; &quot;,&quot;&quot;).split(&quot;=&quot;);</span><br><span class="line">                    String table1Alia = on[0].split(&quot;\\.&quot;)[0];</span><br><span class="line">                    String table2Alia = on[1].split(&quot;\\.&quot;)[0];</span><br><span class="line">                    String conditionsKey = table1Alia+&quot;_&quot;+table2Alia;</span><br><span class="line">                    String conditionsValue = tableNames[1];</span><br><span class="line">                    conditions.put(conditionsKey,conditionsValue);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //将select部分字符串以逗号分割</span><br><span class="line">        String[] fields = selectToFrom.split(&quot;,&quot;);</span><br><span class="line">        //对每一列进行处理</span><br><span class="line">        List&lt;MdTableMapping&gt; tempMdTableMappingSet = new LinkedList&lt;&gt;();</span><br><span class="line">        for (String s : fields) &#123;</span><br><span class="line">            MdTableMapping mdTableMapping = new MdTableMapping();</span><br><span class="line">            if (!s.contains(&quot;(&quot;) &amp;&amp; !s.contains(&quot;)&quot;) &amp;&amp; s.contains(&quot;.&quot;) &amp;&amp; !s.startsWith(&quot;CASE&quot;)) &#123;</span><br><span class="line">                String[] names = s.split(&quot;\\.&quot;);</span><br><span class="line">                mdTableMapping.setSource(tableAndAlias.get(names[0])+&quot;.&quot;+names[1]);</span><br><span class="line">                mdTableMappingsList.add(mdTableMapping);</span><br><span class="line">            &#125; else if (s.indexOf(&quot;CASE&quot;) != -1 &amp;&amp; s.indexOf(&quot;WHEN&quot;) != -1) &#123;</span><br><span class="line">                int begintemp = s.indexOf(&quot;CASE&quot;);</span><br><span class="line">                int endtemp = s.indexOf(&quot;WHEN&quot;);</span><br><span class="line">                String tablenameAndAlias = s.substring(begintemp + 4, endtemp);</span><br><span class="line">                String[] names = tablenameAndAlias.split(&quot;\\.&quot;);</span><br><span class="line">                begintemp = s.indexOf(&quot;WHEN&quot;);</span><br><span class="line">                endtemp = s.indexOf(&quot;END&quot;);</span><br><span class="line">                String procession = s.substring(begintemp, endtemp);</span><br><span class="line">                mdTableMapping.setSource(tableAndAlias.get(names[0])+&quot;.&quot;+names[1]);</span><br><span class="line">                mdTableMapping.setProcess(procession);</span><br><span class="line">                mdTableMappingsList.add(mdTableMapping);</span><br><span class="line">            &#125; else if (s.contains(&quot;(&quot;) &amp;&amp; !s.contains(&quot;)&quot;) &amp;&amp; s.indexOf(&quot;TOCNAME(&quot;)!=-1) &#123;//TOCNAME(A.TYPE3</span><br><span class="line">                String[] tablenames = s.split(&quot;\\(&quot;);// TOCNAME A.TYPE3</span><br><span class="line">                String[] names = tablenames[1].split(&quot;\\.&quot;);//A TYPE3</span><br><span class="line">                mdTableMapping.setSource(tablenames[1]);</span><br><span class="line">                mdTableMapping.setProcess(tablenames[0]);</span><br><span class="line">                tempMdTableMappingSet.add(mdTableMapping);</span><br><span class="line">            &#125; else if (s.contains(&quot;)&quot;) &amp;&amp; !s.contains(&quot;(&quot;)) &#123;//C2.TYPENAME)</span><br><span class="line">                s = s.replace(&quot;)&quot;,&quot;&quot;);//C2.TYPENAME</span><br><span class="line">                String names[] = s.split(&quot;\\.&quot;);//C2 TYPENAME)</span><br><span class="line">                MdTableMapping last = tempMdTableMappingSet.get(tempMdTableMappingSet.size()-1);</span><br><span class="line">                if(conditions.keySet().contains(last.getSource().split(&quot;\\.&quot;)[0] + &quot;_&quot; + names[0]))&#123;</span><br><span class="line">                    String[] conditionhalf = conditions.get(last.getSource().split(&quot;\\.&quot;)[0] + &quot;_&quot; + names[0]).split(&quot;=&quot;);</span><br><span class="line">                    String tablename1 = tableAndAlias.get(conditionhalf[0].split(&quot;\\.&quot;)[0].toUpperCase().trim());</span><br><span class="line">                    String tablename2 = tableAndAlias.get(conditionhalf[1].split(&quot;\\.&quot;)[0].toUpperCase().trim());</span><br><span class="line">                    String translatedCondition = tablename1+&quot;.&quot;+conditionhalf[0].split(&quot;\\.&quot;)[1]+&quot; 条件：&quot;+tablename2+&quot;.&quot;+conditionhalf[1].split(&quot;\\.&quot;)[1]+ &quot; 关联 &quot; +tablename2+&quot;.&quot;+conditionhalf[1].split(&quot;\\.&quot;)[1];</span><br><span class="line">                    mdTableMapping.setSource(tableAndAlias.get(last.getSource().split(&quot;\\.&quot;)[0])+&quot;.&quot;+last.getSource().split(&quot;\\.&quot;)[1] +&quot;  &quot;+ translatedCondition);</span><br><span class="line">                    mdTableMapping.setProcess(last.getProcess());</span><br><span class="line">                    mdTableMappingsList.add(mdTableMapping);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                begin = sqlToUpper.indexOf(&quot;FROM&quot;);</span><br><span class="line">                end = sqlToUpper.indexOf(&quot;LEFT OUTER JOIN&quot;);</span><br><span class="line">                if(end == -1)&#123;//只有 from 部分</span><br><span class="line">                    String fromTableAndAlias = sqlToUpper.substring(begin+4,sql.indexOf(&quot;;&quot;)).trim();</span><br><span class="line">                    String[] fromTableAndAliasSplit = fromTableAndAlias.split(&quot; &quot;);</span><br><span class="line">                    if(fromTableAndAliasSplit.length&lt;2)&#123;//TableName a不存在</span><br><span class="line">                        mdTableMapping.setSource(fromTableAndAlias+&quot;.&quot;+s);</span><br><span class="line">                        mdTableMappingsList.add(mdTableMapping);</span><br><span class="line">                    &#125;else &#123;//ableName a存在</span><br><span class="line">                        mdTableMapping.setSource(tableAndAlias.get(fromTableAndAliasSplit[1]).trim()+&quot;.&quot;+s);</span><br><span class="line">                        mdTableMappingsList.add(mdTableMapping);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;else &#123;</span><br><span class="line">                    mdTableMapping.setSource(s);</span><br><span class="line">                    mdTableMappingsList.add(mdTableMapping);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //将之前获得该insert表中全部所需数据的 map 对象集合中的信息 传递给最终需要返回插入的 MdTableMapping 对象集合中</span><br><span class="line">        int i=1;</span><br><span class="line">        for(MdTableMapping m:mdTableMappingsList)&#123;</span><br><span class="line">            m.setTid(mapMdTableMapping.get(i).getTid());</span><br><span class="line">            m.setTename(mapMdTableMapping.get(i).getTename());</span><br><span class="line">            m.setTcname(mapMdTableMapping.get(i).getTcname());</span><br><span class="line">            m.setFcname(mapMdTableMapping.get(i).getFcname());</span><br><span class="line">            m.setFename(mapMdTableMapping.get(i).getFename());</span><br><span class="line">            m.setFid(mapMdTableMapping.get(i).getFid());</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    return mdTableMappingsList;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据库插入函数"><a href="#数据库插入函数" class="headerlink" title="数据库插入函数"></a>数据库插入函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public void AnalyseSQL()&#123;</span><br><span class="line">    List&lt;MdTableMapping&gt; result = new LinkedList&lt;&gt;();</span><br><span class="line">    for(String s:getSQLs())&#123;</span><br><span class="line">        //System.out.println(s);</span><br><span class="line">        List&lt;MdTableMapping&gt; all =  SQLToExcel(s);</span><br><span class="line">        for(MdTableMapping r:all)&#123;</span><br><span class="line">            result.add(r);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(MdTableMapping r:result)&#123;</span><br><span class="line">        service.insert(r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></section>
+    <!-- Tags START -->
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/08/09/readODPSInformationByAPI/">
+        <span class="nav-arrow">← </span>
+        
+          通过接口读取生成存储 ODPS 上信息
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/11/09/JSON-SimpleNote/">
+        
+          JSON 简单笔记
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%88%90%E6%9E%9C"><span class="toc-nav-text">成果</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B5%8B%E8%AF%95%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="toc-nav-text">测试样例：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%80%E7%BB%88%E6%98%A0%E5%B0%84%E8%A1%A8%E6%88%90%E6%9E%9C%EF%BC%9A"><span class="toc-nav-text">最终映射表成果：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AD%98%E5%9C%A8%E9%97%AE%E9%A2%98"><span class="toc-nav-text">存在问题</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="toc-nav-text">代码思路：</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%BB%E5%8F%96%E5%87%BD%E6%95%B0"><span class="toc-nav-text">数据库读取函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BB%E8%A6%81%E7%9A%84%E5%88%86%E6%9E%90%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="toc-nav-text">主要的分析处理函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E5%85%A5%E5%87%BD%E6%95%B0"><span class="toc-nav-text">数据库插入函数</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2018/09/02/SQLreport/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

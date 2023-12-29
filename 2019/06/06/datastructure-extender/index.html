@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      《数据结构》6-10章 | Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>《数据结构》6-10章</h2>
+  <p class="post-date">2019-06-06</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>《数据结构（C语言版）》严蔚敏编著，第6-10章重点详略</p>
+<span id="more"></span>
+
+<h2 id="树和二叉树"><a href="#树和二叉树" class="headerlink" title="树和二叉树"></a>树和二叉树</h2><p>树有许多结点，每个结点拥有的子树数称为结点的<strong>度</strong>。</p>
+<p>注意：<font color = 'green'>树的度是树内各结点的度的最大值</font></p>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><ul>
+<li><p>二叉树的性质</p>
+<ul>
+<li>在二叉树的第i层上至多有<font color = 'red'>2<sup>i-1</sup></font>个结点</li>
+<li>深度为k的二叉树至多有<font color = 'red'>2<sup>k</sup>-1</font>个结点</li>
+<li>任何一棵二叉树，如果其终端结点数为n<sub>0</sub>，度为2的结点数为n<sub>2</sub>，则<font color = 'red'>n<sub>0</sub> &#x3D; n<sub>2</sub>+1</font></li>
+</ul>
+</li>
+<li><p><strong>满二叉树</strong>：深度为k且有2<sup>k</sup>-1个结点的二叉树</p>
+</li>
+<li><p><strong>完全二叉树</strong>：每个结点都与满二叉树中结点对应的二叉树（满二叉树的不满形态）</p>
+</li>
+<li><p>完全二叉树的重要特性</p>
+<ol>
+<li>具有n个结点的完全二叉树的深度为<font color = 'red'>log<sub>2</sub>n+1</font></li>
+<li>结点为i的，双亲结点为i&#x2F;2；2i大于结点总数的无左孩子，否则左孩子结点为2i；同理，右孩子结点为2i+1</li>
+</ol>
+</li>
+</ul>
+<h4 id="二叉树存储结构"><a href="#二叉树存储结构" class="headerlink" title="二叉树存储结构"></a>二叉树存储结构</h4><ul>
+<li>顺序存储结构：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">类别</th>
+<th align="center">顺序存储结构</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">完全二叉树</td>
+<td align="center">[1,2,3,4,5,6]</td>
+</tr>
+<tr>
+<td align="center">一般二叉树</td>
+<td align="center">[1,2,0,0,0,6]</td>
+</tr>
+</tbody></table>
+<ul>
+<li>链式存储结构：</li>
+</ul>
+<p>不同形式 |  | 结点结构|  |<br>:-: | :-: | :-: | :-: | :-:<br>两个指针域 | lchild | data | rchild<br>三个指针域 | lchild | data |parent|rchild</p>
+<h3 id="遍历二叉树"><a href="#遍历二叉树" class="headerlink" title="遍历二叉树"></a>遍历二叉树</h3><p><img src="/images/image-20190606164208579.png" alt="二叉树"></p>
+<ul>
+<li>如图所示二叉树：<ul>
+<li>先序遍历（波兰式：先根&#x3D;&gt;左子树&#x3D;&gt;右子树）的先序序列为：<font color = 'red'>-</font>+a*b-cd&#x2F;ef</li>
+<li>中序遍历（左子树&#x3D;&gt;中根&#x3D;&gt;右子树）的中序序列为：a+b*c-d<font color = 'red'>-</font>e&#x2F;f(在根两端的结点肯定在不同左右子树上)</li>
+<li>后序遍历（逆波兰式：左子树&#x3D;&gt;右子树&#x3D;&gt;后根）的后序序列为：abcd-*+ef&#x2F;<font color = 'red'>-</font> (确定最末是根)</li>
+</ul>
+</li>
+<li>任意两个序列即可确定一棵二叉树</li>
+</ul>
+<h3 id="树和森林"><a href="#树和森林" class="headerlink" title="树和森林"></a>树和森林</h3><h4 id="树的存储结构"><a href="#树的存储结构" class="headerlink" title="树的存储结构"></a>树的存储结构</h4><ul>
+<li>双亲表示法：一组连续空间存储树的结点，同时在每个结点中附设一个指示器只是其双亲结点在链表中的位置。</li>
+</ul>
+<p><img src="/images/image-20190606110340608.png" alt="树的双亲表示法示例"></p>
+<ul>
+<li>孩子表示法：<ul>
+<li>把每个结点的孩子结点排列起来，看成是一个线性表，且以单链表作存储结构。</li>
+<li>树的每个结点可能有多棵子树，则可用<strong>多重链表</strong>，即每个结点有多个指针域，每个指针指向一棵子树的根结点。其中结点同构的表示方法，因为树中有很多结点的度小于d，链表中会有很多空链域造成浪费。有n个结点度为k的树中必有<u>n(k-1)+1</u>个空链域。</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">不同</th>
+<th align="center">结点格式</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">多重链表中结点同构</td>
+<td align="center">[data, child1, child2, …,childd ]</td>
+<td align="center">d为树的度</td>
+</tr>
+<tr>
+<td align="center">结点不同构</td>
+<td align="center">[data, degree, child1, child2, …,childk]</td>
+<td align="center">degree &#x3D; k，是结点的度</td>
+</tr>
+</tbody></table>
+<ul>
+<li>孩子兄弟表示法：又称<strong>二叉树表示法&#x2F;二叉链表表示法</strong>，即以二叉链表作树的存储结构。链表中结点的两个链域分别指向该结点的第一个孩子结点和下一个兄弟结点。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span>&#123;</span></span><br><span class="line">  ElemType data;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span> *<span class="title">firstchild</span>, *<span class="title">nextsibling</span>;</span></span><br><span class="line">&#125;CSNode, *CSTree</span><br></pre></td></tr></table></figure>
+
+<h4 id="森林与二叉树的转换"><a href="#森林与二叉树的转换" class="headerlink" title="森林与二叉树的转换"></a>森林与二叉树的转换</h4><p>酌情填坑</p>
+<h3 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h3><ul>
+<li>有n个权值[w1, w2, w3,…,wn]，构造一棵有n个叶子结点的二叉树，每个叶子结点带权为wi，其中<font color = 'red'>带权路径长度WPL最小</font>的二叉树称作<strong>最优二叉树</strong>或<strong>哈夫曼树</strong>。</li>
+<li>构造哈夫曼树：<ol>
+<li>在权值集合中选择最小的两个权值构造二叉树，新二叉树的根结点的权值为左右子树上根结点的权值之和</li>
+<li>在集合中删除这两个权值，同时将新权值加入集合中</li>
+<li>重复以上两步，直到集合中只含一个权值。这棵树就是哈夫曼树。</li>
+</ol>
+</li>
+<li>哈夫曼编码：设计电文总长最短的二进制前缀编码即为以n种字符出现的频率作权，设计一棵哈夫曼树的问题，由此得到的二进制前缀编码就称为<strong>哈夫曼编码</strong>。(可理解为：<font color = 'green'>使用频率最高的字符要求在树的层次越浅，使用频率最低的字符在树最深的层次上</font>)</li>
+</ul>
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><p>已知某系统在通信联络中只可能出现8种字符，其概率分别为0.05，0.29，0.07，0.08，0.14，0.23，0.03，0.11。试设计哈夫曼编码。</p>
+<p><em>解</em>：设权w &#x3D; {5, 29, 7, 8, 14, 23, 3, 11}。</p>
+<p><img src="/images/image-20190606124937112.png" alt="哈夫曼树构造过程"></p>
+<h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><ul>
+<li>图分为有向图和无向图</li>
+<li>有(1&#x2F;2)*n(n-1)条边的无向图称为<strong>完全图</strong>；有n(n-1)条弧的有向图称为<strong>有向完全图</strong>。(完全图之间各顶点连通)</li>
+<li>顶点v的<strong>度</strong>是和v相关联的边的数目，其中有向图又分别细分为<strong>入度</strong>和<strong>出度</strong>。</li>
+<li>子图：能重叠在原图上的部分图</li>
+<li>无向图中如果任意两个顶点都是连通的，则称其为<strong>连通图</strong>，<strong>连通分量</strong>指的是无向图中不同的极大连通子图；类似的，在有向图中任意两个顶点互相之间都有路径，则称为<strong>强连通图</strong>，有向图中不同的极大强连通子图称作有向图的<strong>强连通分量</strong>。</li>
+<li>一个连通图的<strong>生成树</strong>是一个极小连通子图，含有图中全部顶点，但只有足以构成一棵树的n-1条边。(可以理解成<font color = 'green'>图中不存在环，不存在冗余的边</font>)</li>
+<li>如果一个图有n个顶点和小于n-1条边，则是非连通图；多于n-1条边，则一定有环。</li>
+</ul>
+<h3 id="图的存储结构"><a href="#图的存储结构" class="headerlink" title="图的存储结构"></a>图的存储结构</h3><h4 id="数组表示法"><a href="#数组表示法" class="headerlink" title="数组表示法"></a>数组表示法</h4><p>邻接矩阵：以二维数组表示有n个顶点的图</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(i,j连通)&#123;</span><br><span class="line">  A[i][j] = 权值;<span class="comment">//如果是无向图，需要再多加一条语句：A[j][i] = 权值;</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  A[i][j] = ∞;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h4><ul>
+<li>是图的一种链式存储结构，对图中每个顶点建立一个单链表，第i个单链表中的结点表示依附于顶点vi的边（有向图就是以顶点vi为尾的弧）。</li>
+<li>每个结点由3个域组成：[int <font color ='red'>adjvex</font>邻接点域指示与顶点vi邻接的点,* <font color ='red'>nextarc</font>链域指针指示下一条边或弧的结点, <font color ='red'>info</font>数据域存储权值等信息]</li>
+</ul>
+<p>​	<img src="/images/image-20190606150412964.png" alt="无向图的邻接表"></p>
+<ul>
+<li>对于有向图来说，也有邻接表，记录顶点的出度；还有逆邻接表，记录顶点的入度。</li>
+</ul>
+<h3 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h3><ul>
+<li>**深度优先搜索 (Depth First Search)**：类似于树的先根遍历。从图中一个顶点出发，访问此顶点，依次从该点未被访问的邻接点出发深度优先遍历图，直到图中所有和v有<u>路径相通</u>的顶点都被访问到。其余未被访问的顶点重复上述过程，直到图中所有顶点都被访问为止。</li>
+<li>**广度优先搜索(Breadth First Search)**：类似于树的按层次遍历的过程。从图中一个顶点出发，访问此顶点，依次访问该点的各个邻接点，然后分别从这些邻接点出发依次访问它们的邻接点。</li>
+</ul>
+<h3 id="图的连通性"><a href="#图的连通性" class="headerlink" title="图的连通性"></a>图的连通性</h3><ul>
+<li>最小生成树问题：<a target="_blank" rel="noopener" href="https://zansy.github.io/2018/01/05/MinimumSpanningTree/">最小生成树小结</a></li>
+<li>Prim算法时间复杂度为O(n<sup>2</sup>)，n为顶点。Kruskal时间复杂度为(elog<sub>e</sub>)，其中e为边数，更适合求边稀疏的最小生成树。</li>
+</ul>
+<h3 id="有向无环图"><a href="#有向无环图" class="headerlink" title="有向无环图"></a>有向无环图</h3><ul>
+<li><p>拓扑排序：由某个集合上的一个偏序得到该集合上的一个全序，称为拓扑排序。不允许有环。(例：《软件专业的学生必须学习的课程》 先决条件)</p>
+</li>
+<li><p>进行拓扑排序（AOV Activity On Vertex 顶点表示活动的网）：</p>
+<ol>
+<li>在有向图中选一个没有前驱的顶点且输出</li>
+<li>从图中删除该顶点和它的后继弧</li>
+<li>重复，直到所有顶点输出</li>
+</ol>
+</li>
+<li><p>关键路径(AOE Activity On Edge 边表示活动的网)：路径长度最长的路径，其上均是关键活动。</p>
+</li>
+</ul>
+<h3 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h3><h4 id="源点到其余顶点的最短路径"><a href="#源点到其余顶点的最短路径" class="headerlink" title="源点到其余顶点的最短路径"></a>源点到其余顶点的最短路径</h4><p>Dijkstra算法</p>
+<p>(待补)</p>
+<h4 id="每一对顶点间的最短路径"><a href="#每一对顶点间的最短路径" class="headerlink" title="每一对顶点间的最短路径"></a>每一对顶点间的最短路径</h4><p>Floyd算法</p>
+<p>(待补)</p>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><h3 id="折半查找-Binary-Search"><a href="#折半查找-Binary-Search" class="headerlink" title="折半查找(Binary Search)"></a>折半查找(Binary Search)</h3><p>先确定待查记录所在的范围，以处于区间中间位置的关键值和待查数比较，若不等，逐步缩小范围直到找到或查找区间的大小小于0为止。</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">binSearch</span><span class="params">(<span class="type">int</span> nums[], <span class="type">int</span> key)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">low</span> <span class="operator">=</span> <span class="number">0</span>, high = nums.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (low &lt;= high)&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> (low + high)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] == key) <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] &gt; key) high = mid - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> low = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二叉排序树"><a href="#二叉排序树" class="headerlink" title="二叉排序树"></a>二叉排序树</h3><p>也称二叉查找树。是动态查找表，表结构本身是在查找过程中动态生成的。</p>
+<p>二叉排序树有如下性质：</p>
+<ol>
+<li>左子树上所有结点的值均小于它的根结点的值</li>
+<li>右子树上所有结点的值均大于它的根结点的值</li>
+<li>左右子树也分别为二叉排序树</li>
+</ol>
+<h3 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h3><p>也称AVL树。</p>
+<p>平衡二叉树有如下性质：</p>
+<ol>
+<li>左子树和右子树都是平衡大叉树</li>
+<li>左子树和右子树的深度之差绝对值不超过1</li>
+</ol>
+<p>二叉树上结点的平衡因子定义为该结点的左子树的深度减去右子树的深度，平衡因子只可能是-1，0，1</p>
+<h3 id="B-树"><a href="#B-树" class="headerlink" title="B-树"></a>B-树</h3><p>是一种平衡的多路查找树，在文件系统中很有用。</p>
+<p>一棵m阶的B-树是一棵具有如下特性的m叉树：</p>
+<ol>
+<li>树中每个结点至多有m棵子树</li>
+<li>根结点至少有两棵子树</li>
+<li>除根之外的所有非终端结点至少有m&#x2F;2棵子树</li>
+<li>所有叶子结点都出现在同一层次上，且不带信息，可以看作是外部结点或查找失败的结点，实际上这些结点不存在。</li>
+</ol>
+<p><img src="/images/image-20190608181555122.png" alt="一棵4阶的B-树"></p>
+<h3 id="B-树-1"><a href="#B-树-1" class="headerlink" title="B+树"></a>B+树</h3><p>B+树是应文件系统所需而出的一种B-树的变型树。</p>
+<p>一棵m阶的B+树和m阶的B-树差异在于：</p>
+<ol>
+<li>有n棵子树的结点中含有n个关键字</li>
+<li>所有的叶子结点中包含了全部的关键字信息</li>
+<li>所有的非终端结点可以看成是索引部分，结点中仅含有其子树中的最大&#x2F;最小关键字</li>
+</ol>
+<p><img src="/images/image-20190608182005703.png" alt="一棵3阶的B+树"></p>
+<h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><p>不经过任何比较，一次存取便能得到所查记录</p>
+<p>处理冲突：</p>
+<ol>
+<li>开放定址法：自动往后退一位</li>
+<li>再哈希法：再次进行哈希计算</li>
+<li>链地址法：把所有关键字为同义词的记录存储在同一先行链表中</li>
+<li>建立一个公共溢出区：一旦发生冲突都填入溢出表</li>
+</ol>
+<h2 id="内部排序"><a href="#内部排序" class="headerlink" title="内部排序"></a>内部排序</h2><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><ul>
+<li>直接插入排序：将一个记录插入到已排好序的有序表中</li>
+<li>希尔排序（缩小增量排序）：先将整个待排记录序列分隔成为若干子序列分别进行直接插入排序，等到整个序列中的记录基本有序时，再对全体记录进行一次直接插入排序。<font color = 'green'>子序列的构成不是简单的逐段分割，而是将像个某个”增量”的记录组成一个子序列。</font></li>
+</ul>
+<p><img src="/images/image-20190608185908122.png" alt="希尔排序示例"></p>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><p>降低一个记录的关键字和第二个记录的关键字进行比较，若为逆序则交换这两个记录，然后比较第二个记录和第三个记录的关键字，以此类推，直到第n-1个记录和第n个记录的关键字进行过比较为止。这是第一趟冒泡排序，其结果使得最大的数被安置到最后一个记录的位置上。</p>
+<p>然后进行第二趟排序，结果将第二大的数字安置到倒数第二的位置上。</p>
+<p>本质上是不断将大数沉淀到后位。</p>
+<p><img src="/images/image-20190608190743872.png" alt="冒泡排序示例"></p>
+<p>动图展示：<a target="_blank" rel="noopener" href="https://visualgo.net/en/sorting">BUBBLE SORT</a></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">int</span> a[<span class="number">100</span>],i,j,t,n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);  <span class="comment">//输入一个数n，表示接下来有n个数</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)  <span class="comment">//循环读入n个数到数组a中</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    <span class="comment">//冒泡排序的核心部分</span></span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n<span class="number">-1</span>;i++) <span class="comment">//n个数排序，只用进行n-1趟</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=n-i;j++) <span class="comment">//从第1位开始比较直到最后一个尚未归位的数，想一想为什么到n-i就可以了。</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[j]&lt;a[j+<span class="number">1</span>]) <span class="comment">//比较大小并交换</span></span><br><span class="line">            &#123;  t=a[j]; a[j]=a[j+<span class="number">1</span>]; a[j+<span class="number">1</span>]=t;  &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)  <span class="comment">//输出结果</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,a[i]);</span><br><span class="line">    getchar();getchar();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><h4 id="过程-1"><a href="#过程-1" class="headerlink" title="过程"></a>过程</h4><p>设立数组第一个数为starter，在首尾分别设立两个指针i, j，j向前找到第一个小于starter的与i找到的大于starter的数互换，最后相遇的时候，把starter放到相遇点上，也就是在starter之前是小于starter的无序集合，在starter之后是大于starter的无序集合。</p>
+<p>待排记录被分成了独立的两部分，接下去分别对这两部分按照之前的方式再进行排序，直到数组有序为止。</p>
+<p><img src="/images/image-20190608213559720.png" alt="快速排序示例"></p>
+<p>动图展示：<a target="_blank" rel="noopener" href="https://visualgo.net/en/sorting">QUICK SORT</a></p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">quickSort</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> left, <span class="type">int</span> right)</span>&#123;</span><br><span class="line">    <span class="type">int</span> i, j, starter;</span><br><span class="line">    <span class="keyword">if</span>(left &gt; right)<span class="keyword">return</span>;</span><br><span class="line">    starter = nums[left];</span><br><span class="line">    i = left;</span><br><span class="line">    j = right;</span><br><span class="line">    <span class="keyword">while</span> (i != j)&#123;</span><br><span class="line">        <span class="keyword">while</span> (nums[j] &lt;= starter &amp;&amp; i &lt; j)j--;</span><br><span class="line">        <span class="keyword">while</span> (nums[i] &gt;= starter &amp;&amp; i &lt; j)i++;</span><br><span class="line">        <span class="keyword">if</span>(i &lt; j)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> nums[i];</span><br><span class="line">            nums[i] = nums[j];</span><br><span class="line">            nums[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    nums[left] = nums[i];</span><br><span class="line">    nums[i] = starter;</span><br><span class="line"></span><br><span class="line">    quickSort(nums, left, i-<span class="number">1</span>);</span><br><span class="line">    quickSort(nums, i+<span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><p>完全二叉树中所有非终端结点的值均不大于(如果是最大生成堆就是不小于)其左右孩子结点的值。在输出堆顶元素后，使得剩余n-1个元素的序列重新又建成一个堆，继续输出堆顶元素，如此反复执行，就能得到一个有序序列，这个过程就是<strong>堆排序</strong>。</p>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>初始序列含有n个记录，可以分为长度为1的n个子序列，然后两两排序归并，得到n&#x2F;2个长度为2或1的有序子序列，继续两两归并，直到得到一个长度为n的有序序列为止。</p>
+<p><img src="/images/image-20190608215102513.png" alt="2-路归并排序示例"></p>
+</section>
+    <!-- Tags START -->
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/05/24/LeetCode-55-DP/">
+        <span class="nav-arrow">← </span>
+        
+          从 LeetCode#55 入门动态规划
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/06/07/Floyd-Cycle-Detection-Algorithm/">
+        
+          Floyd Cycle Detection Algorithm
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-nav-text">树和二叉树</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-nav-text">二叉树</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-nav-text">二叉树存储结构</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%81%8D%E5%8E%86%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-nav-text">遍历二叉树</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97"><span class="toc-nav-text">树和森林</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%A0%91%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-nav-text">树的存储结构</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%A3%AE%E6%9E%97%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-nav-text">森林与二叉树的转换</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91"><span class="toc-nav-text">哈夫曼树</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-nav-text">例题</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9B%BE"><span class="toc-nav-text">图</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%AF%E8%AF%AD"><span class="toc-nav-text">术语</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="toc-nav-text">图的存储结构</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%95%B0%E7%BB%84%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="toc-nav-text">数组表示法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-nav-text">邻接表</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-nav-text">图的遍历</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7"><span class="toc-nav-text">图的连通性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE"><span class="toc-nav-text">有向无环图</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-nav-text">最短路径</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%BA%90%E7%82%B9%E5%88%B0%E5%85%B6%E4%BD%99%E9%A1%B6%E7%82%B9%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-nav-text">源点到其余顶点的最短路径</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%AF%8F%E4%B8%80%E5%AF%B9%E9%A1%B6%E7%82%B9%E9%97%B4%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-nav-text">每一对顶点间的最短路径</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-nav-text">查找</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE-Binary-Search"><span class="toc-nav-text">折半查找(Binary Search)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-nav-text">代码实现</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91"><span class="toc-nav-text">二叉排序树</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-nav-text">平衡二叉树</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#B-%E6%A0%91"><span class="toc-nav-text">B-树</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#B-%E6%A0%91-1"><span class="toc-nav-text">B+树</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-nav-text">哈希表</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F"><span class="toc-nav-text">内部排序</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-nav-text">插入排序</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="toc-nav-text">冒泡排序</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-nav-text">过程</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-nav-text">代码</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-nav-text">快速排序</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%BF%87%E7%A8%8B-1"><span class="toc-nav-text">过程</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="toc-nav-text">代码</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-nav-text">堆排序</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-nav-text">归并排序</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2019/06/06/datastructure-extender/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

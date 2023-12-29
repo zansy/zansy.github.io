@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      JSON 简单笔记 | Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>JSON 简单笔记</h2>
+  <p class="post-date">2018-11-09</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>最近在学着用 postman 测试和写接口</p>
+<span id="more"></span>
+
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>JSON: JavaScript Object Notation(JavaScript 对象表示法)</li>
+<li>JSON 是存储和交换文本信息的语法</li>
+</ul>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><ul>
+<li>JSON 实例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;State&quot;: 1000,</span><br><span class="line">    &quot;SearchItemsCount&quot;: 123,</span><br><span class="line">    &quot;SearchCount&quot;: 123,</span><br><span class="line">    &quot;ClassList&quot;: &quot;1159|100|啤酒,1499|14|其它,0|4|,1720|2|饮用水,1156|2|白酒,1139|1|进口冲调/饮品&quot;,</span><br><span class="line">    &quot;BrandList&quot;: &quot;10806|98|百威,0|20|,27296|3|白熊,10440|2|郎酒&quot;,</span><br><span class="line">    &quot;SiteList&quot;: &quot;1|84|京东商城,190|11|天猫超市,6|11|苏宁易购,10|7|天猫商城,278|6|天猫旗舰店,322|2|景彤全球购,3|2|当当&quot;,</span><br><span class="line">    &quot;SearchResultList&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;spname&quot;: &quot;Budweiser 百威啤酒500ml*18听&quot;,</span><br><span class="line">            &quot;sppic&quot;: &quot;https://img11.360buyimg.com/n1/s450x450_jfs/t20569/97/1194982666/203143/26dfa4f7/5b22050aNfd2ffc77.jpg&quot;,</span><br><span class="line">            &quot;spurl&quot;: &quot;http://item.jd.com/703214.html&quot;,</span><br><span class="line">            &quot;spprice&quot;: &quot;104.00&quot;,</span><br><span class="line">            &quot;className&quot;: &quot;啤酒&quot;,</span><br><span class="line">            &quot;brandName&quot;: &quot;百威&quot;,</span><br><span class="line">            &quot;siteName&quot;: &quot;京东商城&quot;,</span><br><span class="line">            &quot;commentUrl&quot;: &quot;&quot;,</span><br><span class="line">            &quot;commentCount&quot;: &quot;550915&quot;,</span><br><span class="line">            &quot;TitleHighLighter&quot;: &quot;&lt;font color=\&quot;red\&quot;&gt;Budweiser&lt;/font&gt; 百威&lt;font color=\&quot;red\&quot;&gt;啤酒&lt;/font&gt;500ml*18听&quot;,</span><br><span class="line">            &quot;ziying&quot;: &quot;1&quot;,</span><br><span class="line">            &quot;taobaoid&quot;: null,</span><br><span class="line">            &quot;siteid&quot;: &quot;1&quot;,</span><br><span class="line">            &quot;id&quot;: &quot;36303200&quot;,</span><br><span class="line">            &quot;classid&quot;: &quot;1159&quot;,</span><br><span class="line">            &quot;spbh&quot;: &quot;1|703214&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;spname&quot;: &quot;苏宁超市自营 Budweiser百威啤酒 500ML*18听 箱装&quot;,</span><br><span class="line">            &quot;sppic&quot;: &quot;https://imgservice.suning.cn/uimg1/b2c/image/JiEbxMRsX2ex0h69Yl8qFw.jpg_800w_800h_4e&quot;,</span><br><span class="line">            &quot;spurl&quot;: &quot;https://product.suning.com/0000000000/123291616.html&quot;,</span><br><span class="line">            &quot;spprice&quot;: &quot;99.00&quot;,</span><br><span class="line">            &quot;className&quot;: &quot;啤酒&quot;,</span><br><span class="line">            &quot;brandName&quot;: &quot;百威&quot;,</span><br><span class="line">            &quot;siteName&quot;: &quot;苏宁易购&quot;,</span><br><span class="line">            &quot;commentUrl&quot;: &quot;&quot;,</span><br><span class="line">            &quot;commentCount&quot;: &quot;57221&quot;,</span><br><span class="line">            &quot;TitleHighLighter&quot;: &quot;苏宁超市自营 &lt;font color=\&quot;red\&quot;&gt;Budweiser&lt;/font&gt;百威&lt;font color=\&quot;red\&quot;&gt;啤酒&lt;/font&gt; 500ML*18听 箱装&quot;,</span><br><span class="line">            &quot;ziying&quot;: &quot;1&quot;,</span><br><span class="line">            &quot;taobaoid&quot;: null,</span><br><span class="line">            &quot;siteid&quot;: &quot;6&quot;,</span><br><span class="line">            &quot;id&quot;: &quot;170477927&quot;,</span><br><span class="line">            &quot;classid&quot;: &quot;1159&quot;,</span><br><span class="line">            &quot;spbh&quot;: &quot;6|123291616&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>目标是将如上的字符串转成JSON，再进行拆分，获取每一个 key 中对应的 value，存入数据库中。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">JSONObject returnJSON = JSONObject.fromObject(returnString);//将返回的String转换成JSON</span><br><span class="line">JSONArray searchResultList = returnJSON.getJSONArray(&quot;SearchResultList&quot;);</span><br><span class="line">for(int i = 0; i &lt; searchResultList.size(); i++) &#123;</span><br><span class="line">	JSONObject searchResult = searchResultList.getJSONObject(i);</span><br><span class="line">    stdPrice = new StdPrice();</span><br><span class="line">    tdPrice.setSpname(searchResult.getString(&quot;spname&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="JSON-语法拾遗"><a href="#JSON-语法拾遗" class="headerlink" title="JSON 语法拾遗"></a>JSON 语法拾遗</h2><ul>
+<li><p>可以通过<code>SearchResultList[0].spname = &quot;unknown&quot;;</code></p>
+</li>
+<li><p>访问对象值:</p>
+<ul>
+<li>可以使用点号（.）来访问对象的值：<code>SearchResultList[0].spname</code></li>
+<li>可以使用中括号（[]）来访问对象的值：<code>SearchResultList[0][&quot;spname&quot;]</code></li>
+</ul>
+</li>
+<li><p>在 for-in 循环对象的属性时，使用中括号（[]）来访问属性的值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var myObj = &#123; &quot;name&quot;:&quot;runoob&quot;, &quot;alexa&quot;:10000, &quot;site&quot;:null &#125;;</span><br><span class="line">for (x in myObj) &#123;</span><br><span class="line">    document.getElementById(&quot;demo&quot;).innerHTML += myObj[x] + &quot;&lt;br&gt;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>JSON 对象中可以包含另外一个 JSON 对象。</p>
+</li>
+</ul>
+<h2 id="JSON-parse"><a href="#JSON-parse" class="headerlink" title="JSON.parse()"></a>JSON.parse()</h2><ul>
+<li><p>JSON 通常用于与服务端交换数据，在接收服务器数据时一般是字符串。使用 JSON.parse() 方法将数据转换为 JavaScript 对象。 </p>
+</li>
+<li><p>语法：<code>JSON.parse(text[, reviver])</code></p>
+<ul>
+<li>text:必需， 一个有效的 JSON 字符串。</li>
+<li>reviver: 可选，一个转换结果的函数， 将为对象的每个成员调用此函数。</li>
+</ul>
+</li>
+<li><p>实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = JSON.parse(&#x27;&#123; &quot;name&quot;:&quot;runoob&quot;, &quot;alexa&quot;:10000, &quot;site&quot;:&quot;www.runoob.com&quot; &#125;&#x27;);//要确保待解析的字符串是标准的 JSON 格式</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><ul>
+<li>JSON 不能存储 Date 对象。如果需要存储 Date 对象，需要将其转换为字符串。</li>
+<li>实例<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var text = &#x27;&#123; &quot;name&quot;:&quot;Runoob&quot;, &quot;initDate&quot;:&quot;2013-12-14&quot;, &quot;site&quot;:&quot;www.runoob.com&quot;&#125;&#x27;;</span><br><span class="line">var obj = JSON.parse(text, function (key, value) &#123;</span><br><span class="line">    if (key == &quot;initDate&quot;) &#123;</span><br><span class="line">        return new Date(value);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return value;</span><br><span class="line">&#125;&#125;);</span><br><span class="line">document.getElementById(&quot;demo&quot;).innerHTML = obj.name + &quot;创建日期：&quot; + obj.initDate;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="JSON-stringify"><a href="#JSON-stringify" class="headerlink" title="JSON.stringify()"></a>JSON.stringify()</h2><ul>
+<li>可以使用 JSON.stringify() 方法将 JavaScript 对象转换为字符串。 </li>
+<li>语法：<code>JSON.stringify(value[, replacer[, space]])</code><ul>
+<li>value: 必需， 一个有效的 JSON 对象。</li>
+<li>replacer: 可选。用于转换结果的函数或数组。</li>
+<li>space: 可选，文本添加缩进、空格和换行符，如果 space 是一个数字，则返回值文本在每个级别缩进指定数目的空格，如果 space 大于 10，则文本缩进 10 个空格。space 有可以使用非数字，如：\t。</li>
+</ul>
+</li>
+</ul>
+<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2><ul>
+<li>Jsonp(JSON with Padding) 是 json 的一种”使用模式”，可以让网页从别的域名（网站）那获取资料，即跨域读取数据。</li>
+<li>为什么我们从不同的域（网站）访问数据需要一个特殊的技术(JSONP )呢？这是因为同源策略。 同源策略，它是由Netscape提出的一个著名的安全策略，现在所有支持JavaScript 的浏览器都会使用这个策略。</li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/09/02/SQLreport/">
+        <span class="nav-arrow">← </span>
+        
+          “SQL语句分块解析”程序方法报告
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/12/04/Transfer-information-from-Excel-to-Navicat-via-Java/">
+        
+          通过 Java 将 Excel 中信息转存入 Navicat
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-nav-text">概述</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%9E%E6%88%98"><span class="toc-nav-text">实战</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#JSON-%E8%AF%AD%E6%B3%95%E6%8B%BE%E9%81%97"><span class="toc-nav-text">JSON 语法拾遗</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#JSON-parse"><span class="toc-nav-text">JSON.parse()</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BC%82%E5%B8%B8"><span class="toc-nav-text">异常</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#JSON-stringify"><span class="toc-nav-text">JSON.stringify()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#JSONP"><span class="toc-nav-text">JSONP</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2018/11/09/JSON-SimpleNote/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Microsoft Ignite-Azure Developer Challenge(2021/12/19 updated) | Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Microsoft Ignite-Azure Developer Challenge(2021/12/19 updated)</h2>
+  <p class="post-date">2021-11-22</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/learn/challenges?id=af95eabc-aafa-4ba1-8ec7-1c6444102f70">This challenge</a> is for developers interested in designing, building, testing, and maintaining cloud applications and services on Microsoft Azure.</p>
+<span id="more"></span>
+
+<h1 id="Explore-Azure-App-Service"><a href="#Explore-Azure-App-Service" class="headerlink" title="Explore Azure App Service"></a>Explore Azure App Service</h1><h2 id="Examine-Azure-App-Service"><a href="#Examine-Azure-App-Service" class="headerlink" title="Examine Azure App Service"></a>Examine Azure App Service</h2><p><em>Azure App Service</em> is <strong>an HTTP-based service for hosting web applications, REST APIs, and mobile back ends</strong>. You can develop in your favorite language, be it .NET, .NET Core, Java, Ruby, Node.js, PHP, or Python. Applications run and scale with ease on both Windows and Linux-based environments.</p>
+<h3 id="Built-in-auto-scale-support"><a href="#Built-in-auto-scale-support" class="headerlink" title="Built-in auto scale support"></a>Built-in auto scale support</h3><p>Depending on the usage of the web app, you can <strong>scale your app up&#x2F;down</strong> the resources of the underlying machine that is hosting your web app. Resources include the number of cores or the amount of RAM available. <strong>Scaling out&#x2F;in</strong> is the ability to increase, or decrease, the number of machine instances that are running your web app.</p>
+<h3 id="Continuous-integration-deployment-support"><a href="#Continuous-integration-deployment-support" class="headerlink" title="Continuous integration&#x2F;deployment support"></a>Continuous integration&#x2F;deployment support</h3><p>The Azure portal provides out-of-the-box continuous integration and deployment with Azure DevOps, GitHub, Bitbucket, FTP, or a local Git repository on your development machine. Connect your web app with any of the above sources and App Service will <strong>do the rest for you by auto-syncing code and any future changes on the code into the web app</strong>.</p>
+<h3 id="Deployment-slots"><a href="#Deployment-slots" class="headerlink" title="Deployment slots"></a>Deployment slots</h3><p>Using the Azure portal, or command-line tools, you can easily add deployment slots to an App Service web app. For instance, you can create a staging deployment slot where you can push your code to test on Azure. Once you are happy with your code, <strong>you can easily swap the staging deployment slot with the production slot</strong>.</p>
+<h2 id="Examine-Azure-App-Service-plans"><a href="#Examine-Azure-App-Service-plans" class="headerlink" title="Examine Azure App Service plans"></a>Examine Azure App Service plans</h2><p>In App Service, <strong>an app (Web Apps, API Apps, or Mobile Apps) always runs in an App Service plan. An App Service plan defines a set of compute resources for a web app to run.</strong> One or more apps can be configured to run on the same computing resources (or in the same App Service plan).</p>
+<h3 id="How-does-my-app-run-and-scale"><a href="#How-does-my-app-run-and-scale" class="headerlink" title="How does my app run and scale"></a>How does my app run and scale</h3><p>In the Free and Shared tiers, an app receives CPU minutes on a shared VM instance and can’t scale out. In other tiers, an app runs and scales as follows:</p>
+<ul>
+<li>An app runs on all the VM instances configured in the App Service plan.</li>
+<li>If multiple apps are in the same App Service plan, they all share the same VM instances.</li>
+<li>If you have multiple deployment slots for an app, all deployment slots also run on the same VM instances.</li>
+<li>If you enable diagnostic logs, perform backups, or run WebJobs, they also use CPU cycles and memory on these VM instances.</li>
+</ul>
+<p>In this way, the App Service plan is the scale unit of the App Service apps. If the plan is configured to run five VM instances, then all apps in the plan run on all five instances. If the plan is configured for autoscaling, then all apps in the plan are scaled out together based on the autoscale settings.</p>
+<h3 id="What-if-my-app-needs-more-capabilities-or-features"><a href="#What-if-my-app-needs-more-capabilities-or-features" class="headerlink" title="What if my app needs more capabilities or features?"></a>What if my app needs more capabilities or features?</h3><p>Your App Service plan can be scaled up and down at any time. It is as simple as changing the pricing tier of the plan. If your app is in the same App Service plan with other apps, you may want to improve the app’s performance by isolating the compute resources. You can do it by moving the app into a separate App Service plan.</p>
+<h2 id="Deploy-to-App-Service"><a href="#Deploy-to-App-Service" class="headerlink" title="Deploy to App Service"></a>Deploy to App Service</h2><p>Every development team has unique requirements that can make implementing an efficient deployment pipeline difficult on any cloud service. App Service supports both automated and manual deployment.</p>
+<h3 id="Automated-deployment"><a href="#Automated-deployment" class="headerlink" title="Automated deployment"></a>Automated deployment</h3><p>Automated deployment, or continuous integration, is a process used to push out new features and bug fixes in a fast and repetitive pattern with minimal impact on end users.</p>
+<p>Azure supports automated deployment directly from several sources.</p>
+<ul>
+<li>Azure DevOps</li>
+<li>GitHub</li>
+<li>Bitbucket</li>
+</ul>
+<h3 id="Manual-deployment"><a href="#Manual-deployment" class="headerlink" title="Manual deployment"></a>Manual deployment</h3><p>There are a few options that you can use to manually push your code to Azure:</p>
+<ul>
+<li>Git</li>
+<li>CLI</li>
+<li>Zip deploy</li>
+<li>FTP&#x2F;S</li>
+</ul>
+<h3 id="Use-deployment-slots"><a href="#Use-deployment-slots" class="headerlink" title="Use deployment slots"></a>Use deployment slots</h3><p>Whenever possible, use deployment slots when deploying a new production build. When using a Standard App Service Plan tier or better, you can deploy your app to a staging environment and then swap your staging and production slots. The swap operation warms up the necessary worker instances to match your production scale, thus eliminating downtime.</p>
+<h2 id="Explore-authentication-and-authorization-in-App-Service"><a href="#Explore-authentication-and-authorization-in-App-Service" class="headerlink" title="Explore authentication and authorization in App Service"></a>Explore authentication and authorization in App Service</h2><p>Azure App Service provides built-in authentication and authorization support, so you can sign in users and access data by writing minimal or no code in your web app, API, and mobile back end, and also Azure Functions.</p>
+<h3 id="Identity-providers"><a href="#Identity-providers" class="headerlink" title="Identity providers"></a>Identity providers</h3><p>App Service uses federated identity, in which a third-party identity provider manages the user identities and authentication flow for you. The following identity providers are available by default:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Sign-in endpoint</th>
+<th>How-To guidance</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Microsoft Identity Platform</td>
+<td>&#x2F;.auth&#x2F;login&#x2F;aad</td>
+<td>App Service Microsoft Identity Platform login</td>
+</tr>
+<tr>
+<td>Facebook</td>
+<td>&#x2F;.auth&#x2F;login&#x2F;facebook</td>
+<td>App Service Facebook login</td>
+</tr>
+<tr>
+<td>Google</td>
+<td>&#x2F;.auth&#x2F;login&#x2F;google</td>
+<td>App Service Google login</td>
+</tr>
+<tr>
+<td>Twitter</td>
+<td>&#x2F;.auth&#x2F;login&#x2F;twitter</td>
+<td>App Service Twitter login</td>
+</tr>
+</tbody></table>
+<h3 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h3><p>The authentication and authorization module runs in the same sandbox as your application code. When it’s enabled, every incoming HTTP request passes through it before being handled by your application code. This module handles several things for your app:</p>
+<ul>
+<li>Authenticates users with the specified provider</li>
+<li>Validates, stores, and refreshes tokens</li>
+<li>Manages the authenticated session</li>
+<li>Injects identity information into request headers</li>
+</ul>
+<h3 id="Authentication-flow"><a href="#Authentication-flow" class="headerlink" title="Authentication flow"></a>Authentication flow</h3><h1 id="Explore-Azure-Functions"><a href="#Explore-Azure-Functions" class="headerlink" title="Explore Azure Functions"></a>Explore Azure Functions</h1><h2 id="Discover-Azure-Functions"><a href="#Discover-Azure-Functions" class="headerlink" title="Discover Azure Functions"></a>Discover Azure Functions</h2><p><strong>Azure Functions</strong> are a great solution for processing data, integrating systems, working with the internet-of-things (IoT), and building simple APIs and microservices. Consider Functions for tasks like image or order processing, file maintenance, or for any tasks that you want to run on a schedule.</p>
+<h3 id="Compare-Azure-Functions-and-Azure-Logic-Apps"><a href="#Compare-Azure-Functions-and-Azure-Logic-Apps" class="headerlink" title="Compare Azure Functions and Azure Logic Apps"></a>Compare Azure Functions and Azure Logic Apps</h3><p>Both Functions and Logic Apps enable serverless workloads. Azure Functions is a serverless compute service, whereas Azure Logic Apps provides serverless workflows. Both can create complex orchestrations.</p>
+<p>For Azure Functions, you develop orchestrations by writing code and using the Durable Functions extension. For Logic Apps, you create orchestrations by using a GUI or editing configuration files.</p>
+<p>You can mix and match services when you build an orchestration, calling functions from logic apps and calling logic apps from functions. </p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Durable Functions</th>
+<th>Logic Apps</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Development</td>
+<td>Code-first (imperative)</td>
+<td>Designer-first (declarative)</td>
+</tr>
+<tr>
+<td>Connectivity</td>
+<td>About a dozen built-in binding types, write code for custom bindings</td>
+<td>Large collection of connectors, Enterprise Integration Pack for B2B scenarios, build custom connectors</td>
+</tr>
+<tr>
+<td>Actions</td>
+<td>Each activity is an Azure function; write code for activity functions</td>
+<td>Large collection of ready-made actions</td>
+</tr>
+<tr>
+<td>Monitoring</td>
+<td>Azure Application Insights</td>
+<td>Azure portal, Azure Monitor logs</td>
+</tr>
+<tr>
+<td>Management</td>
+<td>REST API, Visual Studio</td>
+<td>Azure portal, REST API, PowerShell, Visual Studio</td>
+</tr>
+<tr>
+<td>Execution context</td>
+<td>Can run locally or in the cloud</td>
+<td>Runs only in the cloud</td>
+</tr>
+</tbody></table>
+<h3 id="Compare-Functions-and-WebJobs"><a href="#Compare-Functions-and-WebJobs" class="headerlink" title="Compare Functions and WebJobs"></a>Compare Functions and WebJobs</h3><p>Like Azure Functions, Azure App Service WebJobs with the WebJobs SDK is a code-first integration service that is designed for developers. Both are built on Azure App Service and support features such as source control integration, authentication, and monitoring with Application Insights integration.</p>
+<p>Azure Functions is built on the WebJobs SDK, so it shares many of the same event triggers and connections to other Azure services.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Functions</th>
+<th>WebJobs with WebJobs SDK</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Serverless app model with automatic scaling</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Develop and test in browser</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Pay-per-use pricing</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Integration with Logic Apps</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Trigger events</td>
+<td>Timer Azure Storage queues and blobs Azure Service Bus queues and topics Azure Cosmos DB Azure Event Hubs HTTP&#x2F;WebHook (GitHub Slack) Azure Event Grid</td>
+<td>Timer Azure Storage queues and blobs Azure Service Bus queues and topics Azure Cosmos DB Azure Event Hubs File system</td>
+</tr>
+</tbody></table>
+<h2 id="Compare-Azure-Functions-hosting-options"><a href="#Compare-Azure-Functions-hosting-options" class="headerlink" title="Compare Azure Functions hosting options"></a>Compare Azure Functions hosting options</h2><p>There are three basic hosting plans available for Azure Functions: <em>Consumption plan, Functions Premium plan, and App service (Dedicated) plan.</em></p>
+<p>The following is a summary of the benefits of the three main hosting plans for Functions:</p>
+<table>
+<thead>
+<tr>
+<th>Plan</th>
+<th>Benefits</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Consumption plan</td>
+<td>This is the default hosting plan. It scales automatically and you only pay for compute resources when your functions are running. Instances of the Functions host are dynamically added and removed based on the number of incoming events.</td>
+</tr>
+<tr>
+<td>Functions Premium plan</td>
+<td>Automatically scales based on demand using pre-warmed workers which run applications with no delay after being idle, runs on more powerful instances, and connects to virtual networks.</td>
+</tr>
+<tr>
+<td>App service plan</td>
+<td>Run your functions within an App Service plan at regular App Service plan rates. Best for long-running scenarios where Durable Functions can’t be used.</td>
+</tr>
+</tbody></table>
+<h3 id="Always-on"><a href="#Always-on" class="headerlink" title="Always on"></a>Always on</h3><p>If you run on an App Service plan, you should enable the Always on setting so that your function app runs correctly. On an App Service plan, the functions runtime goes idle after a few minutes of inactivity, so only HTTP triggers will “wake up” your functions. Always on is available only on an App Service plan. </p>
+<h3 id="Storage-account-requirements"><a href="#Storage-account-requirements" class="headerlink" title="Storage account requirements"></a>Storage account requirements</h3><p>On any plan, a function app requires a general Azure Storage account, which supports Azure Blob, Queue, Files, and Table storage. This is because Functions relies on Azure Storage for operations such as managing triggers and logging function executions, but some storage accounts do not support queues and tables.</p>
+<h2 id="Scale-Azure-Functions"><a href="#Scale-Azure-Functions" class="headerlink" title="Scale Azure Functions"></a>Scale Azure Functions</h2><p>In the Consumption and Premium plans, Azure Functions scales CPU and memory resources by adding additional instances of the Functions host. The number of instances is determined on the number of events that trigger a function.</p>
+<h3 id="Runtime-scaling"><a href="#Runtime-scaling" class="headerlink" title="Runtime scaling"></a>Runtime scaling</h3><p>Azure Functions uses a component called <em>the scale controller</em> to monitor the rate of events and determine whether to scale out or scale in. The scale controller uses heuristics for each trigger type. For example, when you’re using an Azure Queue storage trigger, it scales based on the queue length and the age of the oldest queue message.</p>
+<p>The unit of scale for Azure Functions is the function app. When the function app is scaled out, additional resources are allocated to run multiple instances of the Azure Functions host. Conversely, as compute demand is reduced, the scale controller removes function host instances. The number of instances is eventually “scaled in” to zero when no functions are running within a function app.</p>
+<h3 id="Scaling-behaviors"><a href="#Scaling-behaviors" class="headerlink" title="Scaling behaviors"></a>Scaling behaviors</h3><p>Scaling can vary on a number of factors, and scale differently based on the trigger and language selected. There are a few intricacies of scaling behaviors to be aware of:</p>
+<ul>
+<li><p><strong>Maximum instances:</strong> A single function app only scales out to a maximum of 200 instances. A single instance may process more than one message or request at a time though, so there isn’t a set limit on number of concurrent executions.</p>
+</li>
+<li><p><strong>New instance rate:</strong> For HTTP triggers, new instances are allocated, at most, once per second. For non-HTTP triggers, new instances are allocated, at most, once every 30 seconds. Scaling is faster when running in a Premium plan.</p>
+</li>
+</ul>
+<h3 id="Limit-scale-out"><a href="#Limit-scale-out" class="headerlink" title="Limit scale out"></a>Limit scale out</h3><p>You may wish to restrict the maximum number of instances an app used to scale out. This is most common for cases where a downstream component like a database has limited throughput. By default, Consumption plan functions scale out to as many as 200 instances, and Premium plan functions will scale out to as many as 100 instances. You can specify a lower maximum for a specific app by modifying the value. The can be set to or for unrestricted, or a valid value between and the app maximum.</p>
+<h2 id="Knowledge-check"><a href="#Knowledge-check" class="headerlink" title="Knowledge check"></a>Knowledge check</h2><blockquote>
+<p>Which of the following Azure Functions hosting plans is best when predictive scaling and costs are required?</p>
+</blockquote>
+<p>App service plan</p>
+<blockquote>
+<p>An organization wants to implement a serverless workflow to solve a business problem. One of the requirements is the solution needs to a designer-first (declarative) development model. Which of the choices below meets the requirements?</p>
+</blockquote>
+<p>Azure Logic Apps</p>
+<h1 id="Develop-Azure-Functions"><a href="#Develop-Azure-Functions" class="headerlink" title="Develop Azure Functions"></a>Develop Azure Functions</h1><h2 id="Explore-Azure-Functions-development"><a href="#Explore-Azure-Functions-development" class="headerlink" title="Explore Azure Functions development"></a>Explore Azure Functions development</h2><p>A function contains two important pieces - your code, which can be written in a variety of languages, and some config, the function.json file. For compiled languages, this config file is generated automatically from annotations in your code. For scripting languages, you must provide the config file yourself.</p>
+<p>The function.json file defines the function’s trigger, bindings, and other configuration settings. Every function has one and only one trigger. The runtime uses this config file to determine the events to monitor and how to pass data into and return data from a function execution. The following is an example function.json file.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;disabled&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;bindings&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span></span><br><span class="line">        <span class="comment">// ... bindings here</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;bindingType&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;direction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;in&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;myParamName&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="comment">// ... more depending on binding</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Function-app"><a href="#Function-app" class="headerlink" title="Function app"></a>Function app</h3><p>A function app provides an execution context in Azure in which your functions run. As such, it is the unit of deployment and management for your functions. A function app is comprised of one or more individual functions that are managed, deployed, and scaled together. </p>
+<h3 id="Folder-structure"><a href="#Folder-structure" class="headerlink" title="Folder structure"></a>Folder structure</h3><p>The code for all the functions in a specific function app is located in a root project folder that contains a host configuration file. The host.json file contains runtime-specific configurations and is in the root folder of the function app. A bin folder contains packages and other library files that the function app requires. </p>
+<h3 id="Local-development-environments"><a href="#Local-development-environments" class="headerlink" title="Local development environments"></a>Local development environments</h3><p>Functions makes it easy to use your favorite code editor and development tools to create and test functions on your local computer. Your local functions can connect to live Azure services, and you can debug them on your local computer using the full Functions runtime.</p>
+<h2 id="Create-triggers-and-bindings"><a href="#Create-triggers-and-bindings" class="headerlink" title="Create triggers and bindings"></a>Create triggers and bindings</h2><p><strong>Triggers</strong> are what cause a function to run. A trigger defines how a function is invoked and a function must have exactly one trigger. Triggers have associated data, which is often provided as the payload of the function.</p>
+<p><strong>Binding</strong> to a function is a way of declaratively connecting another resource to the function; bindings may be connected as <em>input bindings, output bindings</em>, or both. Data from bindings is provided to the function as parameters.</p>
+<h3 id="Trigger-and-binding-definitions"><a href="#Trigger-and-binding-definitions" class="headerlink" title="Trigger and binding definitions"></a>Trigger and binding definitions</h3><table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Triggers and bindings are configured by…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C# class library</td>
+<td>decorating methods and parameters with C# attributes</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>decorating methods and parameters with Java annotations</td>
+</tr>
+<tr>
+<td>JavaScript&#x2F;PowerShell&#x2F;Python&#x2F;TypeScript</td>
+<td>updating function.json schema</td>
+</tr>
+</tbody></table>
+<p>For languages that rely on function.json, the portal provides a UI for adding bindings in the <strong>Integration</strong> tab. You can also edit the file directly in the portal in the <strong>Code + test</strong> tab of your function.</p>
+<p>In .NET and Java, the parameter type defines the data type for input data. For instance, use to bind to the text of a queue trigger, a byte array to read as binary, and a custom type to de-serialize to an object. Since .NET class library functions and Java functions don’t rely on function.json for binding definitions, they can’t be created and edited in the portal. C# portal editing is based on C# script, which uses function.json instead of attributes.</p>
+<p>For languages that are dynamically typed such as JavaScript, use the property in the function.json file. For example, to read the content of an HTTP request in binary format, set to :</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;dataType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;binary&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;httpTrigger&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;req&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;direction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;in&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Binding-direction"><a href="#Binding-direction" class="headerlink" title="Binding direction"></a>Binding direction</h3><p>All triggers and bindings have a direction property in the function.json file:</p>
+<ul>
+<li>For triggers, the direction is always <code>in</code></li>
+<li>Input and output bindings use and <code>in out</code></li>
+<li>Some bindings support a special direction . If you use , only the Advanced editor is available via the Integrate tab in the portal. <code>inout</code></li>
+</ul>
+<h3 id="Azure-Functions-trigger-and-binding-example"><a href="#Azure-Functions-trigger-and-binding-example" class="headerlink" title="Azure Functions trigger and binding example"></a>Azure Functions trigger and binding example</h3><p>Suppose you want to <strong>write a new row to Azure Table storage whenever a new message appears in Azure Queue storage</strong>. This scenario can be implemented using an Azure Queue storage trigger and an Azure Table storage output binding.</p>
+<p>Here’s a <em>function.json</em> file for this scenario.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;bindings&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;queueTrigger&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;direction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;in&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;order&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;queueName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;myqueue-items&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;connection&quot;</span><span class="punctuation">:</span> <span class="string">&quot;MY_STORAGE_ACCT_APP_SETTING&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;table&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;direction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;out&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$return&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;tableName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;outTable&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;connection&quot;</span><span class="punctuation">:</span> <span class="string">&quot;MY_TABLE_STORAGE_ACCT_APP_SETTING&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="C-script-example"><a href="#C-script-example" class="headerlink" title="C# script example"></a>C# script example</h3><p>Here’s C# script code that works with this trigger and binding.</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#r &quot;Newtonsoft.Json&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> Microsoft.Extensions.Logging;</span><br><span class="line"><span class="keyword">using</span> Newtonsoft.Json.Linq;</span><br><span class="line"></span><br><span class="line"><span class="comment">// From an incoming queue message that is a JSON object, add fields and write to Table storage</span></span><br><span class="line"><span class="comment">// The method return value creates a new row in Table Storage</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Person <span class="title">Run</span>(<span class="params">JObject order, ILogger log</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Person() &#123; </span><br><span class="line">            PartitionKey = <span class="string">&quot;Orders&quot;</span>, </span><br><span class="line">            RowKey = Guid.NewGuid().ToString(),  </span><br><span class="line">            Name = order[<span class="string">&quot;Name&quot;</span>].ToString(),</span><br><span class="line">            MobileNumber = order[<span class="string">&quot;MobileNumber&quot;</span>].ToString() &#125;;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Person</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> PartitionKey &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> RowKey &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> MobileNumber &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="JavaScript-example"><a href="#JavaScript-example" class="headerlink" title="JavaScript example"></a>JavaScript example</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// From an incoming queue message that is a JSON object, add fields and write to Table Storage</span></span><br><span class="line"><span class="comment">// The second parameter to context.done is used as the value for the new row</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="keyword">function</span> (<span class="params">context, order</span>) &#123;</span><br><span class="line">    order.<span class="property">PartitionKey</span> = <span class="string">&quot;Orders&quot;</span>;</span><br><span class="line">    order.<span class="property">RowKey</span> = <span class="title function_">generateRandomId</span>(); </span><br><span class="line"></span><br><span class="line">    context.<span class="title function_">done</span>(<span class="literal">null</span>, order);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">generateRandomId</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">random</span>().<span class="title function_">toString</span>(<span class="number">36</span>).<span class="title function_">substring</span>(<span class="number">2</span>, <span class="number">15</span>) +</span><br><span class="line">        <span class="title class_">Math</span>.<span class="title function_">random</span>().<span class="title function_">toString</span>(<span class="number">36</span>).<span class="title function_">substring</span>(<span class="number">2</span>, <span class="number">15</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Class-library-example"><a href="#Class-library-example" class="headerlink" title="Class library example"></a>Class library example</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">QueueTriggerTableOutput</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">FunctionName(<span class="string">&quot;QueueTriggerTableOutput&quot;</span>)</span>]</span><br><span class="line">    [<span class="meta">return: Table(<span class="string">&quot;outTable&quot;</span>, Connection = <span class="string">&quot;MY_TABLE_STORAGE_ACCT_APP_SETTING&quot;</span>)</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Person <span class="title">Run</span>(<span class="params"></span></span></span><br><span class="line"><span class="params"><span class="function">        [QueueTrigger(<span class="string">&quot;myqueue-items&quot;</span>, Connection = <span class="string">&quot;MY_STORAGE_ACCT_APP_SETTING&quot;</span></span>)]JObject order,</span></span><br><span class="line"><span class="function">        ILogger log)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Person() &#123;</span><br><span class="line">                PartitionKey = <span class="string">&quot;Orders&quot;</span>,</span><br><span class="line">                RowKey = Guid.NewGuid().ToString(),</span><br><span class="line">                Name = order[<span class="string">&quot;Name&quot;</span>].ToString(),</span><br><span class="line">                MobileNumber = order[<span class="string">&quot;MobileNumber&quot;</span>].ToString() &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Person</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> PartitionKey &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> RowKey &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> MobileNumber &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Connect-functions-to-Azure-services"><a href="#Connect-functions-to-Azure-services" class="headerlink" title="Connect functions to Azure services"></a>Connect functions to Azure services</h2><p>Your function project references connection information by name from its configuration provider. It does not directly accept the connection details, allowing them to be changed across environments. For example, a trigger definition might include a connection property. This might refer to a connection string, but you cannot set the connection string directly in a function.json. Instead, you would set connection to the name of an environment variable that contains the connection string.</p>
+<p>The default configuration provider uses environment variables. These might be set by Application Settings when running in the Azure Functions service, or from the local settings file when developing locally.</p>
+<h2 id="Knowledge-check-1"><a href="#Knowledge-check-1" class="headerlink" title="Knowledge check"></a>Knowledge check</h2><blockquote>
+<p>Which of the following is required for a function to run?</p>
+</blockquote>
+<p>Trigger</p>
+<blockquote>
+<p>Which of the following supports both the in and out direction settings?</p>
+</blockquote>
+<p>Bindings</p>
+<h1 id="Implement-Durable-Functions"><a href="#Implement-Durable-Functions" class="headerlink" title="Implement Durable Functions"></a>Implement Durable Functions</h1><h2 id="Explore-Durable-Functions-app-patterns"><a href="#Explore-Durable-Functions-app-patterns" class="headerlink" title="Explore Durable Functions app patterns"></a>Explore Durable Functions app patterns</h2><p>The <strong>durable functions</strong> extension lets you define stateful workflows by writing <strong>orchestrator functions</strong> and stateful entities by writing <strong>entity functions</strong> using the Azure Functions programming model.</p>
+<h3 id="Application-patterns"><a href="#Application-patterns" class="headerlink" title="Application patterns"></a>Application patterns</h3><p>The primary use case for Durable Functions is simplifying complex, stateful coordination requirements in serverless applications. The following sections describe typical application patterns that can benefit from Durable Functions:</p>
+<ul>
+<li><strong>Function chaining:</strong> In the function chaining pattern, a sequence of functions executes in a specific order.</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-us/learn/wwl-azure/implement-durable-functions/media/function-chaining.png"></p>
+<ul>
+<li><strong>Fan-out&#x2F;fan-in:</strong> In the fan out&#x2F;fan in pattern, you execute multiple functions in parallel and then wait for all functions to finish.</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-us/learn/wwl-azure/implement-durable-functions/media/fan-out-fan-in.png"></p>
+<ul>
+<li><strong>Async HTTP APIs:</strong> The async HTTP API pattern addresses the problem of coordinating the state of long-running operations with external clients. A common way to implement this pattern is by having an HTTP endpoint trigger the long-running action. Then, redirect the client to a status endpoint that the client polls to learn when the operation is finished.</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-us/learn/wwl-azure/implement-durable-functions/media/async-http-api.png"></p>
+<ul>
+<li><strong>Monitor:</strong> The monitor pattern refers to a flexible, recurring process in a workflow. An example is polling until specific conditions are met.</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-us/learn/wwl-azure/implement-durable-functions/media/monitor.png"></p>
+<ul>
+<li><strong>Human interaction:</strong> Involving humans in an automated process is tricky because people aren’t as highly available and as responsive as cloud services. An automated process might allow for this interaction by using timeouts and compensation logic.</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-us/learn/wwl-azure/implement-durable-functions/media/human-interaction-pattern.png"></p>
+<h2 id="Discover-the-four-function-types"><a href="#Discover-the-four-function-types" class="headerlink" title="Discover the four function types"></a>Discover the four function types</h2><p>There are currently four durable function types in Azure Functions: <strong>orchestrator, activity, entity, and client</strong>.</p>
+<h3 id="Orchestrator-functions"><a href="#Orchestrator-functions" class="headerlink" title="Orchestrator functions"></a>Orchestrator functions</h3><p>Orchestrator functions describe how actions are executed and the order in which actions are executed.</p>
+<h3 id="Activity-functions"><a href="#Activity-functions" class="headerlink" title="Activity functions"></a>Activity functions</h3><p>Activity functions are the basic unit of work in a durable function orchestration. For example, you might create an orchestrator function to process an order. The tasks involve checking the inventory, charging the customer, and creating a shipment. Each task would be a separate activity function. These activity functions may be executed serially, in parallel, or some combination of both.</p>
+<p>Unlike orchestrator functions, activity functions aren’t restricted in the type of work you can do in them. Activity functions are frequently used to make network calls or run CPU intensive operations. An activity function can also return data back to the orchestrator function.</p>
+<h3 id="Entity-functions"><a href="#Entity-functions" class="headerlink" title="Entity functions"></a>Entity functions</h3><p>Entity functions define operations for reading and updating small pieces of state. We often refer to these stateful entities as durable entities. Like orchestrator functions, entity functions are functions with a special trigger type, entity trigger. They can also be invoked from client functions or from orchestrator functions. Unlike orchestrator functions, entity functions do not have any specific code constraints.</p>
+<h3 id="Client-functions"><a href="#Client-functions" class="headerlink" title="Client functions"></a>Client functions</h3><p>Orchestrator and entity functions are triggered by their bindings and both of these triggers work by reacting to messages that are enqueued in a task hub. The primary way to deliver these messages is by using an orchestrator client binding, or an entity client binding, from within a client function. Any non-orchestrator function can be a client function. For example, You can trigger the orchestrator from an HTTP-triggered function, an Azure Event Hub triggered function, etc. What makes a function a client function is its use of the durable client output binding.</p>
+<p>Unlike other function types, orchestrator and entity functions cannot be triggered directly using the buttons in the Azure portal. If you want to test an orchestrator or entity function in the Azure portal, you must instead run a client function that starts an orchestrator or entity function as part of its implementation. For the simplest testing experience, a manual trigger function is recommended.</p>
+<h2 id="Explore-task-hubs"><a href="#Explore-task-hubs" class="headerlink" title="Explore task hubs"></a>Explore task hubs</h2><p>A task hub in Durable Functions is a logical container for durable storage resources that are used for orchestrations and entities. Orchestrator, activity, and entity functions can only directly interact with each other when they belong to the same task hub.</p>
+<p>If multiple function apps share a storage account, each function app must be configured with a separate task hub name. A storage account can contain multiple task hubs. This restriction generally applies to other storage providers as well.</p>
+<h2 id="Explore-durable-orchestrations"><a href="#Explore-durable-orchestrations" class="headerlink" title="Explore durable orchestrations"></a>Explore durable orchestrations</h2><p>You can use an orchestrator function to orchestrate the execution of other Durable functions within a function app. Orchestrator functions have the following characteristics:</p>
+<ul>
+<li>Orchestrator functions define function workflows using procedural code. No declarative schemas or designers are needed.</li>
+<li>Orchestrator functions can call other durable functions synchronously and asynchronously. Output from called functions can be reliably saved to local variables.</li>
+<li>Orchestrator functions are durable and reliable. Execution progress is automatically checkpointed when the function “awaits” or “yields”. Local state is never lost when the process recycles or the VM reboots.</li>
+<li>Orchestrator functions can be long-running. The total lifespan of an orchestration instance can be seconds, days, months, or never-ending.</li>
+</ul>
+<h3 id="Reliability"><a href="#Reliability" class="headerlink" title="Reliability"></a>Reliability</h3><p>Orchestrator functions reliably maintain their execution state by using the event sourcing design pattern. Instead of directly storing the current state of an orchestration, the Durable Task Framework uses an append-only store to record the full series of actions the function orchestration takes.</p>
+<h2 id="Control-timing-in-Durable-Functions"><a href="#Control-timing-in-Durable-Functions" class="headerlink" title="Control timing in Durable Functions"></a>Control timing in Durable Functions</h2><p>Durable Functions provides durable timers for use in orchestrator functions to <strong>implement delays or to set up timeouts on async actions</strong>. Durable timers should be used in orchestrator functions instead of Thread.Sleep and Task.Delay (C#), or setTimeout() and setInterval() (JavaScript), or time.sleep() (Python).</p>
+<p>You create a durable timer by calling the CreateTimer (.NET) method or the createTimer (JavaScript) method of the orchestration trigger binding. The method returns a task that completes on a specified date and time.</p>
+<h2 id="Send-and-wait-for-events"><a href="#Send-and-wait-for-events" class="headerlink" title="Send and wait for events"></a>Send and wait for events</h2><p>Orchestrator functions have the ability to wait and listen for external events. This feature of Durable Functions is often useful for handling human interaction or other external triggers.</p>
+<h2 id="Knowledge-check-2"><a href="#Knowledge-check-2" class="headerlink" title="Knowledge check"></a>Knowledge check</h2><blockquote>
+<p>Which of the following durable function types is used to read and update small pieces of state?</p>
+</blockquote>
+<p>Entity</p>
+<blockquote>
+<p>Which application pattern would you use for a durable function that is polling a resource until a specific condition is met?</p>
+</blockquote>
+<p>Monitor</p>
+<h1 id="Explore-Azure-Cosmos-DB"><a href="#Explore-Azure-Cosmos-DB" class="headerlink" title="Explore Azure Cosmos DB"></a>Explore Azure Cosmos DB</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Azure Cosmos DB is a globally distributed database system that allows you to read and write data from the local replicas of your database and it transparently replicates the data to all the regions associated with your Cosmos account.</p>
+<h2 id="Identify-key-benefits-of-Azure-Cosmos-DB"><a href="#Identify-key-benefits-of-Azure-Cosmos-DB" class="headerlink" title="Identify key benefits of Azure Cosmos DB"></a>Identify key benefits of Azure Cosmos DB</h2><p>With Azure Cosmos DB, you can add or remove the regions associated with your account at any time. Your application doesn’t need to be paused or redeployed to add or remove a region.</p>
+<h3 id="Key-benefits-of-global-distribution"><a href="#Key-benefits-of-global-distribution" class="headerlink" title="Key benefits of global distribution"></a>Key benefits of global distribution</h3><p>Your application can perform near real-time reads and writes against all the regions you chose for your database. Azure Cosmos DB internally handles the data replication between regions with consistency level guarantees of the level you’ve selected.</p>
+<p>Running a database in multiple regions worldwide increases the availability of a database. If one region is unavailable, other regions automatically handle application requests.</p>
+<h2 id="Explore-the-resource-hierarchy"><a href="#Explore-the-resource-hierarchy" class="headerlink" title="Explore the resource hierarchy"></a>Explore the resource hierarchy</h2><h3 id="Elements-in-an-Azure-Cosmos-account"><a href="#Elements-in-an-Azure-Cosmos-account" class="headerlink" title="Elements in an Azure Cosmos account"></a>Elements in an Azure Cosmos account</h3><p>The following image shows the hierarchy of different entities in an Azure Cosmos DB account:<br><img src="https://docs.microsoft.com/zh-cn/learn/wwl-azure/explore-azure-cosmos-db/media/cosmos-entities.png"></p>
+<h3 id="Azure-Cosmos-databases"><a href="#Azure-Cosmos-databases" class="headerlink" title="Azure Cosmos databases"></a>Azure Cosmos databases</h3><p>You can create one or multiple Azure Cosmos databases under your account. A database is analogous to a namespace. A database is the unit of management for a set of Azure Cosmos containers.</p>
+<h3 id="Azure-Cosmos-containers"><a href="#Azure-Cosmos-containers" class="headerlink" title="Azure Cosmos containers"></a>Azure Cosmos containers</h3><p>An Azure Cosmos container is the unit of scalability both for provisioned throughput and storage. A container is horizontally partitioned and then replicated across multiple regions. The items that you add to the container are automatically grouped into logical partitions, which are distributed across physical partitions, based on the partition key.</p>
+<p>When you create a container, you configure throughput in one of the following modes:</p>
+<ul>
+<li><p><strong>Dedicated provisioned throughput mode:</strong> The throughput provisioned on a container is exclusively reserved for that container and it is backed by the SLAs.</p>
+</li>
+<li><p><strong>Shared provisioned throughput mode:</strong> These containers share the provisioned throughput with the other containers in the same database (excluding containers that have been configured with dedicated provisioned throughput). In other words, the provisioned throughput on the database is shared among all the “shared throughput” containers.</p>
+</li>
+</ul>
+<h2 id="Explore-consistency-levels"><a href="#Explore-consistency-levels" class="headerlink" title="Explore consistency levels"></a>Explore consistency levels</h2><p>Azure Cosmos DB approaches data consistency as a spectrum of choices instead of two extremes. Strong consistency and eventual consistency are at the ends of the spectrum, but there are many consistency choices along the spectrum.</p>
+<p>With Azure Cosmos DB, developers can choose from five well-defined consistency models on the consistency spectrum. From strongest to more relaxed, the models include:</p>
+<ul>
+<li>strong</li>
+<li>bounded staleness</li>
+<li>session</li>
+<li>consistent prefix</li>
+<li>eventual</li>
+</ul>
+<h2 id="Choose-the-right-consistency-level"><a href="#Choose-the-right-consistency-level" class="headerlink" title="Choose the right consistency level"></a>Choose the right consistency level</h2><h3 id="SQL-API-and-Table-API"><a href="#SQL-API-and-Table-API" class="headerlink" title="SQL API and Table API"></a>SQL API and Table API</h3><p>Consider the following points if your application is built using SQL API or Table API:</p>
+<p>For many real-world scenarios, session consistency is optimal and it’s the recommended option.</p>
+<ul>
+<li><p>If your application requires strong consistency, it is recommended that you use bounded staleness consistency level.</p>
+</li>
+<li><p>If you need stricter consistency guarantees than the ones provided by session consistency and single-digit-millisecond latency for writes, it is recommended that you use bounded staleness consistency level.</p>
+</li>
+<li><p>If your application requires eventual consistency, it is recommended that you use consistent prefix consistency level.</p>
+</li>
+<li><p>If you need less strict consistency guarantees than the ones provided by session consistency, it is recommended that you use consistent prefix consistency level.</p>
+</li>
+<li><p>If you need the highest availability and the lowest latency, then use eventual consistency level.</p>
+</li>
+<li><p>If you need even higher data durability without sacrificing performance, you can create a custom consistency level at the application layer.</p>
+</li>
+</ul>
+<h2 id="Explore-supported-APIs"><a href="#Explore-supported-APIs" class="headerlink" title="Explore supported APIs"></a>Explore supported APIs</h2><p>Azure Cosmos DB offers multiple database APIs, which include the Core (SQL) API, API for MongoDB, Cassandra API, Gremlin API, and Table API. By using these APIs, you can model real world data using documents, key-value, graph, and column-family data models. These APIs allow your applications to treat Azure Cosmos DB as if it were various other databases technologies, without the overhead of management, and scaling approaches.</p>
+<h2 id="Discover-request-units"><a href="#Discover-request-units" class="headerlink" title="Discover request units"></a>Discover request units</h2><p>With Azure Cosmos DB, you pay for the throughput you provision and the storage you consume on an hourly basis. Throughput must be provisioned to ensure that sufficient system resources are available for your Azure Cosmos database at all times.</p>
+<p>The cost of all database operations is normalized by Azure Cosmos DB and is expressed by request units (or RUs, for short). A request unit represents the system resources such as CPU, IOPS, and memory that are required to perform the database operations supported by Azure Cosmos DB.</p>
+<p>The cost to do a point read, which is fetching a single item by its ID and partition key value, for a 1KB item is 1RU. All other database operations are similarly assigned a cost using RUs. No matter which API you use to interact with your Azure Cosmos container, costs are always measured by RUs. Whether the database operation is a write, point read, or query, costs are always measured in RUs.</p>
+<p>The type of Azure Cosmos account you’re using determines the way consumed RUs get charged. There are three modes in which you can create an account:</p>
+<ul>
+<li><p><strong>Provisioned throughput mode:</strong> In this mode, you provision the number of RUs for your application on a per-second basis in increments of 100 RUs per second. To scale the provisioned throughput for your application, you can increase or decrease the number of RUs at any time in increments or decrements of 100 RUs. You can make your changes either programmatically or by using the Azure portal. You can provision throughput at container and database granularity level.</p>
+</li>
+<li><p><strong>Serverless mode:</strong> In this mode, you don’t have to provision any throughput when creating resources in your Azure Cosmos account. At the end of your billing period, you get billed for the amount of request units that has been consumed by your database operations.</p>
+</li>
+<li><p><strong>Autoscale mode:</strong> In this mode, you can automatically and instantly scale the throughput (RU&#x2F;s) of your database or container based on it’s usage. This mode is well suited for mission-critical workloads that have variable or unpredictable traffic patterns, and require SLAs on high performance and scale.</p>
+</li>
+</ul>
+<h2 id="Knowledge-check-3"><a href="#Knowledge-check-3" class="headerlink" title="Knowledge check"></a>Knowledge check</h2><blockquote>
+<p>When setting up Azure Cosmos DB there are three account type options. Which of the account type options below is used to specify the number of RUs for an application on a per-second basis?</p>
+</blockquote>
+<p>Provisioned throughput</p>
+<blockquote>
+<p>Which of the following consistency levels below offers the greatest throughput?</p>
+</blockquote>
+<p>Eventual(The eventual consistency level offers the greatest throughput at the cost of weaker consistency.)</p>
+<h1 id="Implement-partitioning-in-Azure-Cosmos-DB"><a href="#Implement-partitioning-in-Azure-Cosmos-DB" class="headerlink" title="Implement partitioning in Azure Cosmos DB"></a>Implement partitioning in Azure Cosmos DB</h1><h2 id="Explore-partitions"><a href="#Explore-partitions" class="headerlink" title="Explore partitions"></a>Explore partitions</h2><p>In partitioning, the items in a container are divided into distinct subsets called <strong>logical partitions</strong>. Logical partitions are formed based on the value of a partition key that is associated with each item in a container. All the items in a logical partition have the same partition key value.</p>
+<h3 id="Logical-partitions"><a href="#Logical-partitions" class="headerlink" title="Logical partitions"></a>Logical partitions</h3><p>A logical partition consists of a set of items that have the same partition key. For example, in a container that contains data about food nutrition, all items contain a property. You can use as the partition key for the container.</p>
+<h3 id="Physical-partitions"><a href="#Physical-partitions" class="headerlink" title="Physical partitions"></a>Physical partitions</h3><p>A container is scaled by distributing data and throughput across physical partitions. Internally, one or more logical partitions are mapped to a single physical partition. Typically smaller containers have many logical partitions but they only require a single physical partition. Unlike logical partitions, physical partitions are an internal implementation of the system and they are entirely managed by Azure Cosmos DB.</p>
+<p>The number of physical partitions in your container depends on the following:</p>
+<ul>
+<li><p><strong>The number of throughput provisioned</strong> (each individual physical partition can provide a throughput of up to 10,000 request units per second). The 10,000 RU&#x2F;s limit for physical partitions implies that logical partitions also have a 10,000 RU&#x2F;s limit, as each logical partition is only mapped to one physical partition.</p>
+</li>
+<li><p><strong>The total data storage</strong> (each individual physical partition can store up to 50GB data).</p>
+</li>
+</ul>
+<h2 id="Choose-a-partition-key"><a href="#Choose-a-partition-key" class="headerlink" title="Choose a partition key"></a>Choose a partition key</h2><p>A partition key has two components: <strong>partition key path</strong> and the <strong>partition key value</strong>. </p>
+<p>For example, consider an item { “userId” : “Andrew”, “worksFor”: “Microsoft” } if you choose “userId” as the partition key, the following are the two partition key components:</p>
+<ul>
+<li><p><strong>The partition key path</strong> (for example: “&#x2F;userId”). The partition key path accepts alphanumeric and underscore(_) characters. You can also use nested objects by using the standard path notation(&#x2F;).</p>
+</li>
+<li><p><strong>The partition key value</strong> (for example: “Andrew”). The partition key value can be of string or numeric types.</p>
+</li>
+</ul>
+<p>For all containers, your partition key should:</p>
+<ul>
+<li><p>Be a property that has a value which does not change. If a property is your partition key, you can’t update that property’s value.</p>
+</li>
+<li><p>Have a high cardinality. In other words, the property should have a wide range of possible values.</p>
+</li>
+<li><p>Spread request unit (RU) consumption and data storage evenly across all logical partitions. This ensures even RU consumption and storage distribution across your physical partitions.</p>
+</li>
+</ul>
+<h2 id="Create-a-synthetic-partition-key"><a href="#Create-a-synthetic-partition-key" class="headerlink" title="Create a synthetic partition key"></a>Create a synthetic partition key</h2><p>It’s the best practice to have a partition key with many distinct values, such as hundreds or thousands. The goal is to distribute your data and workload evenly across the items associated with these partition key values. If such a property doesn’t exist in your data, you can construct a <strong>synthetic partition key</strong>. </p>
+<p>This unit describes several basic techniques for generating a synthetic partition key for your Cosmos container.</p>
+<ul>
+<li>Concatenate multiple properties of an item</li>
+<li>Use a partition key with a random suffix</li>
+<li>Use a partition key with pre-calculated suffixes</li>
+</ul>
+<h2 id="Knowledge-check-4"><a href="#Knowledge-check-4" class="headerlink" title="Knowledge check"></a>Knowledge check</h2><blockquote>
+<p>Which of the options below best describes the relationship between logical and physical partitions?</p>
+</blockquote>
+<p>Physical partitions are collections of logical partitions</p>
+<blockquote>
+<p>Which of the below correctly lists the two components of a partition key?</p>
+</blockquote>
+<p>Key path, key value</p>
+<h1 id="Work-with-Azure-Cosmos-DB"><a href="#Work-with-Azure-Cosmos-DB" class="headerlink" title="Work with Azure Cosmos DB"></a>Work with Azure Cosmos DB</h1><h1 id="Manage-the-Azure-Blob-storage-lifecycle"><a href="#Manage-the-Azure-Blob-storage-lifecycle" class="headerlink" title="Manage the Azure Blob storage lifecycle"></a>Manage the Azure Blob storage lifecycle</h1><h1 id="React-to-state-changes-in-your-Azure-services-by-using-Event-Grid"><a href="#React-to-state-changes-in-your-Azure-services-by-using-Event-Grid" class="headerlink" title="React to state changes in your Azure services by using Event Grid"></a>React to state changes in your Azure services by using Event Grid</h1><p>In a complex cloud environment, you might need to respond to events from many different sources both automatically and manually.</p>
+<p>Suppose you work on an operations team for a large healthcare organization. You have a system with virtual machines that are under strict regulatory and change control. <strong>You want to be notified of any changes to the configuration of these virtual machines in Azure by email</strong>. To accomplish this, <strong>you’ll use Azure Event Grid to receive events that happen to virtual machines and Azure Logic Apps to send emails that alert your team of any changes</strong>.</p>
+<h2 id="Respond-to-Azure-events-by-using-Event-Grid"><a href="#Respond-to-Azure-events-by-using-Event-Grid" class="headerlink" title="Respond to Azure events by using Event Grid"></a>Respond to Azure events by using Event Grid</h2><h3 id="What-is-Event-Grid"><a href="#What-is-Event-Grid" class="headerlink" title="What is Event Grid?"></a>What is Event Grid?</h3><p><strong>Event Grid aggregates all your events and provides routing from any source to any destination.</strong> Event Grid is <strong>a service that manages the routing and delivery of events from many sources and subscribers.</strong> This process eliminates the need for polling, and results in minimized cost and latency.</p>
+<p>Event publishers and subscribers are decoupled by using the publisher&#x2F;subscriber pattern.<br><img src="https://docs.microsoft.com/en-us/learn/modules/react-to-state-changes-using-event-grid/media/2-eventgrid-pub-sub.svg"></p>
+<h3 id="Event-sources-and-event-handlers"><a href="#Event-sources-and-event-handlers" class="headerlink" title="Event sources and event handlers"></a>Event sources and event handlers</h3><p>Sources can be configured from anywhere, and include on-premises custom applications or virtual machines within your Azure account. A source allows a single mechanism for event management through all your systems, whether they’re in an on-premises datacenter or with other cloud providers.</p>
+<h3 id="Topics-and-event-subscriptions"><a href="#Topics-and-event-subscriptions" class="headerlink" title="Topics and event subscriptions"></a>Topics and event subscriptions</h3><p>When the topics have been defined, you can subscribe to them. Subscriptions convey which events on a topic you’re interested in receiving. These events can then be filtered by type or subject.</p>
+<h3 id="Subscribe-to-events"><a href="#Subscribe-to-events" class="headerlink" title="Subscribe to events"></a>Subscribe to events</h3><p>You can use the Azure Logic Apps Designer service as an example subscriber. A logic app is a way of scheduling or orchestrating tasks. It’s a solution that you use to orchestrate a set of jobs when a trigger is run.</p>
+<h3 id="Configure-connectors-and-triggers"><a href="#Configure-connectors-and-triggers" class="headerlink" title="Configure connectors and triggers"></a>Configure connectors and triggers</h3><p>After creating an event handler that deals with an event, you can configure the connectors and triggers associated to it.</p>
+<h2 id="Exercise-Trigger-a-logic-app-by-using-Event-Grid"><a href="#Exercise-Trigger-a-logic-app-by-using-Event-Grid" class="headerlink" title="Exercise - Trigger a logic app by using Event Grid"></a>Exercise - Trigger a logic app by using Event Grid</h2><ol>
+<li>Create a virtual machine</li>
+<li>Create a logic app</li>
+<li>Add an Event Grid trigger to the logic app</li>
+</ol>
+<h2 id="Build-logic-that-responds-to-an-event"><a href="#Build-logic-that-responds-to-an-event" class="headerlink" title="Build logic that responds to an event"></a>Build logic that responds to an event</h2><p>learn how to create actions and conditions to respond to events</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Azure" >
+    <span class="tag-code">Azure</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/10/21/AzureDataExplorer/">
+        <span class="nav-arrow">← </span>
+        
+          Azure Data Factory Notes(2021/10/21 updated)
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2022/01/10/MicrosoftIgnite-AzureAdminChallenge/">
+        
+          Microsoft Ignite-Azure Admin Challenge(2022/02/05 updated)
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Explore-Azure-App-Service"><span class="toc-nav-text">Explore Azure App Service</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Examine-Azure-App-Service"><span class="toc-nav-text">Examine Azure App Service</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Built-in-auto-scale-support"><span class="toc-nav-text">Built-in auto scale support</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Continuous-integration-deployment-support"><span class="toc-nav-text">Continuous integration&#x2F;deployment support</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Deployment-slots"><span class="toc-nav-text">Deployment slots</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Examine-Azure-App-Service-plans"><span class="toc-nav-text">Examine Azure App Service plans</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#How-does-my-app-run-and-scale"><span class="toc-nav-text">How does my app run and scale</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#What-if-my-app-needs-more-capabilities-or-features"><span class="toc-nav-text">What if my app needs more capabilities or features?</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Deploy-to-App-Service"><span class="toc-nav-text">Deploy to App Service</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Automated-deployment"><span class="toc-nav-text">Automated deployment</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Manual-deployment"><span class="toc-nav-text">Manual deployment</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Use-deployment-slots"><span class="toc-nav-text">Use deployment slots</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Explore-authentication-and-authorization-in-App-Service"><span class="toc-nav-text">Explore authentication and authorization in App Service</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Identity-providers"><span class="toc-nav-text">Identity providers</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#How-it-works"><span class="toc-nav-text">How it works</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Authentication-flow"><span class="toc-nav-text">Authentication flow</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Explore-Azure-Functions"><span class="toc-nav-text">Explore Azure Functions</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Discover-Azure-Functions"><span class="toc-nav-text">Discover Azure Functions</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Compare-Azure-Functions-and-Azure-Logic-Apps"><span class="toc-nav-text">Compare Azure Functions and Azure Logic Apps</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Compare-Functions-and-WebJobs"><span class="toc-nav-text">Compare Functions and WebJobs</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Compare-Azure-Functions-hosting-options"><span class="toc-nav-text">Compare Azure Functions hosting options</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Always-on"><span class="toc-nav-text">Always on</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Storage-account-requirements"><span class="toc-nav-text">Storage account requirements</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Scale-Azure-Functions"><span class="toc-nav-text">Scale Azure Functions</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Runtime-scaling"><span class="toc-nav-text">Runtime scaling</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Scaling-behaviors"><span class="toc-nav-text">Scaling behaviors</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Limit-scale-out"><span class="toc-nav-text">Limit scale out</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Knowledge-check"><span class="toc-nav-text">Knowledge check</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Develop-Azure-Functions"><span class="toc-nav-text">Develop Azure Functions</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Explore-Azure-Functions-development"><span class="toc-nav-text">Explore Azure Functions development</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Function-app"><span class="toc-nav-text">Function app</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Folder-structure"><span class="toc-nav-text">Folder structure</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Local-development-environments"><span class="toc-nav-text">Local development environments</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Create-triggers-and-bindings"><span class="toc-nav-text">Create triggers and bindings</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Trigger-and-binding-definitions"><span class="toc-nav-text">Trigger and binding definitions</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Binding-direction"><span class="toc-nav-text">Binding direction</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Azure-Functions-trigger-and-binding-example"><span class="toc-nav-text">Azure Functions trigger and binding example</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#C-script-example"><span class="toc-nav-text">C# script example</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#JavaScript-example"><span class="toc-nav-text">JavaScript example</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Class-library-example"><span class="toc-nav-text">Class library example</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Connect-functions-to-Azure-services"><span class="toc-nav-text">Connect functions to Azure services</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Knowledge-check-1"><span class="toc-nav-text">Knowledge check</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Implement-Durable-Functions"><span class="toc-nav-text">Implement Durable Functions</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Explore-Durable-Functions-app-patterns"><span class="toc-nav-text">Explore Durable Functions app patterns</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Application-patterns"><span class="toc-nav-text">Application patterns</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Discover-the-four-function-types"><span class="toc-nav-text">Discover the four function types</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Orchestrator-functions"><span class="toc-nav-text">Orchestrator functions</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Activity-functions"><span class="toc-nav-text">Activity functions</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Entity-functions"><span class="toc-nav-text">Entity functions</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Client-functions"><span class="toc-nav-text">Client functions</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Explore-task-hubs"><span class="toc-nav-text">Explore task hubs</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Explore-durable-orchestrations"><span class="toc-nav-text">Explore durable orchestrations</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Reliability"><span class="toc-nav-text">Reliability</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Control-timing-in-Durable-Functions"><span class="toc-nav-text">Control timing in Durable Functions</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Send-and-wait-for-events"><span class="toc-nav-text">Send and wait for events</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Knowledge-check-2"><span class="toc-nav-text">Knowledge check</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Explore-Azure-Cosmos-DB"><span class="toc-nav-text">Explore Azure Cosmos DB</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Introduction"><span class="toc-nav-text">Introduction</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Identify-key-benefits-of-Azure-Cosmos-DB"><span class="toc-nav-text">Identify key benefits of Azure Cosmos DB</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Key-benefits-of-global-distribution"><span class="toc-nav-text">Key benefits of global distribution</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Explore-the-resource-hierarchy"><span class="toc-nav-text">Explore the resource hierarchy</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Elements-in-an-Azure-Cosmos-account"><span class="toc-nav-text">Elements in an Azure Cosmos account</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Azure-Cosmos-databases"><span class="toc-nav-text">Azure Cosmos databases</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Azure-Cosmos-containers"><span class="toc-nav-text">Azure Cosmos containers</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Explore-consistency-levels"><span class="toc-nav-text">Explore consistency levels</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Choose-the-right-consistency-level"><span class="toc-nav-text">Choose the right consistency level</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#SQL-API-and-Table-API"><span class="toc-nav-text">SQL API and Table API</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Explore-supported-APIs"><span class="toc-nav-text">Explore supported APIs</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Discover-request-units"><span class="toc-nav-text">Discover request units</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Knowledge-check-3"><span class="toc-nav-text">Knowledge check</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Implement-partitioning-in-Azure-Cosmos-DB"><span class="toc-nav-text">Implement partitioning in Azure Cosmos DB</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Explore-partitions"><span class="toc-nav-text">Explore partitions</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Logical-partitions"><span class="toc-nav-text">Logical partitions</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Physical-partitions"><span class="toc-nav-text">Physical partitions</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Choose-a-partition-key"><span class="toc-nav-text">Choose a partition key</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Create-a-synthetic-partition-key"><span class="toc-nav-text">Create a synthetic partition key</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Knowledge-check-4"><span class="toc-nav-text">Knowledge check</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Work-with-Azure-Cosmos-DB"><span class="toc-nav-text">Work with Azure Cosmos DB</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Manage-the-Azure-Blob-storage-lifecycle"><span class="toc-nav-text">Manage the Azure Blob storage lifecycle</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#React-to-state-changes-in-your-Azure-services-by-using-Event-Grid"><span class="toc-nav-text">React to state changes in your Azure services by using Event Grid</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Respond-to-Azure-events-by-using-Event-Grid"><span class="toc-nav-text">Respond to Azure events by using Event Grid</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#What-is-Event-Grid"><span class="toc-nav-text">What is Event Grid?</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Event-sources-and-event-handlers"><span class="toc-nav-text">Event sources and event handlers</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Topics-and-event-subscriptions"><span class="toc-nav-text">Topics and event subscriptions</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Subscribe-to-events"><span class="toc-nav-text">Subscribe to events</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Configure-connectors-and-triggers"><span class="toc-nav-text">Configure connectors and triggers</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Exercise-Trigger-a-logic-app-by-using-Event-Grid"><span class="toc-nav-text">Exercise - Trigger a logic app by using Event Grid</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Build-logic-that-responds-to-an-event"><span class="toc-nav-text">Build logic that responds to an event</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2021/11/22/MicrosoftIgnite-AzureDeveloperChallenge/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

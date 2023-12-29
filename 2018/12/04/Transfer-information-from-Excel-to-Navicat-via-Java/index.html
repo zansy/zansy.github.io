@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      通过 Java 将 Excel 中信息转存入 Navicat | Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>通过 Java 将 Excel 中信息转存入 Navicat</h2>
+  <p class="post-date">2018-12-04</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>通过引入poi，解析 workbook 视图，获取 Excel 工作簿中信息；再通过简单的正则表达式等字符串处理 将其中信息存入 Navicat 中的表。</p>
+<span id="more"></span>
+
+<h3 id="原始数据"><a href="#原始数据" class="headerlink" title="原始数据"></a>原始数据</h3><p><img src="/images/pasted-13.png" alt="Excel 中数据-目录"><br><img src="/images/pasted-14.png" alt="Excel 中数据-具体表"><br><img src="/images/pasted-16.png" alt="目标表“元数据表信息表”表设计"><br><img src="/images/pasted-15.png" alt="目标表“元数据表字段信息表”表设计"></p>
+<h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.poi&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;poi&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.16&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.apache.poi&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;poi-ooxml&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.14&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;net.sourceforge.jexcelapi&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jxl&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.6.10&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="代码和简单注释"><a href="#代码和简单注释" class="headerlink" title="代码和简单注释"></a>代码和简单注释</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line">public void InsertExcel(String path) &#123;</span><br><span class="line">        String fileType = path.substring(path.lastIndexOf(&quot;.&quot;) + 1);</span><br><span class="line">        //读取excel文件</span><br><span class="line">        InputStream is = null;</span><br><span class="line">        MdTableInfo mdTableInfo = new MdTableInfo();</span><br><span class="line">        try &#123;</span><br><span class="line">            is = new FileInputStream(path);</span><br><span class="line">            //获取工作薄</span><br><span class="line">            Workbook wb = null;</span><br><span class="line">            if (fileType.equals(&quot;xls&quot;)) &#123;</span><br><span class="line">                wb = new HSSFWorkbook(is);</span><br><span class="line">            &#125; else if (fileType.equals(&quot;xlsx&quot;)) &#123;</span><br><span class="line">                wb = new XSSFWorkbook(is);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return ;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            //读取第一个工作页sheet</span><br><span class="line">            Sheet menuSheet = wb.getSheetAt(0);</span><br><span class="line">            for (Row row : menuSheet) &#123;</span><br><span class="line">                String line = &quot;&quot;;</span><br><span class="line">                for (Cell cell : row) &#123;</span><br><span class="line">                    cell.setCellType(Cell.CELL_TYPE_STRING);</span><br><span class="line">                    line +=cell.getStringCellValue()+&quot;,&quot;;//读取每一行</span><br><span class="line">                &#125;</span><br><span class="line">                //分解读取的每一行并存储于表对象中</span><br><span class="line">                String[] parts = line.split(&quot;,&quot;);</span><br><span class="line">                mdTableInfo.setSeqnum(Integer.valueOf(parts[0].trim()));</span><br><span class="line">                String Guid = UtilHelper.makeGUID();</span><br><span class="line">                mdTableInfo.setId(Guid);</span><br><span class="line">                mdTableInfo.setCid(&quot;AA&quot;);</span><br><span class="line">                mdTableInfo.setEname(parts[1]);</span><br><span class="line">                mdTableInfo.setCname(parts[2]);</span><br><span class="line">                //目标是将元数据表信息表中的 ID 作为字段信息表中的 TID 进行联结，因此设定一个Map存储中文表名和ID</span><br><span class="line">                Map&lt;String,String&gt; guidCname = new HashMap&lt;&gt;();</span><br><span class="line">                guidCname.put(parts[1],Guid);</span><br><span class="line">                mdTableInfo.setStatus(1);</span><br><span class="line">                service.insert(mdTableInfo);//插入该对象</span><br><span class="line">                //根据每一个对象的表名，读取 Excel 工作簿中以该表名为标题的工作表</span><br><span class="line">                Sheet singleSheet = wb.getSheet(parts[1]);</span><br><span class="line">                //Sheet singleSheet = wb.getSheet(&quot;CBEC_ORDER_CHECK_UPDATE&quot;);</span><br><span class="line">                for(Row subRow : singleSheet)&#123;</span><br><span class="line">                    if(subRow.getRowNum()&gt;2)&#123;//跳过开头的信息行</span><br><span class="line">                        String line2 = &quot;&quot;;</span><br><span class="line">                        MdTableFields mdTableFields = new MdTableFields();</span><br><span class="line">                        for (Cell cell : subRow) &#123;</span><br><span class="line">                            cell.setCellType(Cell.CELL_TYPE_STRING);</span><br><span class="line">                            line2 +=cell.getStringCellValue()+&quot;~&quot;;</span><br><span class="line">                        &#125;</span><br><span class="line">                        String[] parts2 = line2.split(&quot;~&quot;);</span><br><span class="line">                        mdTableFields.setId(UtilHelper.makeGUID());</span><br><span class="line">                        mdTableFields.setTid(guidCname.get(singleSheet.getSheetName()));</span><br><span class="line">                        mdTableFields.setSeqnum(Integer.valueOf(parts2[0].trim()));</span><br><span class="line">                        mdTableFields.setEname(parts2[1]);</span><br><span class="line">                        //将VARCHAR2(64)等类型通过字符串处理 简单地存储于表对象的不同属性中</span><br><span class="line">                        String[] typeLength = parts2[3].split(&quot;\\(&quot;);</span><br><span class="line">                        mdTableFields.setType(typeLength[0]);</span><br><span class="line">                        String[] lengthScale = typeLength[1].split(&quot;,&quot;);</span><br><span class="line">                        mdTableFields.setLength(Long.valueOf(lengthScale[0].split(&quot;\\)&quot;)[0].trim()));</span><br><span class="line">                        if(lengthScale.length&gt;1)&#123;</span><br><span class="line">                            mdTableFields.setScale(Integer.valueOf(lengthScale[1].split(&quot;\\)&quot;)[0].trim()));</span><br><span class="line">                        &#125;</span><br><span class="line">                        //开始处理“唯一主键”等描述信息，分别存储于表对象的“字段中文名”和“备注”属性中</span><br><span class="line">                        if(parts2.length&gt;5)&#123;</span><br><span class="line">                            //通过简单的正则表达式，提取出关键信息</span><br><span class="line">                            Pattern pattern = Pattern.compile(&quot;^[a-zA-Z0-9\\u4E00-\\u9FA5]+&quot;);</span><br><span class="line">                            Matcher matcher = pattern.matcher(parts2[6]);</span><br><span class="line">                            if (matcher.find()) &#123;</span><br><span class="line">                                mdTableFields.setCname(matcher.group());</span><br><span class="line">                                if(parts2[6].split(&quot;^[a-zA-Z0-9\\u4E00-\\u9FA5]+&quot;).length&gt;1)&#123;</span><br><span class="line">                                    String other = parts2[6].split(&quot;^[a-zA-Z0-9\\u4E00-\\u9FA5]+&quot;)[1];</span><br><span class="line">                                    //去掉描述截取后的冗余字符</span><br><span class="line">                                    if(other.charAt(0) == &#x27;。&#x27;||other.charAt(0) == &#x27;，&#x27;||other.charAt(0) == &#x27;,&#x27;)</span><br><span class="line">                                        mdTableFields.setRemarks(String.valueOf(other.subSequence(1,other.length())));</span><br><span class="line">                                    else&#123;</span><br><span class="line">                                        if(other.charAt(0) == &#x27;(&#x27;)&#123;</span><br><span class="line">                                            int lastBracket = other.lastIndexOf(&#x27;)&#x27;);</span><br><span class="line">                                            StringBuilder deleteFirst = new StringBuilder(String.valueOf(other.subSequence(1,other.length())));</span><br><span class="line">                                            if(lastBracket != -1)</span><br><span class="line">                                                mdTableFields.setRemarks(String.valueOf(deleteFirst.replace(lastBracket-1,lastBracket,&quot; &quot;)));</span><br><span class="line"></span><br><span class="line">                                            else</span><br><span class="line">                                                mdTableFields.setRemarks(String.valueOf(deleteFirst));</span><br><span class="line">                                        &#125;</span><br><span class="line">                                        else if(other.charAt(0) == &#x27;（&#x27;)&#123;</span><br><span class="line">                                            int lastBracket = other.lastIndexOf(&#x27;）&#x27;);</span><br><span class="line">                                            StringBuilder deleteFirst = new StringBuilder(String.valueOf(other.subSequence(1,other.length())));</span><br><span class="line">                                            if(lastBracket != -1)</span><br><span class="line">                                                mdTableFields.setRemarks(String.valueOf(deleteFirst.replace(lastBracket-1,lastBracket,&quot; &quot;)));</span><br><span class="line"></span><br><span class="line">                                            else</span><br><span class="line">                                                mdTableFields.setRemarks(String.valueOf(deleteFirst));</span><br><span class="line">                                        &#125;</span><br><span class="line">                                    &#125;</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                            else&#123;</span><br><span class="line">                                mdTableFields.setCname(parts2[6]);</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                        mdTableFields.setStatus(1);</span><br><span class="line">                        service.insert(mdTableFields);//插入 Navicat 数据库中</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                if (is != null) is.close();</span><br><span class="line">            &#125; catch (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h3><p><img src="/images/pasted-17.png" alt="数据库中数据"></p>
+</section>
+    <!-- Tags START -->
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/11/09/JSON-SimpleNote/">
+        <span class="nav-arrow">← </span>
+        
+          JSON 简单笔记
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/12/04/grammar-note-1/">
+        
+          基本英文语法（一）
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8E%9F%E5%A7%8B%E6%95%B0%E6%8D%AE"><span class="toc-nav-text">原始数据</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Maven"><span class="toc-nav-text">Maven</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E5%92%8C%E7%AE%80%E5%8D%95%E6%B3%A8%E9%87%8A"><span class="toc-nav-text">代码和简单注释</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="toc-nav-text">最终效果</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2018/12/04/Transfer-information-from-Excel-to-Navicat-via-Java/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

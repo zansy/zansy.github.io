@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      通过接口读取生成存储 ODPS 上信息 | Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>通过接口读取生成存储 ODPS 上信息</h2>
+  <p class="post-date">2018-08-09</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>该 Maven 程序使用阿里官方提供的 Java API，读取存储在 ODPS 上的数据表，通过字符串处理，自动生成它们的数据字典，并将数据字典存储到本地的 MySQL 数据库中。</p>
+<span id="more"></span>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/34614.html">MaxCompute  Java SDK</a></p>
+<p><a target="_blank" rel="noopener" href="http://repo.aliyun.com/java-sdk-doc/?spm=a2c4g.11186623.2.1.JrgQuV">SDK Java Doc</a></p>
+<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>在 ODPS 上大概存储了 200,000+ 万张表，需要拉取数据字典，即所有英文表名、表名中文注释、表中字段名、表中字段名中文注释。<br><img src="https://wx4.sinaimg.cn/mw690/b11f7046gy1fu3i8oz7ejj20so07otb1.jpg" alt="最终存入 MySQL 的数据字典表"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">//需要的数据组成一列，那么就把列作为对象</span><br><span class="line">//col.java</span><br><span class="line">import java.util.List;</span><br><span class="line">public class col &#123;</span><br><span class="line">	private String tablename;</span><br><span class="line">	public String getTablename() &#123;</span><br><span class="line">		return tablename;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setTablename(String tablename) &#123;</span><br><span class="line">		this.tablename = tablename;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getTablename_CN() &#123;</span><br><span class="line">		return tablename_CN;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setTablename_CN(String tablename_CN) &#123;</span><br><span class="line">		this.tablename_CN = tablename_CN;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getFieldname() &#123;</span><br><span class="line">		return fieldname;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setFieldname(String fieldname) &#123;</span><br><span class="line">		this.fieldname = fieldname;</span><br><span class="line">	&#125;</span><br><span class="line">	public String getFieldname_CN() &#123;</span><br><span class="line">		return fieldname_CN;</span><br><span class="line">	&#125;</span><br><span class="line">	public void setFieldname_CN(String fieldname_CN) &#123;</span><br><span class="line">		this.fieldname_CN = fieldname_CN;</span><br><span class="line">	&#125;</span><br><span class="line">	private String tablename_CN;</span><br><span class="line">	private String fieldname;</span><br><span class="line">	private String fieldname_CN;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下去是数据连接，通过配置 pom.xml 获得所需要的 Java 连接 MySQL 驱动包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;5.1.39&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>通用的 DBConnection 数据库连接文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import java.sql.*;</span><br><span class="line">public class DBConnection &#123;</span><br><span class="line">	private static String driverName=&quot;com.mysql.jdbc.Driver&quot;;//在 MySQL 8.0 中合理</span><br><span class="line">	private static String userName=&quot;root&quot;;</span><br><span class="line">	private static String userPwd=&quot;123456&quot;;</span><br><span class="line">	private static String dbName=&quot;*&quot;;//自己建的 database 名</span><br><span class="line">	public static Connection getDBConnection() &#123;</span><br><span class="line">		String url1=&quot;jdbc:mysql://localhost/&quot;+dbName;</span><br><span class="line">		String url2=&quot;?user=&quot;+userName+&quot;&amp;password=&quot;+userPwd;</span><br><span class="line">		String url3=&quot;&amp;useUnicode=true&amp;characterEncoding=utf-8&quot;;</span><br><span class="line">		String url=url1+url2+url3;</span><br><span class="line">		Connection con=null;</span><br><span class="line">		try &#123;</span><br><span class="line">			Class.forName(driverName);</span><br><span class="line">			con=DriverManager.getConnection(url);</span><br><span class="line">		&#125;catch(Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		return con;</span><br><span class="line">	&#125;</span><br><span class="line">	public static void closeDB(Connection con,PreparedStatement pstm,ResultSet rs) &#123;</span><br><span class="line">		if(rs!=null) try&#123;</span><br><span class="line">			rs.close();</span><br><span class="line">		&#125;catch(SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		if(pstm!=null) try&#123;</span><br><span class="line">			pstm.close();</span><br><span class="line">		&#125;catch(SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		if(con!=null) try&#123;</span><br><span class="line">			con.close();</span><br><span class="line">		&#125;catch(SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单的 MySQL 数据库 插入操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> com.mysql.jdbc.*;</span><br><span class="line"><span class="keyword">import</span>  odpstest.DBConnection;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">colDao</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">saveCol</span><span class="params">(col c )</span> &#123;</span><br><span class="line">		<span class="type">Connection</span> <span class="variable">con</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">		<span class="type">PreparedStatement</span> <span class="variable">pstmt</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">		<span class="type">ResultSet</span> <span class="variable">rs</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">		con = (Connection) DBConnection.getDBConnection();</span><br><span class="line">		<span class="type">int</span> <span class="variable">row</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		String sql=<span class="string">&quot;insert into data(tablename,tablename_CN,fieldname,fieldname_CN) values(?,?,?,?)&quot;</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			pstmt = (PreparedStatement) con.prepareStatement(sql);</span><br><span class="line">			pstmt.setString(<span class="number">1</span>, c.getTablename());</span><br><span class="line">			pstmt.setString(<span class="number">2</span>, c.getTablename_CN());</span><br><span class="line">			pstmt.setString(<span class="number">3</span>, c.getFieldname());</span><br><span class="line">			pstmt.setString(<span class="number">4</span>, c.getFieldname_CN());</span><br><span class="line">			row = pstmt.executeUpdate();</span><br><span class="line">		&#125;<span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			DBConnection.closeDB(con, pstmt, rs);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> row;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>导出数据字典的步骤：</p>
+<ol>
+<li>执行 SQL 语句<code>show tables</code>，用 <code>like</code> 关键字找出含有需要字段的所有表名。在这个时候出来的结果如图，只有高亮的才是需要的表名：<img src="https://wx1.sinaimg.cn/mw690/b11f7046gy1fu3i8nwptkj20ts07qgmb.jpg" alt="含有需要字段的所有表名"> </li>
+<li>做字符串处理操作，取出表名。</li>
+<li>在程序中安排循环，对每一个表名执行<code>desc</code>语句操作，得到这个表的结构描述，具体到字段，每张表都不一样的。举例，结构描述如图：<img src="https://wx1.sinaimg.cn/mw690/b11f7046gy1fu3i8o36zuj20ts0izq43.jpg" alt="表的结构描述"></li>
+<li>进行字符串处理，取出表描述信息中的字段名、字段中文注释。</li>
+<li>最后将取出的四个字段组成一个列对象中的四个变量，存储这个列对象进入本地 MySQL 数据库中。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.sql.*;</span><br><span class="line">import java.util.List;</span><br><span class="line">import com.aliyun.odps.Instance;</span><br><span class="line">import com.aliyun.odps.Odps;</span><br><span class="line">import com.aliyun.odps.OdpsException;</span><br><span class="line">import com.aliyun.odps.account.Account;</span><br><span class="line">import com.aliyun.odps.account.AliyunAccount;</span><br><span class="line">import com.aliyun.odps.data.Record;</span><br><span class="line">import com.aliyun.odps.task.SQLTask;</span><br><span class="line">public class Sql &#123;</span><br><span class="line">private static final String accessId = &quot;*&quot;;</span><br><span class="line">private static final String accessKey = &quot;*&quot;;//以上两项在信息页上都能找到，就是Access Key 的 ID/Secret</span><br><span class="line">private static final String endPoint = &quot;http://service.*/api&quot;;//自己项目的api</span><br><span class="line">private static final String project = &quot;*&quot;;//项目名</span><br><span class="line">private static final String sql = &quot;show tables like &#x27;*_330801_*&#x27;;&quot;;</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">  Account account = new AliyunAccount(accessId, accessKey);</span><br><span class="line">   Odps odps = new Odps(account);</span><br><span class="line">   odps.setEndpoint(endPoint);</span><br><span class="line">   odps.setDefaultProject(project);</span><br><span class="line">   Instance i;</span><br><span class="line">   String tablename = null, tablename_CN = null;</span><br><span class="line">  try &#123;</span><br><span class="line">     i = SQLTask.run(odps, sql);</span><br><span class="line">     i.waitForSuccess();</span><br><span class="line">     List&lt;Record&gt; tables = SQLTask.getResult(i); </span><br><span class="line">     int cout = 0;</span><br><span class="line">     int table_num=0;</span><br><span class="line">     String name =&quot;&quot;;</span><br><span class="line">     for(Record table:tables)&#123;//负责取table</span><br><span class="line">    	 table_num++;</span><br><span class="line">    	 String[] table_pattern = table.get(0).toString().split(&quot;:&quot;);</span><br><span class="line">    	 tablename = table_pattern[1];</span><br><span class="line">    	 System.out.println(tablename);</span><br><span class="line">    	 String sql_describe=&quot;desc &quot;+tablename+&quot; ;&quot;;//该语句负责展示每个表的表结构</span><br><span class="line">    	 Instance ins = SQLTask.run(odps, sql_describe);</span><br><span class="line">    	 ins.waitForSuccess();</span><br><span class="line">         List&lt;Record&gt; describes = null;</span><br><span class="line">         try &#123;</span><br><span class="line">        	 describes = SQLTask.getResult(ins); </span><br><span class="line">	         String[] tablename_CN_pattern = describes.get(1).get(0).toString().split(&quot;:&quot;);</span><br><span class="line">	         tablename_CN = tablename_CN_pattern[1].replace(&quot;|&quot;, &quot;&quot;).trim();</span><br><span class="line">	         if(tablename_CN.equals(&quot;&quot;)) &#123;</span><br><span class="line">	        	 tablename_CN=&quot;null&quot;;</span><br><span class="line">			 &#125;</span><br><span class="line">	         System.out.println(tablename_CN);</span><br><span class="line">	         int temp=0;</span><br><span class="line">	         for(Record describe_column:describes) &#123;</span><br><span class="line">	        	 String columns=describe_column.get(0).toString();</span><br><span class="line">	        	 //System.out.println(columns);</span><br><span class="line">	        	 if(temp&gt;12&amp;&amp;columns.indexOf(&quot;------&quot;)==-1) &#123;//保证在---最终分隔符之前</span><br><span class="line">	        		 String[] pattern = describe_column.get(0).toString().split(&quot;\\|&quot;);//注意正则，用“|”分割</span><br><span class="line">	        		 String fieldname = pattern[1].trim();</span><br><span class="line">	        		 String fieldname_CN = pattern[4].trim();</span><br><span class="line">	        		 System.out.println(&quot;fieldname: &quot;+fieldname);</span><br><span class="line">	        		 if(fieldname_CN.equals(&quot;&quot;)) &#123;</span><br><span class="line">	        			 fieldname_CN=&quot;null&quot;;</span><br><span class="line">	        		 &#125;</span><br><span class="line">	        		 System.out.println(&quot;fieldname_CN: &quot;+fieldname_CN);</span><br><span class="line">	        		 col column = new col();//创建新的一列对象</span><br><span class="line">	        		 column.setTablename(tablename);</span><br><span class="line">	        		 column.setTablename_CN(tablename_CN);</span><br><span class="line">	        		 column.setFieldname(fieldname);</span><br><span class="line">	        		 column.setFieldname_CN(fieldname_CN);</span><br><span class="line">	        		 colDao colDao = new colDao();</span><br><span class="line">	        		 int flag= colDao.saveCol(column);</span><br><span class="line">	        		 if(flag==1) &#123;</span><br><span class="line">	        			 System.out.println(&quot;success!&quot;);</span><br><span class="line">	        		 &#125;</span><br><span class="line">	        	 &#125;</span><br><span class="line">	        	 temp++;</span><br><span class="line">	         &#125; </span><br><span class="line">         &#125; catch (Exception e) &#123;</span><br><span class="line"> 			cout++;</span><br><span class="line"> 			name += tablename+&quot; &amp; &quot;;</span><br><span class="line"> 		&#125;</span><br><span class="line">     &#125;</span><br><span class="line">     System.out.println(table_num+&quot; tables, &quot;+cout+&quot; errors: &quot;+name);</span><br><span class="line">  &#125; catch (OdpsException e) &#123;</span><br><span class="line">     e.printStackTrace();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后给出建表语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `zjsjt`.`data` (</span><br><span class="line">  `iddata` INT NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `tablename` VARCHAR(500) CHARACTER SET &#x27;utf8&#x27; COLLATE &#x27;utf8_unicode_ci&#x27; NULL,</span><br><span class="line">  `tablename_CN` VARCHAR(500) CHARACTER SET &#x27;utf8&#x27; COLLATE &#x27;utf8_unicode_ci&#x27; NULL,</span><br><span class="line">  `fieldname` VARCHAR(500) CHARACTER SET &#x27;utf8&#x27; COLLATE &#x27;utf8_unicode_ci&#x27; NULL,</span><br><span class="line">  `fieldname_CN` VARCHAR(500) CHARACTER SET &#x27;utf8&#x27; COLLATE &#x27;utf8_unicode_ci&#x27; NULL,</span><br><span class="line">  PRIMARY KEY (`iddata`))</span><br><span class="line">ENGINE = InnoDB</span><br><span class="line">DEFAULT CHARACTER SET = utf8</span><br><span class="line">COLLATE = utf8_unicode_ci;</span><br></pre></td></tr></table></figure>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>如果是单纯只需要表名列名或者注释的，在 Table 里面有个 Schema 对象，可以顺着取列对象，具体参见接口文档。这个字符串处理方法针对只能靠 <code>desc 表名</code> 方法提取基本结构信息的要求。 </p>
+</section>
+    <!-- Tags START -->
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/08/01/KMPReport/">
+        <span class="nav-arrow">← </span>
+        
+          KMP 字符串模式匹配算法小解
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/09/02/SQLreport/">
+        
+          “SQL语句分块解析”程序方法报告
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="toc-nav-text">参考文档</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E8%BF%B0"><span class="toc-nav-text">简述</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-nav-text">补充</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2018/08/09/readODPSInformationByAPI/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

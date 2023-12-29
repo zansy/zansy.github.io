@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Algorithms Part II | Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Algorithms Part II</h2>
+  <p class="post-date">2018-06-10</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>Notes from <a target="_blank" rel="noopener" href="https://www.coursera.org/learn/algorithms-part2/home/week/1">https://www.coursera.org/learn/algorithms-part2/home/week/1</a> </p>
+<span id="more"></span>
+<h2 id="Undirected-Graphs"><a href="#Undirected-Graphs" class="headerlink" title="Undirected Graphs"></a>Undirected Graphs</h2><h3 id="Introduction-to-Graphs"><a href="#Introduction-to-Graphs" class="headerlink" title="Introduction to Graphs"></a>Introduction to Graphs</h3><ul>
+<li>Euler tour: a cycle that uses each edge exactly once, go look around the graph and touch every edge in it.</li>
+<li>Hamilton tour: a cycle that uses each vertex exactly once.</li>
+<li>minimal spanning tree: the shortest set of edges, or the best way to connect all of the vertices.</li>
+</ul>
+<h3 id="Graph-API"><a href="#Graph-API" class="headerlink" title="Graph API"></a>Graph API</h3><ul>
+<li>the adjacency list representation, that’s where we keep a vertex index array where, for every vertex, we maintain a list of the vertices that are adjacent to that.</li>
+</ul>
+<h3 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth-First Search"></a>Depth-First Search</h3><ul>
+<li>Goal: Find all vertices connected to s (and a corresponding path).</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//pseudo cod</span><br><span class="line">To visit a vertex v :</span><br><span class="line">    - Mark vertex v as visited.</span><br><span class="line">    - Recursively visit all unmarked vertices adjacent to v.</span><br><span class="line">//code</span><br><span class="line">private void dfs(Graph G, int v)</span><br><span class="line">&#123;</span><br><span class="line">    marked[v] = true;</span><br><span class="line">    for (int w : G.adj(v))</span><br><span class="line">        if (!marked[w])</span><br><span class="line">        &#123;</span><br><span class="line">            dfs(G, w);</span><br><span class="line">            edgeTo[w] = v;</span><br><span class="line">        &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h4 id="深度优先搜索的非递归实现"><a href="#深度优先搜索的非递归实现" class="headerlink" title="深度优先搜索的非递归实现"></a>深度优先搜索的非递归实现</h4><ul>
+<li>思路：用到栈s来存储，用一个数组visited（初始所有元素为false，代表未访问）来做访问的标记。</li>
+<li>具体步骤：从给定的搜索的第一个顶点loc开始，将其压入堆栈，并标记visited[loc]为true表示已访问；之后循环进行如下操作，只要栈不为空，取出最上方元素，将其记录（本文直接打印，若有需要，可将其存入数组or Vector），然后去打所有的邻接顶点，只要还未访问（visited相应值为false），就将其压入栈，并标记为已访问。当栈中元素为0时，算法结束时，而所有访问过的点，均被标记过，并被压入栈中过，只要图是连通的，那么就做到所有点都被输出或记录。</li>
+</ul>
+<h3 id="Breadth-First-Search"><a href="#Breadth-First-Search" class="headerlink" title="Breadth-First Search"></a>Breadth-First Search</h3><ul>
+<li>Breadth-first is not a recursive algorithm, it uses a queue as a axillary data structure And it’s also quite simple to explain. So what we’re going to do is we’re going to put the source vertex on a queue and then repeat the following until the queue is empty. Remove the next vertex from the queue in order. Then add to the queue all unmarked vertices that are adjacent to these and mark them and just keep doing that until the queue is empty.</li>
+<li>replace <code>queue</code> with stack ,and this algorithm can work as DFS.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">// pseudo code</span><br><span class="line">BFS (from source vertex s)</span><br><span class="line">    </span><br><span class="line">Put s onto a FIFO queue, and mark s as visited.</span><br><span class="line">Repeat until the queue is empty:</span><br><span class="line">    remove the least recently added vertex v</span><br><span class="line">    add each of v&#x27;s unvisited neighbors to the queue</span><br><span class="line">    and mark them as visited</span><br><span class="line"></span><br><span class="line">//code</span><br><span class="line">private void bfs(Graph G, int s)</span><br><span class="line">&#123;</span><br><span class="line">    Queue&lt;Integer&gt; q = new Queue&lt;Integer&gt;();</span><br><span class="line">    q.enqueue(s);</span><br><span class="line">    marked[s] = true;</span><br><span class="line">    while (!q.isEmpty())</span><br><span class="line">    &#123;</span><br><span class="line">        int v = q.dequeue();</span><br><span class="line">        for (int w : G.adj(v))</span><br><span class="line">        &#123;</span><br><span class="line">            if (!marked[w])</span><br><span class="line">            &#123;</span><br><span class="line">                q.enqueue(w);</span><br><span class="line">                marked[w] = true;</span><br><span class="line">                edgeTo[w] = v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; // end for</span><br><span class="line">    &#125; // end while</span><br><span class="line">&#125; // end bfs</span><br></pre></td></tr></table></figure>
+
+<h3 id="Connected-Components"><a href="#Connected-Components" class="headerlink" title="Connected Components"></a>Connected Components</h3><ul>
+<li>So recall an equivalence relation has these three properties. Every vertex is connected to itself. If v is connected to w then w is connected to v. And if v is connected to w and w to x then v is connected to x.</li>
+<li>GOAL: Preprocess graph to answer queries of the form is v connected to w? in constant time. Depth-first search. Yes.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">// pseudo code</span><br><span class="line">Connected components</span><br><span class="line"></span><br><span class="line">initialize all vertices v as unmarked.</span><br><span class="line">For each unmarked vertex v, run DFS to identify all</span><br><span class="line">vertices discovered as part of the same component.</span><br><span class="line"></span><br><span class="line">//code</span><br><span class="line">private boolean[] marked;</span><br><span class="line">// id[v] = (index or ID of component)</span><br><span class="line">private int[] id; </span><br><span class="line">// record component index</span><br><span class="line">private int count; </span><br><span class="line"></span><br><span class="line">public CC(Graph G) &#123;</span><br><span class="line">    marked = new boolean[G.V()];</span><br><span class="line">    id = new int[G.V()];</span><br><span class="line">    for (int v = 0; v &lt; G.V(); v++) &#123;</span><br><span class="line">        if (!marked[v])</span><br><span class="line">        &#123;</span><br><span class="line">            // run DFS from one vertex</span><br><span class="line">            // in each component</span><br><span class="line">            dfs(G, v);</span><br><span class="line">            count++; </span><br><span class="line">        &#125; // end if</span><br><span class="line">    &#125; // end for</span><br><span class="line">&#125; // end CC</span><br><span class="line"></span><br><span class="line">private void dfs(Graph G, int v)</span><br><span class="line">&#123;</span><br><span class="line">    marked[v] = true;</span><br><span class="line">    // all vertices discovered in same </span><br><span class="line">    // call of dfs have same id</span><br><span class="line">    id[v] = count ;</span><br><span class="line">    for (int w : G.adj(v))</span><br><span class="line">        if (!marked[w])</span><br><span class="line">            dfs(G, w);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></section>
+    <!-- Tags START -->
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/05/09/datastructure/">
+        <span class="nav-arrow">← </span>
+        
+          《数据结构》1-5章
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/06/18/Leetcode-1/">
+        
+          Leetcode 1. Two Sum(HashMap)
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Undirected-Graphs"><span class="toc-nav-text">Undirected Graphs</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Introduction-to-Graphs"><span class="toc-nav-text">Introduction to Graphs</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Graph-API"><span class="toc-nav-text">Graph API</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Depth-First-Search"><span class="toc-nav-text">Depth-First Search</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E7%9A%84%E9%9D%9E%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0"><span class="toc-nav-text">深度优先搜索的非递归实现</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Breadth-First-Search"><span class="toc-nav-text">Breadth-First Search</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Connected-Components"><span class="toc-nav-text">Connected Components</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2018/06/10/Algorithms-Part-II/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

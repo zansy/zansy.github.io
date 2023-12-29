@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Salesforce notes(2021/06/21 updated 1/26) | Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Salesforce notes(2021/06/21 updated 1/26)</h2>
+  <p class="post-date">2021-06-21</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>Some simplefor salesforce learning. Mainly on salesforce trailhead.</p>
+<span id="more"></span>
+<h2 id="Asynchronous-Apex"><a href="#Asynchronous-Apex" class="headerlink" title="Asynchronous Apex"></a>Asynchronous Apex</h2><h3 id="Use-Future-Methods"><a href="#Use-Future-Methods" class="headerlink" title="Use Future Methods"></a>Use Future Methods</h3><h4 id="Learning-Objectives"><a href="#Learning-Objectives" class="headerlink" title="Learning Objectives"></a>Learning Objectives</h4><p>After completing this unit, you’ll know:</p>
+<ul>
+<li>When to use future methods.</li>
+<li>The limitations of using future methods.</li>
+<li>How to use future methods for callouts.</li>
+<li>Future method best practices.</li>
+</ul>
+<h4 id="Future-Apex"><a href="#Future-Apex" class="headerlink" title="Future Apex"></a>Future Apex</h4><p>Future Apex is used to run processes in a separate thread, at a later time when system resources become available.</p>
+<p>Future methods are typically used for:</p>
+<ul>
+<li>Callouts to external Web services. If you are making callouts from a trigger or after performing a DML operation, you must use a future or queueable method. A callout in a trigger would hold the database connection open for the lifetime of the callout and that is a “no-no” in a multitenant environment.</li>
+<li>Operations you want to run in their own thread, when time permits such as some sort of resource-intensive calculation or processing of records.<br>Isolating DML operations on different sObject types to prevent the mixed DML error. This is somewhat of an edge-case but you may occasionally run across this issue.</li>
+</ul>
+<h4 id="Future-Method-Syntax"><a href="#Future-Method-Syntax" class="headerlink" title="Future Method Syntax"></a>Future Method Syntax</h4><p>Future methods must be static methods, and can only return a void type. The specified parameters must be primitive data types, arrays of primitive data types, or collections of primitive data types. Notably, future methods can’t take standard or custom objects as arguments. A common pattern is to pass the method a List of record IDs that you want to process asynchronously.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">global <span class="keyword">class</span> <span class="title class_">SomeClass</span> &#123;</span><br><span class="line">  <span class="meta">@future</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">someFutureMethod</span><span class="params">(List&lt;Id&gt; recordIds)</span> &#123;</span><br><span class="line">    List&lt;Account&gt; accounts = [Select Id, Name from Account Where Id IN :recordIds];</span><br><span class="line">    <span class="comment">// process account records to do awesome stuff</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>It’s important to note that <strong>future methods are not guaranteed to execute in the same order as they are called</strong>. Again, future methods are not guaranteed to execute in the same order as they are called. When using future methods, it’s also possible that two future methods could run concurrently, which could result in record locking and a nasty runtime error if the two methods were updating the same record.</p>
+<h4 id="Sample-Callout-Code"><a href="#Sample-Callout-Code" class="headerlink" title="Sample Callout Code"></a>Sample Callout Code</h4><p>To make a Web service callout to an external service or API, you create an Apex class with a future method that is marked with (callout&#x3D;true). The class below has methods for making the callout both synchronously and asynchronously where callouts are not permitted. We insert a record into a custom log object to track the status of the callout simply because logging is always fun to do!</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SMSUtils</span> &#123;</span><br><span class="line">    <span class="comment">// Call async from triggers, etc, where callouts are not permitted.</span></span><br><span class="line">    <span class="meta">@future(callout=true)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sendSMSAsync</span><span class="params">(String fromNbr, String toNbr, String m)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">results</span> <span class="operator">=</span> sendSMS(fromNbr, toNbr, m);</span><br><span class="line">        System.debug(results);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Call from controllers, etc, for immediate processing</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">sendSMS</span><span class="params">(String fromNbr, String toNbr, String m)</span> &#123;</span><br><span class="line">        <span class="comment">// Calling &#x27;send&#x27; will result in a callout</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">results</span> <span class="operator">=</span> SmsMessage.send(fromNbr, toNbr, m);</span><br><span class="line">        insert <span class="keyword">new</span> <span class="title class_">SMS_Log__c</span>(to__c=toNbr, from__c=fromNbr, msg__c=results);</span><br><span class="line">        <span class="keyword">return</span> results;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Test-Classes"><a href="#Test-Classes" class="headerlink" title="Test Classes"></a>Test Classes</h4><p>Testing future methods is a little different than typical Apex testing. To test future methods, enclose your test code between the startTest and stopTest test methods. The system collects all asynchronous calls made after the startTest. When stopTest is executed, all these collected asynchronous processes are then run synchronously. You can then assert that the asynchronous call operated properly.</p>
+<blockquote>
+<p>Test code cannot actually send callouts to external systems, so you’ll have to ‘mock’ the callout for test coverage.</p>
+</blockquote>
+<p>Here’s our mock callout class used for testing. The Apex testing framework utilizes this ‘mock’ response instead of making the actual callout to the REST API endpoint.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@isTest</span></span><br><span class="line">global <span class="keyword">class</span> <span class="title class_">SMSCalloutMock</span> <span class="keyword">implements</span> <span class="title class_">HttpCalloutMock</span> &#123;</span><br><span class="line">    global HttpResponse <span class="title function_">respond</span><span class="params">(HttpRequest req)</span> &#123;</span><br><span class="line">        <span class="comment">// Create a fake response</span></span><br><span class="line">        <span class="type">HttpResponse</span> <span class="variable">res</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpResponse</span>();</span><br><span class="line">        res.setHeader(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/json&#x27;</span>);</span><br><span class="line">        res.setBody(<span class="string">&#x27;&#123;&quot;status&quot;:&quot;success&quot;&#125;&#x27;</span>);</span><br><span class="line">        res.setStatusCode(<span class="number">200</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The test class contains a single test method, which tests both the asynchronous and synchronous methods as the former calls the latter.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@IsTest</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">Test_SMSUtils</span> &#123;</span><br><span class="line">  <span class="meta">@IsTest</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">testSendSms</span><span class="params">()</span> &#123;</span><br><span class="line">    Test.setMock(HttpCalloutMock.class, <span class="keyword">new</span> <span class="title class_">SMSCalloutMock</span>());</span><br><span class="line">    Test.startTest();</span><br><span class="line">      SMSUtils.sendSMSAsync(<span class="string">&#x27;111&#x27;</span>, <span class="string">&#x27;222&#x27;</span>, <span class="string">&#x27;Greetings!&#x27;</span>);</span><br><span class="line">    Test.stopTest();</span><br><span class="line">    <span class="comment">// runs callout and check results</span></span><br><span class="line">    List&lt;SMS_Log__c&gt; logs = [select msg__c from SMS_Log__c];</span><br><span class="line">    System.assertEquals(<span class="number">1</span>, logs.size());</span><br><span class="line">    System.assertEquals(<span class="string">&#x27;success&#x27;</span>, logs[<span class="number">0</span>].msg__c);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Best-Practices"><a href="#Best-Practices" class="headerlink" title="Best Practices"></a>Best Practices</h4><p>Since every future method invocation adds one request to the asynchronous queue, avoid design patterns that add large numbers of future requests over a short period of time. If your design has the potential to add 2000 or more requests at a time, requests could get delayed due to flow control. Here are some best practices you want to keep in mind:</p>
+<ul>
+<li>Ensure that future methods execute as fast as possible.</li>
+<li>If using Web service callouts, try to bundle all callouts together from the same future method, rather than using a separate future method for each callout.</li>
+<li>Conduct thorough testing at scale. Test that a trigger enqueuing the @future calls is able to handle a trigger collection of 200 records. This helps determine if delays may occur given the design at current and future volumes.</li>
+<li>Consider using Batch Apex instead of future methods to process large number of records asynchronously. This is more efficient than creating a future request for each record.</li>
+</ul>
+<h4 id="Things-to-Remember"><a href="#Things-to-Remember" class="headerlink" title="Things to Remember"></a>Things to Remember</h4><p>Future methods are a great tool, but with great power comes great responsibility. Here are some things to keep in mind when using them:</p>
+<ul>
+<li>Methods with the future annotation must be static methods, and can only return a void type.</li>
+<li>The specified parameters must be primitive data types, arrays of primitive data types, or collections of primitive data types; future methods can’t take objects as arguments.</li>
+<li>Future methods won’t necessarily execute in the same order they are called. In addition, it’s possible that two future methods could run concurrently, which could result in record locking if the two methods were updating the same record.</li>
+<li>Future methods can’t be used in Visualforce controllers in getMethodName(), setMethodName(), nor in the constructor.</li>
+<li>You can’t call a future method from a future method. Nor can you invoke a trigger that calls a future method while running a future method. See the link in the Resources for preventing recursive future method calls.</li>
+<li>The getContent() and getContentAsPDF() methods can’t be used in methods with the future annotation.</li>
+<li>You’re limited to 50 future calls per Apex invocation, and there’s an additional limit on the number of calls in a 24-hour period. For more information on limits, see the link below.</li>
+</ul>
+<h4 id="Challenge"><a href="#Challenge" class="headerlink" title="Challenge"></a>Challenge</h4><blockquote>
+<p>Create an Apex class that uses the @future annotation to update Account records.<br>Create an Apex class with a future method that accepts a List of Account IDs and updates a custom field on the Account object with the number of contacts associated to the Account. Write unit tests that achieve 100% code coverage for the class. Every hands-on challenge in this module asks you to create a test class.</p>
+</blockquote>
+<p>Create a field on the Account object:<br>Label: Number Of Contacts<br>Name: Number_Of_Contacts<br>Type: Number<br>This field will hold the total number of Contacts for the Account</p>
+<p>Create an Apex class:<br>Name: AccountProcessor<br>Method name: countContacts<br>The method must accept a List of Account IDs<br>The method must use the @future annotation<br>The method counts the number of Contact records associated to each Account ID passed to the method and updates the ‘Number_Of_Contacts__c’ field with this value</p>
+<p>Create an Apex test class:<br>Name: AccountProcessorTest<br>The unit tests must cover all lines of code included in the AccountProcessor class, resulting in 100% code coverage.<br>Before verifying this challenge, run your test class at least once using the Developer Console Run All feature</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AccountProcessor</span> &#123;</span><br><span class="line">	<span class="meta">@future</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">countContacts</span><span class="params">(List&lt;Id&gt; accountIds)</span>&#123;</span><br><span class="line">        List&lt;Account&gt; accounts = [Select Id, Name from Account Where Id IN : accountIds];</span><br><span class="line">        List&lt;Account&gt; updatedAccounts = <span class="keyword">new</span> <span class="title class_">List</span>&lt;Account&gt;();</span><br><span class="line">        <span class="keyword">for</span>(Account account : accounts)&#123;</span><br><span class="line">            account.Number_of_Contacts__c = [Select <span class="title function_">count</span><span class="params">()</span> from Contact <span class="type">Where</span> <span class="variable">AccountId</span> <span class="operator">=</span>: account.Id];</span><br><span class="line">             System.debug(<span class="string">&#x27;No Of Contacts = &#x27;</span> + account.Number_of_Contacts__c);</span><br><span class="line">             updatedAccounts.add(account);</span><br><span class="line">         &#125;</span><br><span class="line">         update updatedAccounts;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@isTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AccountProcessorTest</span> &#123;</span><br><span class="line">    <span class="meta">@isTest</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">testNoOfContacts</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Account</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Account</span>();</span><br><span class="line">        a.Name = <span class="string">&#x27;Test Account&#x27;</span>;</span><br><span class="line">        insert a;</span><br><span class="line"></span><br><span class="line">        <span class="type">Contact</span> <span class="variable">c</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Contact</span>();</span><br><span class="line">        c.FirstName = <span class="string">&#x27;Bob&#x27;</span>;</span><br><span class="line">        c.LastName =  <span class="string">&#x27;Willie&#x27;</span>;</span><br><span class="line">        c.AccountId = a.Id;</span><br><span class="line">        </span><br><span class="line">        <span class="type">Contact</span> <span class="variable">c2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Contact</span>();</span><br><span class="line">        c2.FirstName = <span class="string">&#x27;Tom&#x27;</span>;</span><br><span class="line">        c2.LastName = <span class="string">&#x27;Cruise&#x27;</span>;</span><br><span class="line">        c2.AccountId = a.Id;</span><br><span class="line">        </span><br><span class="line">        List&lt;Id&gt; acctIds = <span class="keyword">new</span> <span class="title class_">List</span>&lt;Id&gt;();</span><br><span class="line">        acctIds.add(a.Id);</span><br><span class="line">        </span><br><span class="line">        Test.startTest();</span><br><span class="line">        AccountProcessor.countContacts(acctIds);</span><br><span class="line">        Test.stopTest();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Use-Batch-Apex"><a href="#Use-Batch-Apex" class="headerlink" title="Use Batch Apex"></a>Use Batch Apex</h3><h4 id="Learning-Objectives-1"><a href="#Learning-Objectives-1" class="headerlink" title="Learning Objectives"></a>Learning Objectives</h4><p>After completing this unit, you’ll know:</p>
+<ul>
+<li>Where to use Batch Apex.</li>
+<li>The higher Apex limits when using batch.</li>
+<li>Batch Apex syntax.</li>
+<li>Batch Apex best practices.</li>
+</ul>
+<h4 id="Batch-Apex"><a href="#Batch-Apex" class="headerlink" title="Batch Apex"></a>Batch Apex</h4><p>Batch Apex is used to run large jobs (think thousands or millions of records!) that would exceed normal processing limits. Using Batch Apex, you can process records asynchronously in batches (hence the name, “Batch Apex”) to stay within platform limits. If you have a lot of records to process, for example, data cleansing or archiving, Batch Apex is probably your best solution.</p>
+<h4 id="Batch-Apex-Syntax"><a href="#Batch-Apex-Syntax" class="headerlink" title="Batch Apex Syntax"></a>Batch Apex Syntax</h4><p>To write a Batch Apex class, your class must implement the Database.Batchable interface and include the following three methods:</p>
+<p><strong>start</strong><br>Used to collect the records or objects to be passed to the interface method execute for processing. This method is called once at the beginning of a Batch Apex job and returns either a Database.QueryLocator object or an Iterable that contains the records or objects passed to the job.</p>
+<p>Most of the time a QueryLocator does the trick with a simple SOQL query to generate the scope of objects in the batch job. But if you need to do something crazy like loop through the results of an API call or pre-process records before being passed to the execute method, you might want to check out the Custom Iterators link in the Resources section.</p>
+<p>With the QueryLocator object, the governor limit for the total number of records retrieved by SOQL queries is bypassed and you can query up to 50 million records. However, with an Iterable, the governor limit for the total number of records retrieved by SOQL queries is still enforced.</p>
+<p><strong>execute</strong><br>Performs the actual processing for each chunk or “batch” of data passed to the method. The default batch size is 200 records. Batches of records are not guaranteed to execute in the order they are received from the start method.</p>
+<p>This method takes the following:</p>
+<ul>
+<li>A reference to the Database.BatchableContext object.</li>
+<li>A list of sObjects, such as List<sObject>, or a list of parameterized types. If you are using a Database.QueryLocator, use the returned list.<br><strong>finish</strong><br>Used to execute post-processing operations (for example, sending an email) and is called once after all batches are processed.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyBatchClass</span> <span class="keyword">implements</span> <span class="title class_">Database</span>.Batchable&lt;sObject&gt; &#123;</span><br><span class="line">    <span class="keyword">public</span> (Database.QueryLocator | Iterable&lt;sObject&gt;) start(Database.BatchableContext bc) &#123;</span><br><span class="line">        <span class="comment">// collect the batches of records or objects to be passed to execute</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">(Database.BatchableContext bc, List&lt;P&gt; records)</span>&#123;</span><br><span class="line">        <span class="comment">// process each batch of records</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">finish</span><span class="params">(Database.BatchableContext bc)</span>&#123;</span><br><span class="line">        <span class="comment">// execute any post-processing operations</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Invoking-a-Batch-Class"><a href="#Invoking-a-Batch-Class" class="headerlink" title="Invoking a Batch Class"></a>Invoking a Batch Class</h4><p>To invoke a batch class, simply instantiate it and then call Database.executeBatch with the instance:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">MyBatchClass</span> <span class="variable">myBatchObject</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyBatchClass</span>();</span><br><span class="line"><span class="type">Id</span> <span class="variable">batchId</span> <span class="operator">=</span> Database.executeBatch(myBatchObject);</span><br></pre></td></tr></table></figure>
+<p>You can also optionally pass a second scope parameter to specify the number of records that should be passed into the execute method for each batch. Pro tip: you might want to limit this batch size if you are running into governor limits.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Id</span> <span class="variable">batchId</span> <span class="operator">=</span> Database.executeBatch(myBatchObject, <span class="number">100</span>);</span><br></pre></td></tr></table></figure>
+<p>Each batch Apex invocation creates an AsyncApexJob record so that you can track the job’s progress. You can view the progress via SOQL or manage your job in the Apex Job Queue. We’ll talk about the Job Queue shortly.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">AsyncApexJob</span> <span class="variable">job</span> <span class="operator">=</span> [SELECT Id, Status, JobItemsProcessed, TotalJobItems, NumberOfErrors FROM AsyncApexJob <span class="type">WHERE</span> <span class="variable">ID</span> <span class="operator">=</span> :batchId ];</span><br></pre></td></tr></table></figure>
+
+<h4 id="Using-State-in-Batch-Apex"><a href="#Using-State-in-Batch-Apex" class="headerlink" title="Using State in Batch Apex"></a>Using State in Batch Apex</h4><p>Batch Apex is typically stateless. Each execution of a batch Apex job is considered a discrete transaction. For example, a batch Apex job that contains 1,000 records and uses the default batch size is considered five transactions of 200 records each.</p>
+<p>If you specify Database.Stateful in the class definition, you can maintain state across all transactions. When using Database.Stateful, only instance member variables retain their values between transactions. Maintaining state is useful for counting or summarizing records as they’re processed. In our next example, we’ll be updating contact records in our batch job and want to keep track of the total records affected so we can include it in the notification email.</p>
+<h4 id="Sample-Batch-Apex-Code"><a href="#Sample-Batch-Apex-Code" class="headerlink" title="Sample Batch Apex Code"></a>Sample Batch Apex Code</h4><p>Let’s say you have a business requirement that states that all contacts for companies in the USA must have their parent company’s billing address as their mailing address. Unfortunately, users are entering new contacts without the correct addresses! Will users never learn?! Write a Batch Apex class that ensures that this requirement is enforced.</p>
+<p>The following sample class finds all account records that are passed in by the start() method using a QueryLocator and updates the associated contacts with their account’s mailing address. Finally, it sends off an email with the results of the bulk job and, since we are using Database.Stateful to track state, the number of records updated.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UpdateContactAddresses</span> <span class="keyword">implements</span></span><br><span class="line">    <span class="title class_">Database</span>.Batchable&lt;sObject&gt;, Database.Stateful &#123;</span><br><span class="line">    <span class="comment">// instance member to retain state across transactions</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">Integer</span> <span class="variable">recordsProcessed</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> Database.QueryLocator <span class="title function_">start</span><span class="params">(Database.BatchableContext bc)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Database.getQueryLocator(</span><br><span class="line">            <span class="string">&#x27;SELECT ID, BillingStreet, BillingCity, BillingState, &#x27;</span> +</span><br><span class="line">            <span class="string">&#x27;BillingPostalCode, (SELECT ID, MailingStreet, MailingCity, &#x27;</span> +</span><br><span class="line">            <span class="string">&#x27;MailingState, MailingPostalCode FROM Contacts) FROM Account &#x27;</span> +</span><br><span class="line">            <span class="string">&#x27;Where BillingCountry = \&#x27;USA\&#x27;&#x27;</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">(Database.BatchableContext bc, List&lt;Account&gt; scope)</span>&#123;</span><br><span class="line">        <span class="comment">// process each batch of records</span></span><br><span class="line">        List&lt;Contact&gt; contacts = <span class="keyword">new</span> <span class="title class_">List</span>&lt;Contact&gt;();</span><br><span class="line">        <span class="keyword">for</span> (Account account : scope) &#123;</span><br><span class="line">            <span class="keyword">for</span> (Contact contact : account.contacts) &#123;</span><br><span class="line">                contact.MailingStreet = account.BillingStreet;</span><br><span class="line">                contact.MailingCity = account.BillingCity;</span><br><span class="line">                contact.MailingState = account.BillingState;</span><br><span class="line">                contact.MailingPostalCode = account.BillingPostalCode;</span><br><span class="line">                <span class="comment">// add contact to list to be updated</span></span><br><span class="line">                contacts.add(contact);</span><br><span class="line">                <span class="comment">// increment the instance member counter</span></span><br><span class="line">                recordsProcessed = recordsProcessed + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        update contacts;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">finish</span><span class="params">(Database.BatchableContext bc)</span>&#123;</span><br><span class="line">        System.debug(recordsProcessed + <span class="string">&#x27; records processed. Shazam!&#x27;</span>);</span><br><span class="line">        <span class="type">AsyncApexJob</span> <span class="variable">job</span> <span class="operator">=</span> [SELECT Id, Status, NumberOfErrors,</span><br><span class="line">            JobItemsProcessed,</span><br><span class="line">            TotalJobItems, CreatedBy.Email</span><br><span class="line">            FROM AsyncApexJob</span><br><span class="line">            <span class="type">WHERE</span> <span class="variable">Id</span> <span class="operator">=</span> :bc.getJobId()];</span><br><span class="line">        <span class="comment">// call some utility to send email</span></span><br><span class="line">        EmailUtils.sendMessage(job, recordsProcessed);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The code should be fairly straightforward but can be a little abstract in reality. Here’s what’s going on in more detail:</p>
+<ul>
+<li>The start method provides the collection of all records that the execute method will process in individual batches. It returns the list of records to be processed by calling Database.getQueryLocator with a SOQL query. In this case we are simply querying for all Account records with a Billing Country of ‘USA’.</li>
+<li>Each batch of 200 records is passed in the second parameter of the execute method. The execute method sets each contact’s mailing address to the accounts’ billing address and increments recordsProcessed to track the number of records processed.</li>
+<li>When the job is complete, the finish method performs a query on the AsyncApexJob object (a table that lists information about batch jobs) to get the status of the job, the submitter’s email address, and some other information. It then sends a notification email to the job submitter that includes the job info and number of contacts updated.</li>
+</ul>
+<h4 id="Testing-Batch-Apex"><a href="#Testing-Batch-Apex" class="headerlink" title="Testing Batch Apex"></a>Testing Batch Apex</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@isTest</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">UpdateContactAddressesTest</span> &#123;</span><br><span class="line">    <span class="meta">@testSetup</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setup</span><span class="params">()</span> &#123;</span><br><span class="line">        List&lt;Account&gt; accounts = <span class="keyword">new</span> <span class="title class_">List</span>&lt;Account&gt;();</span><br><span class="line">        List&lt;Contact&gt; contacts = <span class="keyword">new</span> <span class="title class_">List</span>&lt;Contact&gt;();</span><br><span class="line">        <span class="comment">// insert 10 accounts</span></span><br><span class="line">        <span class="keyword">for</span> (Integer i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++) &#123;</span><br><span class="line">            accounts.add(<span class="keyword">new</span> <span class="title class_">Account</span>(name=<span class="string">&#x27;Account &#x27;</span>+i,</span><br><span class="line">                billingcity=<span class="string">&#x27;New York&#x27;</span>, billingcountry=<span class="string">&#x27;USA&#x27;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        insert accounts;</span><br><span class="line">        <span class="comment">// find the account just inserted. add contact for each</span></span><br><span class="line">        <span class="keyword">for</span> (Account account : [select id from account]) &#123;</span><br><span class="line">            contacts.add(<span class="keyword">new</span> <span class="title class_">Contact</span>(firstname=<span class="string">&#x27;first&#x27;</span>,</span><br><span class="line">                lastname=<span class="string">&#x27;last&#x27;</span>, accountId=account.id));</span><br><span class="line">        &#125;</span><br><span class="line">        insert contacts;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@isTest</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">        Test.startTest();</span><br><span class="line">        <span class="type">UpdateContactAddresses</span> <span class="variable">uca</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UpdateContactAddresses</span>();</span><br><span class="line">        <span class="type">Id</span> <span class="variable">batchId</span> <span class="operator">=</span> Database.executeBatch(uca);</span><br><span class="line">        Test.stopTest();</span><br><span class="line">        <span class="comment">// after the testing stops, assert records were updated properly</span></span><br><span class="line">        System.assertEquals(<span class="number">10</span>, [select <span class="title function_">count</span><span class="params">()</span> from contact <span class="type">where</span> <span class="variable">MailingCity</span> <span class="operator">=</span> <span class="string">&#x27;New York&#x27;</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Make sure that the number of records inserted is less than or equal to the batch size of 200 because test methods can execute only one batch. You must also ensure that the Iterable returned by the start method matches the batch size.</p>
+</blockquote>
+<h4 id="Challenge-1"><a href="#Challenge-1" class="headerlink" title="Challenge"></a>Challenge</h4><blockquote>
+<p>Create an Apex class that uses Batch Apex to update Lead records.<br>Create an Apex class that implements the Database.Batchable interface to update all Lead records in the org with a specific LeadSource.</p>
+</blockquote>
+<p>Create an Apex class:<br>Name: LeadProcessor<br>Interface: Database.Batchable<br>Use a QueryLocator in the start method to collect all Lead records in the org<br>The execute method must update all Lead records in the org with the LeadSource value of Dreamforce</p>
+<p>Create an Apex test class:<br>Name: LeadProcessorTest<br>In the test class, insert 200 Lead records, execute the LeadProcessor Batch class and test that all Lead records were updated correctly</p>
+<p>The unit tests must cover all lines of code included in the LeadProcessor class, resulting in 100% code coverage<br>Before verifying this challenge, run your test class at least once using the Developer Console Run All feature</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LeadProcessor</span> <span class="keyword">implements</span> <span class="title class_">Database</span>.Batchable&lt;SObject&gt;, Database.Stateful&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">Integer</span> <span class="variable">recordProcessed</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> Database.QueryLocator <span class="title function_">start</span><span class="params">(Database.BatchableContext bc)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Database.getQueryLocator([Select LeadSource From Lead ]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">(Database.BatchableContext bc, List&lt;Lead&gt; scope)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Lead lead : scope) &#123;</span><br><span class="line">            lead.LeadSource = <span class="string">&#x27;Dreamforce&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        update scope;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">finish</span><span class="params">(Database.BatchableContext bc)</span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@isTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LeadProcessorTest</span> &#123;</span><br><span class="line">    <span class="meta">@isTest</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">        List&lt;Lead&gt; leads = <span class="keyword">new</span> <span class="title class_">List</span>&lt;Lead&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">Integer</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">200</span>; i++) &#123;</span><br><span class="line">            <span class="type">Lead</span> <span class="variable">lead</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Lead</span>();</span><br><span class="line">            lead.FirstName = <span class="string">&#x27;testF&#x27;</span>;</span><br><span class="line">            lead.LastName = <span class="string">&#x27;testL&#x27;</span> + i;</span><br><span class="line">            lead.Company = <span class="string">&#x27;testCompany&#x27;</span> + i;</span><br><span class="line">            leads.add(lead);</span><br><span class="line">        &#125;</span><br><span class="line">        insert leads;</span><br><span class="line">        Test.startTest();</span><br><span class="line">        <span class="type">LeadProcessor</span> <span class="variable">leadProcessor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LeadProcessor</span>();</span><br><span class="line">        Database.executeBatch(leadProcessor);</span><br><span class="line">        Test.stopTest();</span><br><span class="line">        System.assertEquals(<span class="number">200</span>, [select <span class="title function_">count</span><span class="params">()</span> from Lead <span class="type">where</span> <span class="variable">LeadSource</span> <span class="operator">=</span> <span class="string">&#x27;Dreamforce&#x27;</span> ]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Control-Processes-with-Queueable-Apex"><a href="#Control-Processes-with-Queueable-Apex" class="headerlink" title="Control Processes with Queueable Apex"></a>Control Processes with Queueable Apex</h3><h4 id="Learning-Objectives-2"><a href="#Learning-Objectives-2" class="headerlink" title="Learning Objectives"></a>Learning Objectives</h4><p>After completing this unit, you’ll know:</p>
+<ul>
+<li>When to use the Queueable interface.</li>
+<li>The differences between queueable and future methods.</li>
+<li>Queueable Apex syntax.</li>
+<li>Queueable method best practices.</li>
+</ul>
+<h4 id="Queueable-Apex"><a href="#Queueable-Apex" class="headerlink" title="Queueable Apex"></a>Queueable Apex</h4><p>We took the simplicity of future methods and the power of Batch Apex and mixed them together to form Queueable Apex! It gives you a class structure that the platform serializes for you, a simplified interface without start and finish methods and even allows you to utilize more than just primitive arguments! It is called by a simple System.enqueueJob() method, which returns a job ID that you can monitor. It beats sliced bread hands down!</p>
+<p>Queueable Apex allows you to submit jobs for asynchronous processing similar to future methods with the following additional benefits:</p>
+<ul>
+<li>Non-primitive types: Your Queueable class can contain member variables of non-primitive data types, such as sObjects or custom Apex types. Those objects can be accessed when the job executes.</li>
+<li>Monitoring: When you submit your job by invoking the System.enqueueJob method, the method returns the ID of the AsyncApexJob record. You can use this ID to identify your job and monitor its progress, either through the Salesforce user interface in the Apex Jobs page, or programmatically by querying your record from AsyncApexJob.</li>
+<li>Chaining jobs: You can chain one job to another job by starting a second job from a running job. Chaining jobs is useful if you need to do some sequential processing.</li>
+</ul>
+<h4 id="Queueable-Versus-Future"><a href="#Queueable-Versus-Future" class="headerlink" title="Queueable Versus Future"></a>Queueable Versus Future</h4><p>use future methods instead of queueable is when your functionality is sometimes executed synchronously, and sometimes asynchronously. It’s much easier to refactor a method in this manner than converting to a queueable class. This is handy when you discover that part of your existing code needs to be moved to async execution. You can simply create a similar future method that wraps your synchronous method like so:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@future</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">myFutureMethod</span><span class="params">(List&lt;String&gt; params)</span> &#123;</span><br><span class="line">    <span class="comment">// call synchronous method</span></span><br><span class="line">    mySyncMethod(params);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Sample-Code"><a href="#Sample-Code" class="headerlink" title="Sample Code"></a>Sample Code</h4><p>The following code takes a collection of Account records, sets the parentId for each record, and then updates the records in the database.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UpdateParentAccount</span> <span class="keyword">implements</span> <span class="title class_">Queueable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Account&gt; accounts;</span><br><span class="line">    <span class="keyword">private</span> ID parent;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UpdateParentAccount</span><span class="params">(List&lt;Account&gt; records, ID id)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.accounts = records;</span><br><span class="line">        <span class="built_in">this</span>.parent = id;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">(QueueableContext context)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Account account : accounts) &#123;</span><br><span class="line">          account.parentId = parent;</span><br><span class="line">          <span class="comment">// perform other processing or callout</span></span><br><span class="line">        &#125;</span><br><span class="line">        update accounts;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>To add this class as a job on the queue, execute the following code:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// find all accounts in ‘NY’</span></span><br><span class="line">List&lt;Account&gt; accounts = [select id from account <span class="type">where</span> <span class="variable">billingstate</span> <span class="operator">=</span> ‘NY’];</span><br><span class="line"><span class="comment">// find a specific parent account for all records</span></span><br><span class="line"><span class="type">Id</span> <span class="variable">parentId</span> <span class="operator">=</span> [select id from account <span class="type">where</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&#x27;ACME Corp&#x27;</span>][<span class="number">0</span>].Id;</span><br><span class="line"><span class="comment">// instantiate a new instance of the Queueable class</span></span><br><span class="line"><span class="type">UpdateParentAccount</span> <span class="variable">updateJob</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UpdateParentAccount</span>(accounts, parentId);</span><br><span class="line"><span class="comment">// enqueue the job for processing</span></span><br><span class="line"><span class="type">ID</span> <span class="variable">jobID</span> <span class="operator">=</span> System.enqueueJob(updateJob);</span><br></pre></td></tr></table></figure>
+<p>You can use the new job ID to monitor progress, either through the Apex Jobs page or programmatically by querying AsyncApexJob:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT Id, Status, NumberOfErrors FROM AsyncApexJob <span class="type">WHERE</span> <span class="variable">Id</span> <span class="operator">=</span> :jobID</span><br></pre></td></tr></table></figure>
+<h4 id="Testing-Queueable-Apex"><a href="#Testing-Queueable-Apex" class="headerlink" title="Testing Queueable Apex"></a>Testing Queueable Apex</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@isTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UpdateParentAccountTest</span> &#123;</span><br><span class="line">    <span class="meta">@testSetup</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setup</span><span class="params">()</span> &#123;</span><br><span class="line">        List&lt;Account&gt; accounts = <span class="keyword">new</span> <span class="title class_">List</span>&lt;Account&gt;();</span><br><span class="line">        <span class="comment">// add a parent account</span></span><br><span class="line">        accounts.add(<span class="keyword">new</span> <span class="title class_">Account</span>(name=<span class="string">&#x27;Parent&#x27;</span>));</span><br><span class="line">        <span class="comment">// add 100 child accounts</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">Integer</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            accounts.add(<span class="keyword">new</span> <span class="title class_">Account</span>(</span><br><span class="line">                name=<span class="string">&#x27;Test Account&#x27;</span>+i</span><br><span class="line">            ));</span><br><span class="line">        &#125;</span><br><span class="line">        insert accounts;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> testmethod <span class="keyword">void</span> <span class="title function_">testQueueable</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// query for test data to pass to queueable class</span></span><br><span class="line">        <span class="type">Id</span> <span class="variable">parentId</span> <span class="operator">=</span> [select id from account <span class="type">where</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&#x27;Parent&#x27;</span>][<span class="number">0</span>].Id;</span><br><span class="line">        List&lt;Account&gt; accounts = [select id, name from account where name like <span class="string">&#x27;Test Account%&#x27;</span>];</span><br><span class="line">        <span class="comment">// Create our Queueable instance</span></span><br><span class="line">        <span class="type">UpdateParentAccount</span> <span class="variable">updater</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UpdateParentAccount</span>(accounts, parentId);</span><br><span class="line">        <span class="comment">// startTest/stopTest block to force async processes to run</span></span><br><span class="line">        Test.startTest();</span><br><span class="line">        System.enqueueJob(updater);</span><br><span class="line">        Test.stopTest();</span><br><span class="line">        <span class="comment">// Validate the job ran. Check if record have correct parentId now</span></span><br><span class="line">        System.assertEquals(<span class="number">100</span>, [select <span class="title function_">count</span><span class="params">()</span> from account <span class="type">where</span> <span class="variable">parentId</span> <span class="operator">=</span> :parentId]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Chaining-Jobs"><a href="#Chaining-Jobs" class="headerlink" title="Chaining Jobs"></a>Chaining Jobs</h4><p>One of the best features of Queueable Apex is job chaining. If you ever need to run jobs sequentially, Queueable Apex could make your life much easier. To chain a job to another job, submit the second job from the execute() method of your queueable class. You can add only one job from an executing job, which means that only one child job can exist for each parent job. For example, if you have a second class called SecondJob that implements the Queueable interface, you can add this class to the queue in the execute() method as follows:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FirstJob</span> <span class="keyword">implements</span> <span class="title class_">Queueable</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">(QueueableContext context)</span> &#123;</span><br><span class="line">        <span class="comment">// Awesome processing logic here</span></span><br><span class="line">        <span class="comment">// Chain this job to next job by submitting the next job</span></span><br><span class="line">        System.enqueueJob(<span class="keyword">new</span> <span class="title class_">SecondJob</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Once again, testing has a slightly different pattern. You can’t chain queueable jobs in an Apex test, doing so results in an error. To avoid nasty errors, you can check if Apex is running in test context by calling Test.isRunningTest() before chaining jobs.</p>
+<h4 id="Things-to-Remember-1"><a href="#Things-to-Remember-1" class="headerlink" title="Things to Remember"></a>Things to Remember</h4><p>Queueable Apex is a great new tool but there are a few things to watch out for:</p>
+<ul>
+<li>The execution of a queued job counts once against the shared limit for asynchronous Apex method executions.</li>
+<li>You can add up to 50 jobs to the queue with System.enqueueJob in a single transaction.</li>
+<li>When chaining jobs, you can add only one job from an executing job with System.enqueueJob, which means that only one child job can exist for each parent queueable job. Starting multiple child jobs from the same queueable job is a no-no.</li>
+<li>No limit is enforced on the depth of chained jobs, which means that you can chain one job to another job and repeat this process with each new child job to link it to a new child job. However, for Developer Edition and Trial orgs, the maximum stack depth for chained jobs is 5, which means that you can chain jobs four times and the maximum number of jobs in the chain is 5, including the initial parent queueable job.</li>
+</ul>
+<h4 id="Challenge-2"><a href="#Challenge-2" class="headerlink" title="Challenge"></a>Challenge</h4><blockquote>
+<p>Create an Queueable Apex class that inserts Contacts for Accounts.Create a Queueable Apex class that inserts the same Contact for each Account for a specific state.</p>
+</blockquote>
+<p>Create an Apex class:<br>Name: AddPrimaryContact<br>Interface: Queueable<br>Create a constructor for the class that accepts as its first argument a Contact sObject and a second argument as a string for the State abbreviation<br>The execute method must query for a maximum of 200 Accounts with the BillingState specified by the State abbreviation passed into the constructor and insert the Contact sObject record associated to each Account. Look at the sObject clone() method.</p>
+<p>Create an Apex test class:<br>Name: AddPrimaryContactTest<br>In the test class, insert 50 Account records for BillingState NY and 50 Account records for BillingState CA<br>Create an instance of the AddPrimaryContact class, enqueue the job, and assert that a Contact record was inserted for each of the 50 Accounts with the BillingState of CA</p>
+<p>The unit tests must cover all lines of code included in the AddPrimaryContact class, resulting in 100% code coverage<br>Before verifying this challenge, run your test class at least once using the Developer Console Run All feature</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AddPrimaryContact</span> <span class="keyword">implements</span> <span class="title class_">Queueable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Contact contact;</span><br><span class="line">    <span class="keyword">private</span> String state;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">AddPrimaryContact</span><span class="params">(Contact contact, String state)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.contact = contact;</span><br><span class="line">        <span class="built_in">this</span>.state = state;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">(QueueableContext context)</span>&#123;</span><br><span class="line">        List&lt;Account&gt; accounts  = [select ID, Name, (select id, FirstName, LastName from contacts) from Account <span class="type">where</span> <span class="variable">BillingState</span> <span class="operator">=</span> :state limit <span class="number">200</span> ];</span><br><span class="line">        List&lt;Contact&gt; contacts = <span class="keyword">new</span> <span class="title class_">List</span>&lt;Contact&gt;();</span><br><span class="line">        <span class="keyword">for</span> (Account account : accounts) &#123;</span><br><span class="line">            <span class="type">Contact</span> <span class="variable">temp</span> <span class="operator">=</span> contact.clone(<span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>);</span><br><span class="line">            temp.AccountId = account.Id;</span><br><span class="line">            contacts.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (contacts.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            insert contacts;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@isTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AddPrimaryContactTest</span> &#123;</span><br><span class="line">    <span class="meta">@testSetup</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setup</span><span class="params">()</span>&#123;</span><br><span class="line">        List&lt;Account&gt; accounts = <span class="keyword">new</span> <span class="title class_">List</span>&lt;Account&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">Integer</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">50</span>; i++) &#123;</span><br><span class="line">            accounts.add(<span class="keyword">new</span> <span class="title class_">Account</span>(Name=<span class="string">&#x27;NY&#x27;</span>+i, billingstate=<span class="string">&#x27;NY&#x27;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">Integer</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">50</span>; i++) &#123;</span><br><span class="line">            accounts.add(<span class="keyword">new</span> <span class="title class_">Account</span>(Name=<span class="string">&#x27;CA&#x27;</span>+i, billingstate=<span class="string">&#x27;CA&#x27;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        insert accounts;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> testmethod <span class="keyword">void</span> <span class="title function_">testQueueable</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Contact</span> <span class="variable">contact</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Contact</span>(FirstName = <span class="string">&#x27;AddPrimaryContactTest&#x27;</span>, LastName = <span class="string">&#x27;Queueable&#x27;</span>);</span><br><span class="line">        Test.startTest();</span><br><span class="line">        <span class="type">AddPrimaryContact</span> <span class="variable">addPrimaryContact</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AddPrimaryContact</span>(contact, <span class="string">&#x27;CA&#x27;</span>);</span><br><span class="line">        System.enqueueJob(addPrimaryContact);</span><br><span class="line">        Test.stopTest();</span><br><span class="line"></span><br><span class="line">        System.assertEquals(<span class="number">50</span>, [select <span class="title function_">count</span><span class="params">()</span> from Contact where AccountId <span class="title function_">in</span> <span class="params">(select Id from Account where BillingState = <span class="string">&#x27;CA&#x27;</span>)</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Schedule-Jobs-Using-the-Apex-Scheduler"><a href="#Schedule-Jobs-Using-the-Apex-Scheduler" class="headerlink" title="Schedule Jobs Using the Apex Scheduler"></a>Schedule Jobs Using the Apex Scheduler</h3><h4 id="Learning-Objectives-3"><a href="#Learning-Objectives-3" class="headerlink" title="Learning Objectives"></a>Learning Objectives</h4><p>After completing this unit, you’ll know:</p>
+<ul>
+<li>When to use scheduled Apex.</li>
+<li>How to monitor scheduled jobs.</li>
+<li>Scheduled Apex syntax.</li>
+<li>Scheduled method best practices.</li>
+</ul>
+<h4 id="Scheduled-Apex"><a href="#Scheduled-Apex" class="headerlink" title="Scheduled Apex"></a>Scheduled Apex</h4><p>The Apex Scheduler lets you delay execution so that you can run Apex classes at a specified time. This is ideal for daily or weekly maintenance tasks using Batch Apex.</p>
+<h4 id="Sample-Code-1"><a href="#Sample-Code-1" class="headerlink" title="Sample Code"></a>Sample Code</h4><p>This class queries for open opportunities that should have closed by the current date, and creates a task on each one to remind the owner to update the opportunity.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">global <span class="keyword">class</span> <span class="title class_">RemindOpptyOwners</span> <span class="keyword">implements</span> <span class="title class_">Schedulable</span> &#123;</span><br><span class="line">    global <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">(SchedulableContext ctx)</span> &#123;</span><br><span class="line">        List&lt;Opportunity&gt; opptys = [SELECT Id, Name, OwnerId, CloseDate</span><br><span class="line">            FROM Opportunity</span><br><span class="line">            <span class="type">WHERE</span> <span class="variable">IsClosed</span> <span class="operator">=</span> False AND</span><br><span class="line">            CloseDate &lt; TODAY];</span><br><span class="line">        <span class="comment">// Create a task for each opportunity in the list</span></span><br><span class="line">        TaskUtils.remindOwners(opptys);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Using-the-System-Schedule-Method"><a href="#Using-the-System-Schedule-Method" class="headerlink" title="Using the System.Schedule Method"></a>Using the System.Schedule Method</h4><p>After you implement a class with the Schedulable interface, use the System.Schedule method to execute it. The System.Schedule method uses the user’s timezone for the basis of all schedules, but runs in system mode—all classes are executed, whether or not the user has permission to execute the class.</p>
+<p>The System.Schedule method takes three arguments: a name for the job, a CRON expression used to represent the time and date the job is scheduled to run, and the name of the class.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">RemindOpptyOwners</span> <span class="variable">reminder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RemindOpptyOwners</span>();</span><br><span class="line"><span class="comment">// Seconds Minutes Hours Day_of_month Month Day_of_week optional_year</span></span><br><span class="line"><span class="type">String</span> <span class="variable">sch</span> <span class="operator">=</span> <span class="string">&#x27;20 30 8 10 2 ?&#x27;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">jobID</span> <span class="operator">=</span> System.schedule(<span class="string">&#x27;Remind Opp Owners&#x27;</span>, sch, reminder);</span><br></pre></td></tr></table></figure>
+<h4 id="Scheduling-a-Job-from-the-UI"><a href="#Scheduling-a-Job-from-the-UI" class="headerlink" title="Scheduling a Job from the UI"></a>Scheduling a Job from the UI</h4><p>You can also schedule a class using the user interface.</p>
+<ul>
+<li>From Setup, enter Apex in the Quick Find box, then select Apex Classes.</li>
+<li>Click Schedule Apex.</li>
+<li>For the job name, enter something like Daily Oppty Reminder.</li>
+<li>Click the lookup button next to Apex class and enter * for the search term to get a list of all classes that can be scheduled. In the search results, click the name of your scheduled class.</li>
+<li>Select Weekly or Monthly for the frequency and set the frequency desired.</li>
+<li>Select the start and end dates, and a preferred start time.</li>
+<li>Click Save.</li>
+</ul>
+<h4 id="Testing-Scheduled-Apex"><a href="#Testing-Scheduled-Apex" class="headerlink" title="Testing Scheduled Apex"></a>Testing Scheduled Apex</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@isTest</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">RemindOppyOwnersTest</span> &#123;</span><br><span class="line">    <span class="comment">// Dummy CRON expression: midnight on March 15.</span></span><br><span class="line">    <span class="comment">// Because this is a test, job executes</span></span><br><span class="line">    <span class="comment">// immediately after Test.stopTest().</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">CRON_EXP</span> <span class="operator">=</span> <span class="string">&#x27;0 0 0 15 3 ? 2022&#x27;</span>;</span><br><span class="line">    <span class="keyword">static</span> testmethod <span class="keyword">void</span> <span class="title function_">testScheduledJob</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// Create some out of date Opportunity records</span></span><br><span class="line">        List&lt;Opportunity&gt; opptys = <span class="keyword">new</span> <span class="title class_">List</span>&lt;Opportunity&gt;();</span><br><span class="line">        <span class="type">Date</span> <span class="variable">closeDate</span> <span class="operator">=</span> Date.today().addDays(-<span class="number">7</span>);</span><br><span class="line">        <span class="keyword">for</span> (Integer i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</span><br><span class="line">            <span class="type">Opportunity</span> <span class="variable">o</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Opportunity</span>(</span><br><span class="line">                Name = <span class="string">&#x27;Opportunity &#x27;</span> + i,</span><br><span class="line">                CloseDate = closeDate,</span><br><span class="line">                StageName = <span class="string">&#x27;Prospecting&#x27;</span></span><br><span class="line">            );</span><br><span class="line">            opptys.add(o);</span><br><span class="line">        &#125;</span><br><span class="line">        insert opptys;</span><br><span class="line">        <span class="comment">// Get the IDs of the opportunities we just inserted</span></span><br><span class="line">        Map&lt;Id, Opportunity&gt; opptyMap = <span class="keyword">new</span> <span class="title class_">Map</span>&lt;Id, Opportunity&gt;(opptys);</span><br><span class="line">        List&lt;Id&gt; opptyIds = <span class="keyword">new</span> <span class="title class_">List</span>&lt;Id&gt;(opptyMap.keySet());</span><br><span class="line">        Test.startTest();</span><br><span class="line">        <span class="comment">// Schedule the test job</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">jobId</span> <span class="operator">=</span> System.schedule(<span class="string">&#x27;ScheduledApexTest&#x27;</span>,</span><br><span class="line">            CRON_EXP,</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">RemindOpptyOwners</span>());</span><br><span class="line">        <span class="comment">// Verify the scheduled job has not run yet.</span></span><br><span class="line">        List&lt;Task&gt; lt = [SELECT Id</span><br><span class="line">            FROM Task</span><br><span class="line">            WHERE WhatId IN :opptyIds];</span><br><span class="line">        System.assertEquals(<span class="number">0</span>, lt.size(), <span class="string">&#x27;Tasks exist before job has run&#x27;</span>);</span><br><span class="line">        <span class="comment">// Stopping the test will run the job synchronously</span></span><br><span class="line">        Test.stopTest();</span><br><span class="line">        <span class="comment">// Now that the scheduled job has executed,</span></span><br><span class="line">        <span class="comment">// check that our tasks were created</span></span><br><span class="line">        lt = [SELECT Id</span><br><span class="line">            FROM Task</span><br><span class="line">            WHERE WhatId IN :opptyIds];</span><br><span class="line">        System.assertEquals(opptyIds.size(),</span><br><span class="line">            lt.size(),</span><br><span class="line">            <span class="string">&#x27;Tasks were not created&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Things-to-Remember-2"><a href="#Things-to-Remember-2" class="headerlink" title="Things to Remember"></a>Things to Remember</h4><p>Scheduled Apex has a number of items you need to be aware of (see Apex Scheduler in the Resources section for a complete list when you have time), but in general:</p>
+<ul>
+<li>You can only have 100 scheduled Apex jobs at one time and there are maximum number of scheduled Apex executions per a 24-hour period. See Execution Governors and Limits in the Resources section for details.</li>
+<li>Use extreme care if you’re planning to schedule a class from a trigger. You must be able to guarantee that the trigger won’t add more scheduled jobs than the limit.</li>
+<li>Synchronous Web service callouts are not supported from scheduled Apex. To be able to make callouts, make an asynchronous callout by placing the callout in a method annotated with @future(callout&#x3D;true) and call this method from scheduled Apex. However, if your scheduled Apex executes a batch job, callouts are supported from the batch class.</li>
+</ul>
+<h4 id="Challenge-3"><a href="#Challenge-3" class="headerlink" title="Challenge"></a>Challenge</h4><blockquote>
+<p>Create an Apex class that uses Scheduled Apex to update Lead records.Create an Apex class that implements the Schedulable interface to update Lead records with a specific LeadSource. (This is very similar to what you did for Batch Apex.)</p>
+</blockquote>
+<p>Create an Apex class:<br>Name: DailyLeadProcessor<br>Interface: Schedulable<br>The execute method must find the first 200 Leads with a blank LeadSource field and update them with the LeadSource value of Dreamforce</p>
+<p>Create an Apex test class:<br>Name: DailyLeadProcessorTest<br>In the test class, insert 200 Lead records, schedule the DailyLeadProcessor class to run and test that all Lead records were updated correctly</p>
+<p>The unit tests must cover all lines of code included in the DailyLeadProcessor class, resulting in 100% code coverage.<br>Before verifying this challenge, run your test class at least once using the Developer Console Run All feature</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DailyLeadProcessor</span> <span class="keyword">implements</span> <span class="title class_">Schedulable</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">(SchedulableContext context)</span>&#123;</span><br><span class="line">        List&lt;Lead&gt; leads = [select Id, LeadSource from Lead <span class="type">where</span> <span class="variable">LeadSource</span> <span class="operator">=</span> <span class="literal">null</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Lead lead : leads) &#123;</span><br><span class="line">            lead.LeadSource = <span class="string">&#x27;Dreamforce&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        update leads;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@isTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DailyLeadProcessorTest</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="meta">@IsTest</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">testScheduledJob</span><span class="params">()</span>&#123;</span><br><span class="line">        List&lt;Lead&gt; leads = <span class="keyword">new</span> <span class="title class_">List</span>&lt;Lead&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">Integer</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">200</span>; i++) &#123;</span><br><span class="line">            leads.add(<span class="keyword">new</span> <span class="title class_">Lead</span>(LastName = <span class="string">&#x27;Dreamforce&#x27;</span>+i, Company = <span class="string">&#x27;test&#x27;</span>+i));</span><br><span class="line">        &#125;</span><br><span class="line">        insert leads;</span><br><span class="line"></span><br><span class="line">        Map&lt;Id,Lead&gt; leadMap = <span class="keyword">new</span> <span class="title class_">Map</span>&lt;Id,Lead&gt;(leads);</span><br><span class="line">        List&lt;Id&gt; leadsId = <span class="keyword">new</span> <span class="title class_">List</span>&lt;Id&gt;(leadMap.keySet());</span><br><span class="line">        Test.startTest();</span><br><span class="line">        System.schedule(<span class="string">&#x27;DailyLeadProcessor&#x27;</span>, <span class="string">&#x27;20 30 8 10 2 ?&#x27;</span>, <span class="keyword">new</span> <span class="title class_">DailyLeadProcessor</span>());</span><br><span class="line">        Test.stopTest();</span><br><span class="line">        System.assertEquals(<span class="number">200</span>, [select <span class="title function_">count</span><span class="params">()</span> from Lead <span class="type">where</span> <span class="variable">LeadSource</span> <span class="operator">=</span> <span class="string">&#x27;Dreamforce&#x27;</span> and Id in :leadsId]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Monitor-Asynchronous-Apex"><a href="#Monitor-Asynchronous-Apex" class="headerlink" title="Monitor Asynchronous Apex"></a>Monitor Asynchronous Apex</h3><h4 id="Learning-Objectives-4"><a href="#Learning-Objectives-4" class="headerlink" title="Learning Objectives"></a>Learning Objectives</h4><ul>
+<li>After completing this unit, you’ll know:</li>
+<li>How to monitor the different types of jobs.</li>
+<li>How to use the flex queue.</li>
+</ul>
+<h4 id="Monitoring-Asynchronous-Jobs"><a href="#Monitoring-Asynchronous-Jobs" class="headerlink" title="Monitoring Asynchronous Jobs"></a>Monitoring Asynchronous Jobs</h4><p>You can monitor the status of all jobs in the Salesforce user interface. From Setup, enter Jobs in the Quick Find box, then select <strong>Apex Jobs</strong>.</p>
+<p>The Apex Jobs page shows all asynchronous Apex jobs with information about each job’s execution. The following screenshot shows one future method job and two completed batch jobs for the same Batch Apex class.</p>
+<h4 id="Monitoring-Future-Jobs"><a href="#Monitoring-Future-Jobs" class="headerlink" title="Monitoring Future Jobs"></a>Monitoring Future Jobs</h4><p>Future jobs show up on the Apex Jobs page like any other jobs. However, future jobs are not part of the flex queue currently.</p>
+<h4 id="Monitoring-Queued-Jobs-with-SOQL"><a href="#Monitoring-Queued-Jobs-with-SOQL" class="headerlink" title="Monitoring Queued Jobs with SOQL"></a>Monitoring Queued Jobs with SOQL</h4><p>To query information about your submitted job, perform a SOQL query on AsyncApexJob by filtering on the job ID that the System.enqueueJob method returns.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">AsyncApexJob</span> <span class="variable">jobInfo</span> <span class="operator">=</span> [SELECT Status, NumberOfErrors</span><br><span class="line">    FROM AsyncApexJob <span class="type">WHERE</span> <span class="variable">Id</span> <span class="operator">=</span> :jobID];</span><br></pre></td></tr></table></figure>
+
+<h4 id="Monitoring-Queue-Jobs-with-the-Flex-Queue"><a href="#Monitoring-Queue-Jobs-with-the-Flex-Queue" class="headerlink" title="Monitoring Queue Jobs with the Flex Queue"></a>Monitoring Queue Jobs with the Flex Queue</h4><p>The Apex Flex queue enables you to submit up to 100 batch jobs for execution. Any jobs that are submitted for execution are in holding status and are placed in the Apex Flex queue. Up to 100 batch jobs can be in the holding status.</p>
+<p>Jobs are processed first-in first-out—in the order in which they’re submitted. You can look at the current queue order and shuffle the queue, so that you could move an important job to the front, or less important ones to the back.</p>
+<p>When system resources become available, the system picks up the next job from the top of the Apex Flex queue and moves it to the batch job queue. The system can process up to five queued or active jobs simultaneously for each organization. The status of these moved jobs changes from Holding to Queued. Queued jobs get executed when the system is ready to process new jobs. Like other jobs, you can monitor queued jobs in the Apex Jobs page.</p>
+<h4 id="Monitoring-Scheduled-Jobs"><a href="#Monitoring-Scheduled-Jobs" class="headerlink" title="Monitoring Scheduled Jobs"></a>Monitoring Scheduled Jobs</h4><p>After an Apex job has been scheduled, you can obtain more information about it by running a SOQL query on CronTrigger. The following sample queries the number of times the job has run, and the date and time when the job is scheduled to run again. It uses a jobID variable which is returned from the System.schedule method.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">CronTrigger</span> <span class="variable">ct</span> <span class="operator">=</span> [SELECT TimesTriggered, NextFireTime FROM CronTrigger <span class="type">WHERE</span> <span class="variable">Id</span> <span class="operator">=</span> :jobID];</span><br></pre></td></tr></table></figure>
+<p>If you’re performing this query inside the execute method of your schedulable class, you can obtain the ID of the current job by calling getTriggerId on the SchedulableContext argument variable.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">global <span class="keyword">class</span> <span class="title class_">DoAwesomeStuff</span> <span class="keyword">implements</span> <span class="title class_">Schedulable</span> &#123;</span><br><span class="line">    global <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">(SchedulableContext sc)</span> &#123;</span><br><span class="line">        <span class="comment">// some awesome code</span></span><br><span class="line">        <span class="type">CronTrigger</span> <span class="variable">ct</span> <span class="operator">=</span> [SELECT TimesTriggered, NextFireTime FROM CronTrigger <span class="type">WHERE</span> <span class="variable">Id</span> <span class="operator">=</span> :sc.getTriggerId()];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You can also get the job’s name and the job’s type from the CronJobDetail record associated with the CronTrigger record. To do so, use the CronJobDetail relationship when performing a query on CronTrigger. This example retrieves the most recent CronTrigger record with the job name and type from CronJobDetail.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">CronTrigger</span> <span class="variable">job</span> <span class="operator">=</span> [SELECT Id, CronJobDetail.Id, CronJobDetail.Name, CronJobDetail.JobType FROM CronTrigger ORDER BY CreatedDate DESC LIMIT <span class="number">1</span>];</span><br></pre></td></tr></table></figure>
+<p>Alternatively, you can query CronJobDetail directly to get the job’s name and type. The following example gets the job’s name and type for the CronTrigger record queried in the previous example. The corresponding CronJobDetail record ID is obtained by the CronJobDetail.Id expression on the CronTrigger record.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">CronJobDetail</span> <span class="variable">ctd</span> <span class="operator">=</span> [SELECT Id, Name, JobType FROM CronJobDetail <span class="type">WHERE</span> <span class="variable">Id</span> <span class="operator">=</span> :job.CronJobDetail.Id];</span><br></pre></td></tr></table></figure>
+<p>And lastly, to obtain the total count of all Apex scheduled jobs, excluding all other scheduled job types, perform the following query. Note the value ‘7’ is specified for the job type, which corresponds to the scheduled Apex job type. See CronJobDetail in the Resources section for a list of all types.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT <span class="title function_">COUNT</span><span class="params">()</span> FROM CronTrigger WHERE CronJobDetail.JobType = <span class="string">&#x27;7’</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Quiz"><a href="#Quiz" class="headerlink" title="Quiz"></a>Quiz</h4><blockquote>
+<p>What type of jobs do not show up in the Apex Flex Queue.</p>
+</blockquote>
+<p>Future Method Jobs</p>
+<blockquote>
+<p>Which statement is true regarding the Flex Queue.</p>
+</blockquote>
+<p>Jobs are processed first-in first-out.</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Salesforce" >
+    <span class="tag-code">Salesforce</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/04/09/offer/">
+        <span class="nav-arrow">← </span>
+        
+          剑指offer刷题记录（20210416 更新/28）
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2021/07/08/kafka/">
+        
+          Apache Kafka Notes(2021/07/08 updated 1/9)
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Asynchronous-Apex"><span class="toc-nav-text">Asynchronous Apex</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Use-Future-Methods"><span class="toc-nav-text">Use Future Methods</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Learning-Objectives"><span class="toc-nav-text">Learning Objectives</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Future-Apex"><span class="toc-nav-text">Future Apex</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Future-Method-Syntax"><span class="toc-nav-text">Future Method Syntax</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Sample-Callout-Code"><span class="toc-nav-text">Sample Callout Code</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Test-Classes"><span class="toc-nav-text">Test Classes</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Best-Practices"><span class="toc-nav-text">Best Practices</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Things-to-Remember"><span class="toc-nav-text">Things to Remember</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Challenge"><span class="toc-nav-text">Challenge</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Use-Batch-Apex"><span class="toc-nav-text">Use Batch Apex</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Learning-Objectives-1"><span class="toc-nav-text">Learning Objectives</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Batch-Apex"><span class="toc-nav-text">Batch Apex</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Batch-Apex-Syntax"><span class="toc-nav-text">Batch Apex Syntax</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Invoking-a-Batch-Class"><span class="toc-nav-text">Invoking a Batch Class</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Using-State-in-Batch-Apex"><span class="toc-nav-text">Using State in Batch Apex</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Sample-Batch-Apex-Code"><span class="toc-nav-text">Sample Batch Apex Code</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Testing-Batch-Apex"><span class="toc-nav-text">Testing Batch Apex</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Challenge-1"><span class="toc-nav-text">Challenge</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Control-Processes-with-Queueable-Apex"><span class="toc-nav-text">Control Processes with Queueable Apex</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Learning-Objectives-2"><span class="toc-nav-text">Learning Objectives</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Queueable-Apex"><span class="toc-nav-text">Queueable Apex</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Queueable-Versus-Future"><span class="toc-nav-text">Queueable Versus Future</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Sample-Code"><span class="toc-nav-text">Sample Code</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Testing-Queueable-Apex"><span class="toc-nav-text">Testing Queueable Apex</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Chaining-Jobs"><span class="toc-nav-text">Chaining Jobs</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Things-to-Remember-1"><span class="toc-nav-text">Things to Remember</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Challenge-2"><span class="toc-nav-text">Challenge</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Schedule-Jobs-Using-the-Apex-Scheduler"><span class="toc-nav-text">Schedule Jobs Using the Apex Scheduler</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Learning-Objectives-3"><span class="toc-nav-text">Learning Objectives</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Scheduled-Apex"><span class="toc-nav-text">Scheduled Apex</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Sample-Code-1"><span class="toc-nav-text">Sample Code</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Using-the-System-Schedule-Method"><span class="toc-nav-text">Using the System.Schedule Method</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Scheduling-a-Job-from-the-UI"><span class="toc-nav-text">Scheduling a Job from the UI</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Testing-Scheduled-Apex"><span class="toc-nav-text">Testing Scheduled Apex</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Things-to-Remember-2"><span class="toc-nav-text">Things to Remember</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Challenge-3"><span class="toc-nav-text">Challenge</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Monitor-Asynchronous-Apex"><span class="toc-nav-text">Monitor Asynchronous Apex</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Learning-Objectives-4"><span class="toc-nav-text">Learning Objectives</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Monitoring-Asynchronous-Jobs"><span class="toc-nav-text">Monitoring Asynchronous Jobs</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Monitoring-Future-Jobs"><span class="toc-nav-text">Monitoring Future Jobs</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Monitoring-Queued-Jobs-with-SOQL"><span class="toc-nav-text">Monitoring Queued Jobs with SOQL</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Monitoring-Queue-Jobs-with-the-Flex-Queue"><span class="toc-nav-text">Monitoring Queue Jobs with the Flex Queue</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Monitoring-Scheduled-Jobs"><span class="toc-nav-text">Monitoring Scheduled Jobs</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Quiz"><span class="toc-nav-text">Quiz</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2021/06/21/lendi-salesforce/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

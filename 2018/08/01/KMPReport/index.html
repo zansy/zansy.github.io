@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      KMP 字符串模式匹配算法小解 | Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>KMP 字符串模式匹配算法小解</h2>
+  <p class="post-date">2018-08-01</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>Knuth-Morris-Pratt字符串查找算法（简称为KMP算法）可在一个主文本字符串 S 内查找一个词 W 的出现位置。</p>
+<span id="more"></span>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在主字符串中找到模式串的定位，如在主串<code>a c a b a a b a a b c a c a a b c</code>中找到模式串<code>a b a a b c</code>的定位。简单暴力的方法就是从拿模式串的第一位 <code>a</code> 开始和主串的每一位试，试中了就拿模式串第二位第三位接着试，直到全部吻合为止。现在可以给出其简便代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int index(String Source, String Pattern, int Position)&#123;</span><br><span class="line">//返回子串Pattern 在主串Source 中第Position个字符之后的位置，若不存在，则函数值为0</span><br><span class="line">	int Source_index=Position; int Pattern_index=1;</span><br><span class="line">	while(Source_index &lt;= StrLength(Source) &amp;&amp; Pattern_index &lt;= StrLength(Pattern))&#123;</span><br><span class="line">		if(Source[Source_index] == Pattern(Pattern_index))&#123;</span><br><span class="line">			++Source_index; ++Pattern_index;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			Source_index = Source_index-Pattern_index+2;</span><br><span class="line">			Pattern_index = 1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(Pattern_index &gt; StrLength(Pattern)) return Source_index-StrLenth(Pattern);</span><br><span class="line">	else return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h3><p>目前存在的问题是一位一位比较效率过低，这里介绍 KMP 算法，此算法可以在 <code>O(n+m)</code>的时间数量级上完成串的模式匹配操作。其改进在于：<code>每当一趟匹配过程中出现字符比较不等时，不需回溯指针，而是利用已经得到的部分匹配的结果将模式向右滑动尽可能远的一段距离后，继续进行比较。</code></p>
+<p>以问题的例子来说，在第三趟匹配中：<br><img src="/images/pasted-11.png" alt="第三趟和第四趟匹配"></p>
+<p>模式串第6位在比较主串第8位的时候出现了不匹配。事实上是可以跳过模式串第1位继续和主串第4位的比较，而直接将模式串右移，进行模式串第3位与主串第8位的比较。</p>
+<p>那么在比较到模式串不匹配位置的时候，进行右移多少合适呢？我们可以明显了解到，在一个模式串中，每一位出现不匹配右移的位数都不相同，这里我们可以想到用一个数组来表示存储每一位不匹配时右移的位数，其索引就是不匹配的位置。</p>
+<p>在KMP算法中，最核心的部分就是进行右移数组的计算。而<code>这个数组的计算和主串无关，只与模式串有关</code>，因为它的目的是为了减少比较次数，即需要找到模式串中与不匹配位置相同的其他位置。这句话可能因为我表述不足会引起误解，我举例：在上图第三趟匹配中，模式串第6位c不匹配，我们需要倒回去看第5位，第5位是b，纵览前面的部分，可以看到模式串第2位也是b，那么我们其实可以将其右移5-2&#x3D;3位，因为前2位都已经比较过了，那么我们直接比较模式串的第3位，拿它和主串之前和第6位c不匹配的地方继续进行比较。这样可以得到右移数组第6位&#x3D;3，即在模式串第6位（这里是c）出现不匹配的时候需要进行右移3位的操作。</p>
+<p>我这里有一种简便方式计算next数组的方法，或许会对KMP算法有一个更好的了解：<br><img src="/images/pasted-12.png" alt="简便计算右移数组步骤"><br>它的步骤其实就是我上述的思想。在每一位中进行思考——前面部分中有没有和自己部分相同的地方，即前后缀是否相同。相同的话可以在这一部分匹配失败的时候，直接从前一部分拿来继续匹配，简化了一位一位比较的操作。</p>
+<p>这里给出改进后的KMP算法和右移数组的计算：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">int index_kmp(String Source, String Pattern, int Position)&#123;</span><br><span class="line">	int Source_index = Position; int Pattern_index = 1;</span><br><span class="line">	while(Source_index &lt;= StrLength(Source) &amp;&amp; Pattern_index &lt;= StrLength(Pattern))&#123;</span><br><span class="line">		if(Pattern_index == 0 || Source[Source_index] == Pattern[Pattern_index])&#123;</span><br><span class="line">			++Source_index; ++Pattern_index;</span><br><span class="line">		&#125;</span><br><span class="line">		else Pattern_index = next[Pattern_index];//改动处</span><br><span class="line">	&#125;</span><br><span class="line">	if(Pattern_index &gt; StrLength(Pattern)) return Source_index-StrLenth(Pattern);</span><br><span class="line">	else return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void get_next(String Pattern, int next[])&#123;</span><br><span class="line">	int index=1; next[1]=0; int flag=0;</span><br><span class="line">	while(index &lt; StrLength(Pattern))&#123;</span><br><span class="line">		if(flag == 0 || Pattern[index] == Pattern[flag])&#123;</span><br><span class="line">			++index; ++flag; next[index]=flag;</span><br><span class="line">		&#125;else flag=next[flag];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#小结" >
+    <span class="tag-code">小结</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018/07/01/MaxComputeNote/">
+        <span class="nav-arrow">← </span>
+        
+          大数据计算服务 MaxCompute（原名ODPS）
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018/08/09/readODPSInformationByAPI/">
+        
+          通过接口读取生成存储 ODPS 上信息
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-nav-text">问题</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%94%B9%E8%BF%9B"><span class="toc-nav-text">改进</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2018/08/01/KMPReport/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

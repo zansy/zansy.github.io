@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Algorithms-Part1(last update:2019.06.28) | Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Algorithms-Part1(last update:2019.06.28)</h2>
+  <p class="post-date">2019-06-08</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>Notes from <a target="_blank" rel="noopener" href="https://www.coursera.org/learn/algorithms-part1/">https://www.coursera.org/learn/algorithms-part1/</a></p>
+<span id="more"></span>
+
+<h1 id="Union-Find"><a href="#Union-Find" class="headerlink" title="Union-Find"></a>Union-Find</h1><ul>
+<li>Apply the union-find data type to solve problems in science, engineering, and industry.</li>
+<li>Define the union-find (or disjoint sets) data type.</li>
+<li>Compare the performance of different algorithms for the union-find data type.</li>
+<li>Design different algorithms (quick find, quick union, weighted quick union, path compression) for the union-find data type.</li>
+<li>Develop Java implementations of different algorithms for the union-find data type.</li>
+<li>Use the parent-link representation to represent tree data structures.</li>
+</ul>
+<h2 id="Quick-Find"><a href="#Quick-Find" class="headerlink" title="Quick Find"></a>Quick Find</h2><ul>
+<li><p>an algorithm for solving <em>the dynamic connectivity problem</em>, called <strong>Quick-find</strong>. </p>
+</li>
+<li><p>Data structure: </p>
+<ul>
+<li>Integer array id[] of length N. With each entry equal to its index.</li>
+<li>Interpretation: p and q are connected iff they have the same id.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20190608222745616.png" alt="0, 5 and 6 are connected"></p>
+<ul>
+<li><strong>Find</strong>: Check if p and q have the same id.</li>
+<li><strong>Union</strong>: To merge components containing p and q, <font color = "red">change all entries whose id equals id[p] to id[q]</font>.</li>
+</ul>
+<h3 id="Java-implementation"><a href="#Java-implementation" class="headerlink" title="Java implementation:"></a>Java implementation:</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">QuickFindUF</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[] id;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">QuickFindUF</span><span class="params">(<span class="type">int</span> N)</span></span><br><span class="line">    &#123;</span><br><span class="line">        id = <span class="keyword">new</span> <span class="title class_">int</span>[N];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">            id[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">connected</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> q)</span></span><br><span class="line">    &#123; <span class="keyword">return</span> id[p] == id[q]; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">union</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> q)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">pid</span> <span class="operator">=</span> id[p];</span><br><span class="line">        <span class="type">int</span> <span class="variable">qid</span> <span class="operator">=</span> id[q];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; id.length; i++)</span><br><span class="line">            <span class="keyword">if</span> (id[i] == pid) id[i] = qid;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><font color = 'red'>Quick-find defect</font>:<ul>
+<li>Union too expensive (N array accesses).</li>
+<li>Trees are flat, but too expensive to keep them flat.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Quick-Union"><a href="#Quick-Union" class="headerlink" title="Quick Union"></a>Quick Union</h2><ul>
+<li>Quick Find is too slow for huge problems. <strong>Quick-union</strong> is an alternative.</li>
+<li>Data structure.<ul>
+<li>Integer array id[] of length N.</li>
+<li>Interpretation: id[i] is parent of i.</li>
+<li>Root of i is id[id[id[…id[i]…]]].(keep going until it doesn’t change)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20190608224811928.png" alt="root of 3 is 9"></p>
+<ul>
+<li><strong>Find</strong>. Check if p and q have the same root.</li>
+<li><strong>Union</strong>. To merge components containing p and q, <font color = 'red'>set the id of p’s root to the id of q’s root</font>.</li>
+</ul>
+<h3 id="Java-implementation-1"><a href="#Java-implementation-1" class="headerlink" title="Java implementation"></a>Java implementation</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">QuickUnionUF</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[] id;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">QuickUnionUF</span><span class="params">(<span class="type">int</span> N)</span> &#123;</span><br><span class="line">        id = <span class="keyword">new</span> <span class="title class_">int</span>[N];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; N; i++) id[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">root</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (i != id[i]) i = id[i];</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">connected</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> q)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> root(p) == root(q);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">union</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> q)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> root(p);</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> root(q);</span><br><span class="line">        id[i] = j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><font color = 'red'>Quick-union defect</font>:<ul>
+<li>Trees can get tall.</li>
+<li>Find too expensive (could be N array accesses).</li>
+</ul>
+</li>
+</ul>
+<h2 id="Quick-Union-Improvements"><a href="#Quick-Union-Improvements" class="headerlink" title="Quick-Union Improvements"></a>Quick-Union Improvements</h2><h3 id="Improvement-1-weighting"><a href="#Improvement-1-weighting" class="headerlink" title="Improvement 1: weighting"></a>Improvement 1: weighting</h3><ul>
+<li>Weighted quick-union:<ul>
+<li>Modify quick-union to avoid tall trees.</li>
+<li>Keep track of size of each tree (number of objects).</li>
+<li>Balance by linking root of smaller tree to root of larger tree.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20190619143633671.png" alt="weighted"></p>
+<ul>
+<li><p><strong>Data structure</strong>: Same as quick-union, but <font color = "red">maintain extra array sz[i] to count number of objects in the tree rooted at i</font>.</p>
+</li>
+<li><p><strong>Find</strong>. Identical to quick-union <code>return root(p) == root(q);</code></p>
+</li>
+<li><p><strong>Union</strong>. Modify quick-union to:</p>
+<ul>
+<li>Link root of smaller tree to root of larger tree.</li>
+<li>Update the sz[] array.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> root(p);</span><br><span class="line"><span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> root(q);</span><br><span class="line"><span class="keyword">if</span> (i == j) <span class="keyword">return</span>;</span><br><span class="line"><span class="keyword">if</span> (sz[i] &lt; sz[j]) &#123; id[i] = j; sz[j] += sz[i]; &#125;</span><br><span class="line"><span class="keyword">else</span> &#123; id[j] = i; sz[i] += sz[j]; &#125; </span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>Proposition</strong>. Depth of any node x is at most <strong>lg N</strong>.</p>
+</li>
+</ul>
+<h3 id="Improvement-2-path-compression"><a href="#Improvement-2-path-compression" class="headerlink" title="Improvement 2: path compression"></a>Improvement 2: path compression</h3><ul>
+<li><strong>Quick union with path compression</strong>. Just after computing the root of p, set the id of each examined node to point to that root.</li>
+</ul>
+<p><img src="/images/image-20190619163705844.png" alt="before"></p>
+<p><img src="/images/image-20190619163733989.png" alt="after"></p>
+<ul>
+<li><strong>Two-pass implementation</strong>: <font color = 'red'>add second loop to root() to set the id[] of each examined node to the root</font>.</li>
+<li><strong>Simpler one-pass variant</strong>: Make every other node in path point to its<font color = 'red'> grandparent (thereby halving path length)</font>.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="type">int</span> <span class="title function_">root</span><span class="params">(<span class="type">int</span> i)</span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (i != id[i])&#123;</span><br><span class="line">    id[i] = id[id[i]];</span><br><span class="line">    i = id[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>It’s amazing fact that was eventually proved by Friedman and Sachs, that <em>there is no linear time algorithm for the union find problem</em>. But <strong>weighted quick union with path compression</strong> in practice is close enough that it’s going to enable the solution of huge problems.</li>
+</ul>
+<h2 id="Union-find-applications"><a href="#Union-find-applications" class="headerlink" title="Union-find applications"></a>Union-find applications</h2><ul>
+<li>Percolation: A model for many physical systems:<ul>
+<li>N-by-N grid of sites.</li>
+<li>Each site is open with probability p (or blocked with probability 1 – p).</li>
+<li>System percolates <u>iff top and bottom are connected by open sites</u>.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20190620022258204.png" alt="Percolation"></p>
+<ul>
+<li><p>Monte Carlo simulation:</p>
+<ul>
+<li>Initialize N-by-N whole grid to be blocked.</li>
+<li>Declare random sites open until top connected to bottom.</li>
+<li>Vacancy percentage estimates p*.</li>
+</ul>
+</li>
+<li><p>Dynamic connectivity solution to estimate percolation threshold:</p>
+<ul>
+<li>Create an object for each site and name them 0 to N 2 – 1.</li>
+<li>Sites are in same component if connected by open sites.</li>
+<li>Percolates iff any site on bottom row is connected to site on top row. (<font color = 'red'>brute-force algorithm: N<sup>2</sup> calls to connected()</font>)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20190620022753355.png" alt="check whether an N-by-N system percolates"></p>
+<ul>
+<li>UPDATE: <strong>Introduce 2 virtual sites</strong> (and connections to top and bottom). Percolates iff virtual top site is connected to virtual bottom site. (<font color ='red'>efficient algorithm: only 1 call to connected()</font>)</li>
+</ul>
+<p><img src="/images/image-20190620023043451.png" alt="Clever trick"></p>
+<blockquote>
+<p>Q. How to model opening a new site?<br>A. Mark new site as open; connect it to all of its adjacent open sites. (<font color = 'red'>up to 4 calls to union()</font>)</p>
+</blockquote>
+<p><img src="/images/image-20190620023248968.png" alt="opening a new site"></p>
+<p>##QUIZ</p>
+<h3 id="1-Social-network-connectivity"><a href="#1-Social-network-connectivity" class="headerlink" title="1. Social network connectivity."></a>1. Social network connectivity.</h3><p>Given a social network containing n members and a log file containing m timestamps at which times pairs of members formed friendships, design an algorithm to determine the earliest time at which all members are connected (i.e., every member is a friend of a friend of a friend … of a friend). Assume that the log file is sorted by timestamp and that friendship is an equivalence relation. The running time of your algorithm should be mlogn or better and use extra space proportional to n.</p>
+<hr>
+<p><em>Hint:</em> union−find.</p>
+<h3 id="2-Union-find-with-specific-canonical-element"><a href="#2-Union-find-with-specific-canonical-element" class="headerlink" title="2. Union-find with specific canonical element."></a>2. Union-find with specific canonical element.</h3><p>Add a method 𝚏𝚒𝚗𝚍() to the union-find data type so that 𝚏𝚒𝚗𝚍(𝚒) returns the largest element in the connected component containing <em>i</em>. The operations, 𝚞𝚗𝚒𝚘𝚗(), 𝚌𝚘𝚗𝚗𝚎𝚌𝚝𝚎𝚍(), and 𝚏𝚒𝚗𝚍() should all take logarithmic time or better.</p>
+<p>For example, if one of the connected components is {1, 2, 6, 9}, then the 𝚏𝚒𝚗𝚍() method should return 9 for each of the four elements in the connected components.</p>
+<hr>
+<p><em>Hint:</em> maintain an extra array to the weighted quick-union data structure that stores for each root 𝚒 the large element in the connected component containing 𝚒.</p>
+<h3 id="3-Successor-with-delete"><a href="#3-Successor-with-delete" class="headerlink" title="3. Successor with delete."></a>3. Successor with delete.</h3><p>Given a set of n<em>n</em> integers S &#x3D; { 0, 1, … , n-1 } and a sequence of requests of the following form:</p>
+<ul>
+<li>Remove x from S</li>
+<li>Find the <em>successor</em> of x: the smallest y in S such that <em>y</em> ≥ <em>x</em>.</li>
+</ul>
+<p>design a data type so that all operations (except construction) take logarithmic time or better in the worst case.</p>
+<hr>
+<p><em>Hint:</em> use the modification of the union−find data discussed in the previous question.</p>
+<h1 id="Stacks-and-Queues"><a href="#Stacks-and-Queues" class="headerlink" title="Stacks and Queues"></a>Stacks and Queues</h1><h2 id="Stacks"><a href="#Stacks" class="headerlink" title="Stacks"></a>Stacks</h2><h3 id="linked-list-implementation"><a href="#linked-list-implementation" class="headerlink" title="linked-list implementation"></a>linked-list implementation</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//inner class</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">Node</span>&#123;</span><br><span class="line">  String item;</span><br><span class="line">  Node next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Stack pop</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">pop</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="type">String</span> <span class="variable">item</span> <span class="operator">=</span> first.item;</span><br><span class="line">  first = first.next;</span><br><span class="line">  <span class="keyword">return</span> item;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Stack push</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">push</span><span class="params">(String item)</span>&#123;</span><br><span class="line">  <span class="type">Node</span> <span class="variable">oldfirst</span> <span class="operator">=</span> first;</span><br><span class="line">  first = <span class="keyword">new</span> <span class="title class_">Node</span>();</span><br><span class="line">  first.item = item;</span><br><span class="line">  first.next = oldfirst;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20190626140827899.png" alt="Stack push-linked-list implementation"></p>
+<h3 id="array-implementation"><a href="#array-implementation" class="headerlink" title="array implementation"></a>array implementation</h3><ul>
+<li><p><strong>push()</strong>: add new item at s[N].</p>
+</li>
+<li><p><strong>pop()</strong>: remove item from s[N-1].</p>
+</li>
+</ul>
+<p><img src="/images/image-20190626141049901.png" alt="Use array s[] to store N items on stack"></p>
+<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><h3 id="linked-list-implementation-1"><a href="#linked-list-implementation-1" class="headerlink" title="linked-list implementation"></a>linked-list implementation</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//inner class</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">class</span> <span class="title class_">Node</span>&#123;</span><br><span class="line">  String item;</span><br><span class="line">  Node next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>enqueue</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">enqueue</span><span class="params">(String item)</span>&#123;</span><br><span class="line">  <span class="type">Node</span> <span class="variable">oldlast</span> <span class="operator">=</span> last;</span><br><span class="line">  last = <span class="keyword">new</span> <span class="title class_">Node</span>();</span><br><span class="line">  last.item = item;</span><br><span class="line">  last.next = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">if</span> (isEmpty()) first = last;</span><br><span class="line">  <span class="keyword">else</span> oldlast.next = last;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>dequeue</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> String <span class="title function_">dequeue</span><span class="params">()</span>&#123;</span><br><span class="line">  <span class="type">String</span> <span class="variable">item</span> <span class="operator">=</span> first.item;</span><br><span class="line">  first = first.next;</span><br><span class="line">  <span class="keyword">if</span> (isEmpty()) last = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> item;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="resizing-array-implementation"><a href="#resizing-array-implementation" class="headerlink" title="resizing array implementation"></a>resizing array implementation</h3><ul>
+<li>Use array q[] to store items in queue.</li>
+<li><strong>enqueue():</strong> add new item at q[tail].</li>
+<li><strong>dequeue():</strong> remove item from q[head].</li>
+<li>Update head and tail modulo the capacity.</li>
+<li>Add resizing array.</li>
+</ul>
+<h2 id="applications"><a href="#applications" class="headerlink" title="applications"></a>applications</h2><ul>
+<li>Stack applications<ul>
+<li>Parsing in a compiler.</li>
+<li>Java virtual machine.</li>
+<li>Undo in a word processor.</li>
+<li>Back button in a Web browser.</li>
+<li>PostScript language for printers.</li>
+<li>Implementing function calls in a compiler.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Evaluate-infix-expressions"><a href="#Evaluate-infix-expressions" class="headerlink" title="Evaluate infix expressions"></a>Evaluate infix expressions</h3><ul>
+<li><strong>Two-stack algorithm</strong>. [E. W. Dijkstra]<ul>
+<li>Value: push onto the<u> value stack</u>.</li>
+<li>Operator: push onto the<u> operator stack</u>.</li>
+<li><font color = 'red'>Left parenthesis: ignore</font>.</li>
+<li>Right parenthesis: <font color = 'red'>pop operator and two values; push the result</font> of applying that operator to those values onto the operand stack</li>
+</ul>
+</li>
+</ul>
+<p><img src="/images/image-20190627132425839.png" alt="Arithmetic expression evaluation"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Evaluate</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        Stack&lt;String&gt; ops = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;String&gt;();</span><br><span class="line">        Stack&lt;Double&gt; vals = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;Double&gt;();</span><br><span class="line">        <span class="keyword">while</span> (!StdIn.isEmpty()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> StdIn.readString();</span><br><span class="line">            <span class="keyword">if</span> (s.equals(<span class="string">&quot;(&quot;</span>)) ;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s.equals(<span class="string">&quot;+&quot;</span>)) ops.push(s);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s.equals(<span class="string">&quot;*&quot;</span>)) ops.push(s);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (s.equals(<span class="string">&quot;)&quot;</span>))&#123;</span><br><span class="line">                <span class="type">String</span> <span class="variable">op</span> <span class="operator">=</span> ops.pop();</span><br><span class="line">                <span class="keyword">if</span> (op.equals(<span class="string">&quot;+&quot;</span>)) vals.push(vals.pop() + vals.pop());</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (op.equals(<span class="string">&quot;*&quot;</span>)) vals.push(vals.pop() * vals.pop());</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> vals.push(Double.parseDouble(s));</span><br><span class="line">        &#125;</span><br><span class="line">        StdOut.println(vals.pop());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Elementary-Sorts"><a href="#Elementary-Sorts" class="headerlink" title="Elementary Sorts"></a>Elementary Sorts</h1><h2 id="selection-sort"><a href="#selection-sort" class="headerlink" title="selection sort"></a>selection sort</h2><ul>
+<li>selection sort<ul>
+<li>In iteration i, find index min of <font color ='red'>smallest remaining</font> entry.</li>
+<li><font color = 'red'>Swap</font> a[i] and a[min].</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; N; i++)&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">min</span> <span class="operator">=</span> i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i+<span class="number">1</span>; j &lt; N; j++)</span><br><span class="line">        <span class="keyword">if</span> (less(a[j], a[min])) min = j;</span><br><span class="line">    exch(a, i, min);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20190628002123641.png" alt="Selection sort"></p>
+<p>根据位置 在数集合中找位置对应的数放入</p>
+<ul>
+<li>Running time <strong>insensitive to input</strong>: <font color = 'green'>Quadratic time, even if input is sorted</font>.</li>
+<li>Data movement is minimal: <u>Linear number of exchanges</u>.</li>
+</ul>
+<h2 id="insertion-sort"><a href="#insertion-sort" class="headerlink" title="insertion sort"></a>insertion sort</h2><ul>
+<li>insertion sort: In iteration i, swap a[i] with each larger entry to its left.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(Comparable[] a)</span>&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> a.length;</span><br><span class="line">    <span class="comment">//Moving from right to left, exchange a[i] with each larger entry to its left.</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &gt; <span class="number">0</span>; j--)</span><br><span class="line">            <span class="keyword">if</span> (less(a[j], a[j-<span class="number">1</span>]))</span><br><span class="line">                exch(a, j, j-<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/image-20190628002833173.png" alt="Insertion sort"></p>
+<p>一个不断扩张的有序数列</p>
+<ul>
+<li><strong>Best case.</strong> If <em>the array is in ascending order</em>, insertion sort makes N- 1 compares and 0 exchanges.</li>
+<li><strong>Worst case.</strong> If <em>the array is in descending order</em> (and no duplicates), insertion sort makes ~ ½ N<sup>2</sup> compares and ~ ½ N<sup>2</sup> exchanges.</li>
+</ul>
+<h2 id="shell-sort"><a href="#shell-sort" class="headerlink" title="shell sort"></a>shell sort</h2><ul>
+<li>Shell sort: Move entries more than one position at a time by h-sorting the array.</li>
+</ul>
+<p><img src="/images/image-20190628005206715.png" alt="an h-sorted array is h interleaved sorted subsequences"></p>
+<p><img src="/images/image-20190628172255771.png" alt="Shellsort example: increments 7, 3, 1"></p>
+<blockquote>
+<p>finding <strong>the best increment sequence</strong> is a research problem that has confounded people for quite a long time.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(Comparable[] a)</span>&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> a.length;</span><br><span class="line">    <span class="type">int</span> <span class="variable">h</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (h &lt; N/<span class="number">3</span>) h = <span class="number">3</span>*h + <span class="number">1</span>; <span class="comment">// 1, 4, 13, 40, 121, 364, ...</span></span><br><span class="line">    <span class="keyword">while</span> (h &gt;= <span class="number">1</span>)&#123; <span class="comment">// h-sort the array.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> h; i &lt; N; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &gt;= h &amp;&amp; less(a[j], a[j-h]); j -= h)</span><br><span class="line">                exch(a, j, j-h);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        h = h/<span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>跳着比较和调整，每次缩小间隔，直到完全有序</p>
+<blockquote>
+<p>We have to do a few extra passes to do the higher sorts but <u>the each element moves only a little bit on each path</u> and that’s how Shellsort gains its <strong>efficiency</strong>.(subquadratic)</p>
+</blockquote>
+<h2 id="Shuffling"><a href="#Shuffling" class="headerlink" title="Shuffling"></a>Shuffling</h2><ul>
+<li>suppose you have a deck of cards, one of the things that you might want to try to do is to <u>simply rearrange those cards into random order</u>, that’s called <strong>shuffling</strong>.</li>
+<li>Knuth shuffle<ul>
+<li>In iteration i, pick integer r between 0 and i uniformly at random.</li>
+<li>Swap a[i] and a[r].</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">shuffle</span><span class="params">(Object[] a)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> a.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">r</span> <span class="operator">=</span> StdRandom.uniform(i + <span class="number">1</span>);</span><br><span class="line">        exch(a, i, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>it’s key that the uniform random number be <strong>between 0 and i - 1</strong>.</p>
+</blockquote>
+<p>每拿到一张牌，随机插入已有的牌中。</p>
+<h2 id="Convex-hull"><a href="#Convex-hull" class="headerlink" title="Convex hull"></a>Convex hull</h2><ul>
+<li>The <strong>convex hull</strong> of a set of N points is <u>the smallest perimeter fence enclosing the points</u>.</li>
+</ul>
+<p><img src="/images/image-20190628123254775.png" alt="Smallest convex set containing all the points"></p>
+<h3 id="application-motion-planning"><a href="#application-motion-planning" class="headerlink" title="application: motion planning"></a>application: motion planning</h3><p><strong>Robot motion planning.</strong> Find shortest path in the plane from s to t that avoids a polygonal obstacle.</p>
+<p><img src="/images/image-20190628124013060.png" alt="Robot motion planning"></p>
+<p>Shortest path is either straight line from s to t or it is one of two polygonal chains of convex hull.</p>
+<h3 id="application-farthest-pair"><a href="#application-farthest-pair" class="headerlink" title="application: farthest pair"></a>application: farthest pair</h3><p><strong>Farthest pair problem.</strong> Given N points in the plane, find a pair of points with <u>the largest Euclidean distance between them</u>.</p>
+<p><img src="/images/image-20190628124429239.png" alt="Farthest pair problem"></p>
+<p>Farthest pair of points are extreme points on convex hull.</p>
+<h3 id="Graham-scan"><a href="#Graham-scan" class="headerlink" title="Graham scan"></a>Graham scan</h3><ul>
+<li><p>Graham scan</p>
+<ul>
+<li>Choose point p with <u>smallest y-coordinate</u>.(Define a <strong>total order</strong>, comparing by y-coordinate.)</li>
+<li><u>Sort points</u> by <em>polar angle with p</em>.(Define a total order for each point p.)</li>
+<li>Consider points in order; discard unless it create a <font color = 'red'>counterclockwise turn</font>.</li>
+</ul>
+</li>
+<li><p>Given three points a, b, and c, is a → b→ c a counterclockwise turn? equals to <strong>is c to the left of the ray a→b ?</strong></p>
+</li>
+</ul>
+<p><img src="/images/image-20190628131155088.png" alt="Implementing ccw"></p>
+<p><img src="/images/image-20190628132255947.png" alt="Determinant gives 2x signed area of planar triangle."></p>
+<ul>
+<li>(b<sub>x</sub> − a<sub>x</sub> )(c<sub>y</sub> − a<sub>y</sub> ) − (b<sub>y</sub> − a<sub>y</sub> )(c<sub>x</sub> − a<sub>x</sub> )    <code>(b - a) × (c - a)</code><ul>
+<li>If signed area &gt; 0, then a→ b→ c is counterclockwise.</li>
+<li>If signed area &lt; 0, then a→ b→ c is clockwise.</li>
+<li>If signed area &#x3D; 0, then a→ b→ c are collinear.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">ccw</span><span class="params">(Point2D a, Point2D b, Point2D c)</span>&#123;</span><br><span class="line">    <span class="type">double</span> <span class="variable">area2</span> <span class="operator">=</span> (b.x-a.x)*(c.y-a.y) - (b.y-a.y)*(c.x-a.x);</span><br><span class="line">    <span class="keyword">if</span> (area2 &lt; <span class="number">0</span>) <span class="keyword">return</span> -<span class="number">1</span>; <span class="comment">// clockwise</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (area2 &gt; <span class="number">0</span>) <span class="keyword">return</span> +<span class="number">1</span>; <span class="comment">// counter-clockwise</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// collinear</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Mergesort"><a href="#Mergesort" class="headerlink" title="Mergesort"></a>Mergesort</h1><h2 id="Mergesort-1"><a href="#Mergesort-1" class="headerlink" title="Mergesort"></a>Mergesort</h2><ul>
+<li><p>Basic plan.</p>
+<ul>
+<li>Divide array into two halves.</li>
+<li><font color = 'red'>Recursively</font> sort each half.</li>
+<li>Merge two halves.</li>
+</ul>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://visualgo.net/en/sorting">Mergesort</a></p>
+</li>
+<li><p>Goal. Given two <strong>sorted subarrays</strong> a[lo] to a[mid] and a[mid+1] to a[hi], replace with sorted subarray a[lo] to a[hi].</p>
+</li>
+</ul>
+<p><img src="/images/image-20190702004539414.png" alt="two sorted subarrays"></p>
+<h3 id="Java-implementation-Merging"><a href="#Java-implementation-Merging" class="headerlink" title="Java implementation (Merging)"></a>Java implementation (Merging)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(Comparable[] a, Comparable[] aux, <span class="type">int</span> lo, <span class="type">int</span> mid, <span class="type">int</span> hi)</span> &#123;</span><br><span class="line">  <span class="keyword">assert</span> <span class="title function_">isSorted</span><span class="params">(a, lo, mid)</span>; <span class="comment">// precondition: a[lo..mid] sorted</span></span><br><span class="line">  <span class="keyword">assert</span> <span class="title function_">isSorted</span><span class="params">(a, mid+<span class="number">1</span>, hi)</span>; <span class="comment">// precondition: a[mid+1..hi] sorted</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> lo; k &lt;= hi; k++)</span><br><span class="line">    aux[k] = a[k];</span><br><span class="line">  <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> lo, j = mid+<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> lo; k &lt;= hi; k++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt; mid) a[k] = aux[j++];</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; hi) a[k] = aux[i++];</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (less(aux[j], aux[i])) a[k] = aux[j++];</span><br><span class="line">    <span class="keyword">else</span> a[k] = aux[i++];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">assert</span> <span class="title function_">isSorted</span><span class="params">(a, lo, hi)</span>; <span class="comment">// postcondition: a[lo..hi] sorted</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Java-implementation-Mergesort"><a href="#Java-implementation-Mergesort" class="headerlink" title="Java implementation (Mergesort)"></a>Java implementation (Mergesort)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(Comparable[] a, Comparable[] aux, <span class="type">int</span> lo, <span class="type">int</span> hi)</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (hi &lt;= lo) <span class="keyword">return</span>;</span><br><span class="line">  <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> lo + (hi - lo) / <span class="number">2</span>;</span><br><span class="line">  sort(a, aux, lo, mid);</span><br><span class="line">  sort(a, aux, mid+<span class="number">1</span>, hi);</span><br><span class="line">  merge(a, aux, lo, mid, hi);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20190702005145903.png" alt="result after recursive call"></p>
+<h1 id="Quicksort"><a href="#Quicksort" class="headerlink" title="Quicksort"></a>Quicksort</h1><h2 id="Quicksort-1"><a href="#Quicksort-1" class="headerlink" title="Quicksort"></a>Quicksort</h2><ul>
+<li>Basic plan.<ul>
+<li><strong>Shuffle</strong> the array.</li>
+<li><strong>Partition</strong> so that, for some j<ul>
+<li>entry a[j] is in place</li>
+<li>no larger entry to the left of j</li>
+<li>no smaller entry to the right of j</li>
+</ul>
+</li>
+<li><strong>Sort</strong> each piece recursively.</li>
+</ul>
+</li>
+<li>Quicksort <strong>partitioning</strong>. <ul>
+<li>Repeat until i and j pointers <strong>cross</strong>.<ul>
+<li>Scan i from left to right so long as (a[i] &lt; a[lo]).</li>
+<li>Scan j from right to left so long as (a[j] &gt; a[lo]).</li>
+<li>Exchange a[i] with a[j]</li>
+</ul>
+</li>
+<li>When pointers <strong>cross</strong>.<ul>
+<li>Exchange a[lo] with a[j].</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Java-code-for-partitioning"><a href="#Java-code-for-partitioning" class="headerlink" title="Java code for partitioning"></a>Java code for partitioning</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">partition</span><span class="params">(Comparable[] a, <span class="type">int</span> lo, <span class="type">int</span> hi)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> lo, j = hi+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span> (less(a[++i], a[lo]))</span><br><span class="line">            <span class="keyword">if</span> (i == hi) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">while</span> (less(a[lo], a[--j]))</span><br><span class="line">            <span class="keyword">if</span> (j == lo) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (i &gt;= j) <span class="keyword">break</span>;</span><br><span class="line">        exch(a, i, j);</span><br><span class="line">    &#125;</span><br><span class="line">    exch(a, lo, j);</span><br><span class="line">    <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Quicksort-Java-implementation"><a href="#Quicksort-Java-implementation" class="headerlink" title="Quicksort: Java implementation"></a>Quicksort: Java implementation</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Quick</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">partition</span><span class="params">(Comparable[] a, <span class="type">int</span> lo, <span class="type">int</span> hi)</span> &#123;&#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(Comparable[] a)</span> &#123;</span><br><span class="line">        sort(a, <span class="number">0</span>, a.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(Comparable[] a, <span class="type">int</span> lo, <span class="type">int</span> hi)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (hi &lt;= lo) <span class="keyword">return</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> partition(a, lo, hi);</span><br><span class="line">        sort(a, lo, j-<span class="number">1</span>);</span><br><span class="line">        sort(a, j+<span class="number">1</span>, hi);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20190705095059876.png" alt="Quicksort trace"></p>
+<ul>
+<li>Quicksort is <strong>not stable</strong>.</li>
+</ul>
+<p>选择一组数列中的第一个为基准数，置换所有比基准数小的和比基准数大的数字，最后把基准数放到整个数列中它最后该在的位子。递归地把它前后乱序的数列按同样的办法整理好。</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Coursera" >
+    <span class="tag-code">Coursera</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/06/07/Floyd-Cycle-Detection-Algorithm/">
+        <span class="nav-arrow">← </span>
+        
+          Floyd Cycle Detection Algorithm
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/06/12/toughWorkout-Notes/">
+        
+          《硬派健身》笔记
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Union-Find"><span class="toc-nav-text">Union-Find</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Quick-Find"><span class="toc-nav-text">Quick Find</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Java-implementation"><span class="toc-nav-text">Java implementation:</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Quick-Union"><span class="toc-nav-text">Quick Union</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Java-implementation-1"><span class="toc-nav-text">Java implementation</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Quick-Union-Improvements"><span class="toc-nav-text">Quick-Union Improvements</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Improvement-1-weighting"><span class="toc-nav-text">Improvement 1: weighting</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Improvement-2-path-compression"><span class="toc-nav-text">Improvement 2: path compression</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Union-find-applications"><span class="toc-nav-text">Union-find applications</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-Social-network-connectivity"><span class="toc-nav-text">1. Social network connectivity.</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-Union-find-with-specific-canonical-element"><span class="toc-nav-text">2. Union-find with specific canonical element.</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-Successor-with-delete"><span class="toc-nav-text">3. Successor with delete.</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Stacks-and-Queues"><span class="toc-nav-text">Stacks and Queues</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Stacks"><span class="toc-nav-text">Stacks</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#linked-list-implementation"><span class="toc-nav-text">linked-list implementation</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#array-implementation"><span class="toc-nav-text">array implementation</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Queue"><span class="toc-nav-text">Queue</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#linked-list-implementation-1"><span class="toc-nav-text">linked-list implementation</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#resizing-array-implementation"><span class="toc-nav-text">resizing array implementation</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#applications"><span class="toc-nav-text">applications</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Evaluate-infix-expressions"><span class="toc-nav-text">Evaluate infix expressions</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Elementary-Sorts"><span class="toc-nav-text">Elementary Sorts</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#selection-sort"><span class="toc-nav-text">selection sort</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#insertion-sort"><span class="toc-nav-text">insertion sort</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#shell-sort"><span class="toc-nav-text">shell sort</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Shuffling"><span class="toc-nav-text">Shuffling</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Convex-hull"><span class="toc-nav-text">Convex hull</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#application-motion-planning"><span class="toc-nav-text">application: motion planning</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#application-farthest-pair"><span class="toc-nav-text">application: farthest pair</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Graham-scan"><span class="toc-nav-text">Graham scan</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Mergesort"><span class="toc-nav-text">Mergesort</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Mergesort-1"><span class="toc-nav-text">Mergesort</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Java-implementation-Merging"><span class="toc-nav-text">Java implementation (Merging)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Java-implementation-Mergesort"><span class="toc-nav-text">Java implementation (Mergesort)</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Quicksort"><span class="toc-nav-text">Quicksort</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Quicksort-1"><span class="toc-nav-text">Quicksort</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Java-code-for-partitioning"><span class="toc-nav-text">Java code for partitioning</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Quicksort-Java-implementation"><span class="toc-nav-text">Quicksort: Java implementation</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2019/06/08/Algorithms-Part1/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

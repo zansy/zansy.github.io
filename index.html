@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link active">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link mobile-active">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <main class="app-body">
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2023/12/30/UIKitNotes/">UIKit notes(2023/12/30 updated)</a>
+      </h2>
+      <p class="article-date">December 30, 2023</p>
+      
+        
+  <a href="/tags#iOS" >
+    <span class="tag-code">iOS</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/uikit">UIKit</a> construct and manage a graphical, event-driven user interface for your iOS, iPadOS, or tvOS app.</p>
+        
+      </div>
+      <a class="more" href="/2023/12/30/UIKitNotes/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2022/01/10/MicrosoftIgnite-AzureAdminChallenge/">Microsoft Ignite-Azure Admin Challenge(2022/02/05 updated)</a>
+      </h2>
+      <p class="article-date">January 10, 2022</p>
+      
+        
+  <a href="/tags#Azure" >
+    <span class="tag-code">Azure</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/users/cloudskillschallenge/collections/8pm3fxd3kyjo?WT.mc_id=cloudskillschallenge_10d2f838-16b2-4c16-ba6d-bc85422e43c7">This challenge</a> is for developers to help implement, manage, and monitor an organization’s Microsoft Azure environment.</p>
+        
+      </div>
+      <a class="more" href="/2022/01/10/MicrosoftIgnite-AzureAdminChallenge/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2021/11/22/MicrosoftIgnite-AzureDeveloperChallenge/">Microsoft Ignite-Azure Developer Challenge(2021/12/19 updated)</a>
+      </h2>
+      <p class="article-date">November 22, 2021</p>
+      
+        
+  <a href="/tags#Azure" >
+    <span class="tag-code">Azure</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/learn/challenges?id=af95eabc-aafa-4ba1-8ec7-1c6444102f70">This challenge</a> is for developers interested in designing, building, testing, and maintaining cloud applications and services on Microsoft Azure.</p>
+        
+      </div>
+      <a class="more" href="/2021/11/22/MicrosoftIgnite-AzureDeveloperChallenge/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2021/10/21/AzureDataExplorer/">Azure Data Factory Notes(2021/10/21 updated)</a>
+      </h2>
+      <p class="article-date">October 21, 2021</p>
+      
+        
+  <a href="/tags#Azure" >
+    <span class="tag-code">Azure</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p><a target="_blank" rel="noopener" href="https://ev2docs.azure.net/overview/intro.html">Ev2 (Express v2)</a> provides secure, automated solutions for deploying Azure resources in public and sovereign clouds. Ev2 orchestrates resource deployment across multiple regions and scale-units. It includes health checks to catch any potential problems before they are widely deployed. By using Ev2, you can comply with safe deployment practices for Azure.</p>
+        
+      </div>
+      <a class="more" href="/2021/10/21/AzureDataExplorer/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2021/10/09/azureASA/">Azure Stream Analytics Notes(2021/10/13 updated)</a>
+      </h2>
+      <p class="article-date">October 9, 2021</p>
+      
+        
+  <a href="/tags#Azure" >
+    <span class="tag-code">Azure</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>Azure Stream Analytics is a real-time analytics and complex event-processing engine that is designed to analyze and process high volumes of fast streaming data from multiple sources simultaneously.</p>
+        
+      </div>
+      <a class="more" href="/2021/10/09/azureASA/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2021/08/11/sfDeveloperIPrep/">Prepare for Salesforce Developer I Credential (update 2021/08/21)</a>
+      </h2>
+      <p class="article-date">August 11, 2021</p>
+      
+        
+  <a href="/tags#Salesforce" >
+    <span class="tag-code">Salesforce</span>
+  </a>
+
+  <a href="/tags#Credential" >
+    <span class="tag-code">Credential</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>Prepare for Salesforce Platform Developer I Credential</p>
+        
+      </div>
+      <a class="more" href="/2021/08/11/sfDeveloperIPrep/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2021/07/09/docker/">Docker Notes(2021/07/09 updated)</a>
+      </h2>
+      <p class="article-date">July 9, 2021</p>
+      
+        
+  <a href="/tags#Docker" >
+    <span class="tag-code">Docker</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files. Notes by Docker official website.</p>
+        
+      </div>
+      <a class="more" href="/2021/07/09/docker/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2021/07/08/kafka/">Apache Kafka Notes(2021/07/08 updated 1/9)</a>
+      </h2>
+      <p class="article-date">July 8, 2021</p>
+      
+        
+  <a href="/tags#Kafka" >
+    <span class="tag-code">Kafka</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>Apache Kafka is an open-source distributed event streaming platform for high-performance data pipelines, streaming analytics, data integration, and mission-critical applications. Notes by Kafka official website.</p>
+        
+      </div>
+      <a class="more" href="/2021/07/08/kafka/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2021/06/21/lendi-salesforce/">Salesforce notes(2021/06/21 updated 1/26)</a>
+      </h2>
+      <p class="article-date">June 21, 2021</p>
+      
+        
+  <a href="/tags#Salesforce" >
+    <span class="tag-code">Salesforce</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>Some simplefor salesforce learning. Mainly on salesforce trailhead.</p>
+        
+      </div>
+      <a class="more" href="/2021/06/21/lendi-salesforce/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2021/04/09/offer/">剑指offer刷题记录（20210416 更新/28）</a>
+      </h2>
+      <p class="article-date">April 9, 2021</p>
+      
+        
+  <a href="/tags#小结" >
+    <span class="tag-code">小结</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>拜托offer快快来，简单记录读书笔记和专门的刷题记录</p>
+        
+      </div>
+      <a class="more" href="/2021/04/09/offer/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/08/27/INFO5992ReadingMaterials/">扩展阅读</a>
+      </h2>
+      <p class="article-date">August 27, 2019</p>
+      
+        
+  <a href="/tags#English" >
+    <span class="tag-code">English</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>阅读材料英文学习，主要取自<a target="_blank" rel="noopener" href="http://www.forbes.com/">www.forbes.com</a></p>
+        
+      </div>
+      <a class="more" href="/2019/08/27/INFO5992ReadingMaterials/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/08/27/leetcode-medium/">LeetCode 中等题汇总（20210412 更新/73）</a>
+      </h2>
+      <p class="article-date">August 27, 2019</p>
+      
+      <div class="article-summary">
+        
+          <p>Medium思考题，分类&#x2F;题意&#x2F;思路&#x2F;代码。</p>
+        
+      </div>
+      <a class="more" href="/2019/08/27/leetcode-medium/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/08/27/leetcode-easy/">LeetCode 简单题汇总（20210401 更新/51）</a>
+      </h2>
+      <p class="article-date">August 27, 2019</p>
+      
+        
+  <a href="/tags#水" >
+    <span class="tag-code">水</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>Easy练手感题，分类&#x2F;题意&#x2F;思路&#x2F;代码。</p>
+        
+      </div>
+      <a class="more" href="/2019/08/27/leetcode-easy/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/08/27/leetcode-hard/">LeetCode 难题汇总（20200416 更新/15）</a>
+      </h2>
+      <p class="article-date">August 27, 2019</p>
+      
+      <div class="article-summary">
+        
+          <p>Hard学习题，分类&#x2F;题意&#x2F;思路&#x2F;代码。</p>
+        
+      </div>
+      <a class="more" href="/2019/08/27/leetcode-hard/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/08/08/UdemySpringBootDemo/">SpringBoot学习笔记</a>
+      </h2>
+      <p class="article-date">August 8, 2019</p>
+      
+        
+  <a href="/tags#Udemy" >
+    <span class="tag-code">Udemy</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>Spring Boot is Spring’s convention-over-configuration solution for creating stand-alone, production-grade Spring-based Applications that you can “just run”. It is preconfigured with the Spring team’s “opinionated view” of the best configuration and use of the Spring platform and third-party libraries so developer can get started with minimum fuss. Most Spring Boot applications need very little Spring configuration. </p>
+        
+      </div>
+      <a class="more" href="/2019/08/08/UdemySpringBootDemo/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/08/05/INFO5992-UnderstandingITInnovations/">INFO5992 Understanding IT Innovations (w1)</a>
+      </h2>
+      <p class="article-date">August 5, 2019</p>
+      
+        
+  <a href="/tags#Semester1" >
+    <span class="tag-code">Semester1</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>Important trends in innovation in IT are identified and their implications for innovation management explored. Major topics include: drivers of innovation; the trend to open information (“open source”) rather than protected intellectual property; and distribution of innovation over many independent but collaborating actors.<br>students will be able to identify and analyse an emerging technology and write a detailed evaluation of the impact of this technology on existing business practices.</p>
+        
+      </div>
+      <a class="more" href="/2019/08/05/INFO5992-UnderstandingITInnovations/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/07/08/SpringInAction-new/">Spring实战笔记(2019.08.07 Chapter4)</a>
+      </h2>
+      <p class="article-date">July 8, 2019</p>
+      
+      <div class="article-summary">
+        
+          <p>Spring实战（第4版）：Spring 是一种轻量级的、开源的 Java EE应用软件框架，主要优势之一就是其分层架构。</p>
+        
+      </div>
+      <a class="more" href="/2019/07/08/SpringInAction-new/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/07/01/BBC-6MinuteEnglish/">BBC-6MinuteEnglish(last update 2019.07.02)</a>
+      </h2>
+      <p class="article-date">July 1, 2019</p>
+      
+        
+  <a href="/tags#English" >
+    <span class="tag-code">English</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>选自<a target="_blank" rel="noopener" href="http://www.bbc.co.uk/learningenglish/english/features/6-minute-english">BBC 6 Minute English</a> 重点描红，用于口语。</p>
+        
+      </div>
+      <a class="more" href="/2019/07/01/BBC-6MinuteEnglish/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/06/12/toughWorkout-Notes/">《硬派健身》笔记</a>
+      </h2>
+      <p class="article-date">June 12, 2019</p>
+      
+        
+  <a href="/tags#Lifted" >
+    <span class="tag-code">Lifted</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>健身书笔记，主要记录健身正确概念，提供部分无氧运动的完整训练计划，包括小肌群的局部训练，以及健身时的饮食注意等事项。</p>
+        
+      </div>
+      <a class="more" href="/2019/06/12/toughWorkout-Notes/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/06/08/Algorithms-Part1/">Algorithms-Part1(last update:2019.06.28)</a>
+      </h2>
+      <p class="article-date">June 8, 2019</p>
+      
+        
+  <a href="/tags#Coursera" >
+    <span class="tag-code">Coursera</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>Notes from <a target="_blank" rel="noopener" href="https://www.coursera.org/learn/algorithms-part1/">https://www.coursera.org/learn/algorithms-part1/</a></p>
+        
+      </div>
+      <a class="more" href="/2019/06/08/Algorithms-Part1/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/06/07/Floyd-Cycle-Detection-Algorithm/">Floyd Cycle Detection Algorithm</a>
+      </h2>
+      <p class="article-date">June 7, 2019</p>
+      
+        
+  <a href="/tags#女娲补天" >
+    <span class="tag-code">女娲补天</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>Floyd判圈算法(Floyd Cycle Detection Algorithm)，又称龟兔赛跑算法(Tortoise and Hare Algorithm)，是一个可以在有限状态机、迭代函数或者链表上判断是否存在环，求出该环的起点与长度的算法。</p>
+        
+      </div>
+      <a class="more" href="/2019/06/07/Floyd-Cycle-Detection-Algorithm/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/06/06/datastructure-extender/">《数据结构》6-10章</a>
+      </h2>
+      <p class="article-date">June 6, 2019</p>
+      
+      <div class="article-summary">
+        
+          <p>《数据结构（C语言版）》严蔚敏编著，第6-10章重点详略</p>
+        
+      </div>
+      <a class="more" href="/2019/06/06/datastructure-extender/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/05/24/LeetCode-55-DP/">从 LeetCode#55 入门动态规划</a>
+      </h2>
+      <p class="article-date">May 24, 2019</p>
+      
+        
+  <a href="/tags#女娲补天" >
+    <span class="tag-code">女娲补天</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>参考资料：<a target="_blank" rel="noopener" href="https://leetcode.com/articles/jump-game/">Jump Game Solution</a></p>
+        
+      </div>
+      <a class="more" href="/2019/05/24/LeetCode-55-DP/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/05/18/BoyerMooreVotingAlgorithm/">Boyer-Moore Voting Algorithm 摩尔投票算法</a>
+      </h2>
+      <p class="article-date">May 18, 2019</p>
+      
+        
+  <a href="/tags#女娲补天" >
+    <span class="tag-code">女娲补天</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>波义尔摩尔投票算法是一种使用线性时间复杂度和常数空间复杂度来找到数组的主要元素（出现超过一半次数的元素）。</p>
+        
+      </div>
+      <a class="more" href="/2019/05/18/BoyerMooreVotingAlgorithm/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/04/27/backpack1/">动态规划看背包问题[1]</a>
+      </h2>
+      <p class="article-date">April 27, 2019</p>
+      
+        
+  <a href="/tags#小结" >
+    <span class="tag-code">小结</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>背包问题又分为0-1背包，完全背包，多维背包，多重背包。是经典的动态规划问题</p>
+        
+      </div>
+      <a class="more" href="/2019/04/27/backpack1/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/03/04/SpringInAction1-2/">Spring 实战（第4版）笔记及补充[1-2]</a>
+      </h2>
+      <p class="article-date">March 4, 2019</p>
+      
+      <div class="article-summary">
+        
+          <p>Spring 是一种轻量级的、开源的 Java EE 应用软件框架，主要优势之一就是其分层架构。</p>
+        
+      </div>
+      <a class="more" href="/2019/03/04/SpringInAction1-2/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019/01/22/Using-POI-Export-Data-To-Excel/">POI：特定数据导出为含格式的 Excel</a>
+      </h2>
+      <p class="article-date">January 22, 2019</p>
+      
+        
+  <a href="/tags#水" >
+    <span class="tag-code">水</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>配合其他方法使用，需求是将云平台中存储的特定格式表导出为Excel，其中特定表已处理为<code>List&lt;Map&lt;Object,Object&gt;&gt;</code>的数据，Map中 key 为列名，value 为其对应的列值。</p>
+        
+      </div>
+      <a class="more" href="/2019/01/22/Using-POI-Export-Data-To-Excel/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/12/04/grammar-note-1/">基本英文语法（一）</a>
+      </h2>
+      <p class="article-date">December 4, 2018</p>
+      
+        
+  <a href="/tags#English" >
+    <span class="tag-code">English</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>《顾家北手把手教你》1-4部分</p>
+        
+      </div>
+      <a class="more" href="/2018/12/04/grammar-note-1/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/12/04/Transfer-information-from-Excel-to-Navicat-via-Java/">通过 Java 将 Excel 中信息转存入 Navicat</a>
+      </h2>
+      <p class="article-date">December 4, 2018</p>
+      
+      <div class="article-summary">
+        
+          <p>通过引入poi，解析 workbook 视图，获取 Excel 工作簿中信息；再通过简单的正则表达式等字符串处理 将其中信息存入 Navicat 中的表。</p>
+        
+      </div>
+      <a class="more" href="/2018/12/04/Transfer-information-from-Excel-to-Navicat-via-Java/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/11/09/JSON-SimpleNote/">JSON 简单笔记</a>
+      </h2>
+      <p class="article-date">November 9, 2018</p>
+      
+      <div class="article-summary">
+        
+          <p>最近在学着用 postman 测试和写接口</p>
+        
+      </div>
+      <a class="more" href="/2018/11/09/JSON-SimpleNote/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/09/02/SQLreport/">“SQL语句分块解析”程序方法报告</a>
+      </h2>
+      <p class="article-date">September 2, 2018</p>
+      
+      <div class="article-summary">
+        
+          <p>实现了从数据库中读取特定表的存放SQL语句特定字段，分解SQL语句，提取出所需信息形成字段，并与“元数据表信息”表、“元数据表字段信息”表进行关联，形成新的“表信息映射”表。新表的字段分别为“表ID”、“表中文名”、“表英文名”、“字段ID”、“字段中文名”、“字段英文名”、“字段来源”、“字段处理过程”。</p>
+        
+      </div>
+      <a class="more" href="/2018/09/02/SQLreport/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/08/09/readODPSInformationByAPI/">通过接口读取生成存储 ODPS 上信息</a>
+      </h2>
+      <p class="article-date">August 9, 2018</p>
+      
+      <div class="article-summary">
+        
+          <p>该 Maven 程序使用阿里官方提供的 Java API，读取存储在 ODPS 上的数据表，通过字符串处理，自动生成它们的数据字典，并将数据字典存储到本地的 MySQL 数据库中。</p>
+        
+      </div>
+      <a class="more" href="/2018/08/09/readODPSInformationByAPI/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/08/01/KMPReport/">KMP 字符串模式匹配算法小解</a>
+      </h2>
+      <p class="article-date">August 1, 2018</p>
+      
+        
+  <a href="/tags#小结" >
+    <span class="tag-code">小结</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>Knuth-Morris-Pratt字符串查找算法（简称为KMP算法）可在一个主文本字符串 S 内查找一个词 W 的出现位置。</p>
+        
+      </div>
+      <a class="more" href="/2018/08/01/KMPReport/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/07/01/MaxComputeNote/">大数据计算服务 MaxCompute（原名ODPS）</a>
+      </h2>
+      <p class="article-date">July 1, 2018</p>
+      
+      <div class="article-summary">
+        
+          <p>是一种快速、完全托管的TB&#x2F;PB级数据仓库解决方案。MaxCompute 提供了多种经典的分布式计算模型，能够更快速地解决海量数据计算问题。</p>
+        
+      </div>
+      <a class="more" href="/2018/07/01/MaxComputeNote/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/06/30/databaseSimpleNote/">数据库简单笔记</a>
+      </h2>
+      <p class="article-date">June 30, 2018</p>
+      
+      <div class="article-summary">
+        
+          <p>整理自《数据库系统基础教程》</p>
+        
+      </div>
+      <a class="more" href="/2018/06/30/databaseSimpleNote/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/06/18/Leetcode-1/">Leetcode 1. Two Sum(HashMap)</a>
+      </h2>
+      <p class="article-date">June 18, 2018</p>
+      
+        
+  <a href="/tags#水" >
+    <span class="tag-code">水</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>Given int[] and a target number, return the sequence of the two numbers that can be added to get the target number.</p>
+        
+      </div>
+      <a class="more" href="/2018/06/18/Leetcode-1/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/06/10/Algorithms-Part-II/">Algorithms Part II</a>
+      </h2>
+      <p class="article-date">June 10, 2018</p>
+      
+      <div class="article-summary">
+        
+          <p>Notes from <a target="_blank" rel="noopener" href="https://www.coursera.org/learn/algorithms-part2/home/week/1">https://www.coursera.org/learn/algorithms-part2/home/week/1</a> </p>
+        
+      </div>
+      <a class="more" href="/2018/06/10/Algorithms-Part-II/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/05/09/datastructure/">《数据结构》1-5章</a>
+      </h2>
+      <p class="article-date">May 9, 2018</p>
+      
+      <div class="article-summary">
+        
+          <p>《数据结构（C语言版）》严蔚敏编著，第1-5章重点详略</p>
+        
+      </div>
+      <a class="more" href="/2018/05/09/datastructure/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/04/11/CloudComputing/">云计算</a>
+      </h2>
+      <p class="article-date">April 11, 2018</p>
+      
+      <div class="article-summary">
+        
+          <p>整理自《云计算（第三版）》刘鹏主编。</p>
+        
+      </div>
+      <a class="more" href="/2018/04/11/CloudComputing/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/04/03/Java-EE-Note/">Java EE 笔记</a>
+      </h2>
+      <p class="article-date">April 3, 2018</p>
+      
+      <div class="article-summary">
+        
+          <p>学习笔记，未完待续。</p>
+        
+      </div>
+      <a class="more" href="/2018/04/03/Java-EE-Note/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/03/29/Leetcode-771/">Leetcode 771. Jewels and Stones</a>
+      </h2>
+      <p class="article-date">March 29, 2018</p>
+      
+        
+  <a href="/tags#水" >
+    <span class="tag-code">水</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>两组字符串J和S，返回S字符串中有多少J字符串中的字母。</p>
+        
+      </div>
+      <a class="more" href="/2018/03/29/Leetcode-771/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/03/25/Animal-Farm-Note/">Animal Farm 摘录</a>
+      </h2>
+      <p class="article-date">March 25, 2018</p>
+      
+        
+  <a href="/tags#English" >
+    <span class="tag-code">English</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>They did not know when the Rebellion predicted by Major would take place, they had no reason for thinking that it would be within their own lifetime, but they saw clearly that it was their duty to prepare for it.</p>
+        
+      </div>
+      <a class="more" href="/2018/03/25/Animal-Farm-Note/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/03/24/GitNote/">Git 笔记</a>
+      </h2>
+      <p class="article-date">March 24, 2018</p>
+      
+      <div class="article-summary">
+        
+          <p>Git是分布式版本控制系统，没有“中央服务器”，每个人的电脑上都是一个完整的版本库。通常有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改。</p>
+        
+      </div>
+      <a class="more" href="/2018/03/24/GitNote/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/03/14/computerNetwork/">计算机网络</a>
+      </h2>
+      <p class="article-date">March 14, 2018</p>
+      
+      <div class="article-summary">
+        
+          <p>快速回顾 不断更新</p>
+        
+      </div>
+      <a class="more" href="/2018/03/14/computerNetwork/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2018/01/05/MinimumSpanningTree/">最小生成树小结</a>
+      </h2>
+      <p class="article-date">January 5, 2018</p>
+      
+        
+  <a href="/tags#小结" >
+    <span class="tag-code">小结</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>Prim和Kruskal 思路 模版</p>
+        
+      </div>
+      <a class="more" href="/2018/01/05/MinimumSpanningTree/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017/10/21/LinuxNote/">Linux 基础教程（第二版）整理</a>
+      </h2>
+      <p class="article-date">October 21, 2017</p>
+      
+      <div class="article-summary">
+        
+          <p>第一章第四章就是计算机操作系统中的内容，在此简略记录，详情翻阅《计算机操作系统》。本书重点其实是shell程序编写，以后有空了补上</p>
+        
+      </div>
+      <a class="more" href="/2017/10/21/LinuxNote/">Read more</a>
+    </article>
+  
+
+  
+</main>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

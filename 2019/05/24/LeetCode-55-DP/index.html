@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      从 LeetCode#55 入门动态规划 | Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>从 LeetCode#55 入门动态规划</h2>
+  <p class="post-date">2019-05-24</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>参考资料：<a target="_blank" rel="noopener" href="https://leetcode.com/articles/jump-game/">Jump Game Solution</a></p>
+<span id="more"></span>
+
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/jump-game/">55. Jump Game</a><br>给出一组无序的非负整数，每个数字是指在其索引的位置上能往右走的最大步数，问在第一位是否能走到数组最后一位。</p>
+<ul>
+<li>样例1</li>
+</ul>
+<blockquote>
+<p><strong>Input:</strong> [2,3,1,1,4]<br><strong>Output:</strong> true<br><strong>Explanation:</strong> Jump 1 step from index 0 to 1, then 3 steps to the last index.</p>
+</blockquote>
+<ul>
+<li>样例2</li>
+</ul>
+<blockquote>
+<p><strong>Input:</strong> [3,2,1,0,4]<br><strong>Output:</strong> false<br><strong>Explanation:</strong> You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.</p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><ul>
+<li><p><strong>动态规划（Dynamic programming，简称DP）</strong>通过把原问题分解为相对简单的子问题的方式求解复杂问题。常常适用于有重叠子问题和最优子结构性质的问题。</p>
+</li>
+<li><p>适用情况：</p>
+<ol>
+<li><strong>最优子结构性质</strong>。如果问题的最优解所包含的子问题的解也是最优的，我们就称该问题具有最优子结构性质（即满足最优化原理）</li>
+<li><strong>无后效性</strong>。即子问题的解一旦确定，就不再改变，不受在这之后、包含它的更大的问题的求解决策影响。</li>
+<li><strong>子问题重叠性质</strong>。子问题重叠性质是指在用递归算法自顶向下对问题进行求解时，每次产生的子问题并不总是新问题，有些子问题会被重复计算多次。</li>
+</ol>
+</li>
+<li><p>动态规划算法正是利用了子问题重叠性质，对每一个子问题只计算一次，然后将其计算结果保存在一个表格中，当再次需要计算已经计算过的子问题时，只是在表格中简单地查看一下结果，从而获得较高的效率。</p>
+</li>
+</ul>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ul>
+<li>Usually, solving and fully understanding a dynamic programming problem is a 4 step process:<ol>
+<li>Start with the recursive backtracking solution</li>
+<li>Optimize by using a memoization table (top-down3 dynamic programming)</li>
+<li>Remove the need for recursion (bottom-up dynamic programming)</li>
+<li>Apply final tricks to reduce the time &#x2F; memory complexity</li>
+</ol>
+</li>
+</ul>
+<h3 id="第一阶段：回溯递归"><a href="#第一阶段：回溯递归" class="headerlink" title="第一阶段：回溯递归"></a>第一阶段：回溯递归</h3><p>在这一阶段我们很容易想到用递归，从第一个位置开始，跳到每一个能到的位置，当无法再前进的时候就回溯到上一个位置继续换个长度走，一直循环这个操作直到跳到最后一个位置。<br>这个阶段产生的代码为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">canJumpFromPosition</span><span class="params">(<span class="type">int</span> position, <span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (position == nums.length - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">furthestJump</span> <span class="operator">=</span> Math.min(position + nums[position], nums.length - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">nextPosition</span> <span class="operator">=</span> position + <span class="number">1</span>; nextPosition &lt;= furthestJump; nextPosition++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (canJumpFromPosition(nextPosition, nums)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">canJump</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> canJumpFromPosition(<span class="number">0</span>, nums);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>改进：每次先尝试跳最大的步数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Old</span><br><span class="line">for (int nextPosition = position + 1; nextPosition &lt;= furthestJump; nextPosition++)</span><br><span class="line">// New</span><br><span class="line">for (int nextPosition = furthestJump; nextPosition &gt; position; nextPosition--)</span><br></pre></td></tr></table></figure>
+
+<p>例如例题：</p>
+<table>
+<thead>
+<tr>
+<th align="center">Index</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">nums</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+</tbody></table>
+<p>从index0位置开始，先尽量大地跳到1，根据1对应的5步，尽量大地跳到6</p>
+<h3 id="第二阶段：动态规划至顶向下"><a href="#第二阶段：动态规划至顶向下" class="headerlink" title="第二阶段：动态规划至顶向下"></a>第二阶段：动态规划至顶向下</h3><p>这一阶段可以理解成优化过的回溯，我们存储结果，不必每次再重新计算。对数组中的每一个元素提出一个”可以达到最末位&#x2F;不可以&#x2F;未知“的标签组合，简写成G&#x2F;B&#x2F;U</p>
+<p>首先将所有的标签设置成Unknow，除了最后一个<br>在递归回溯的时候把结果保存在memo组中</p>
+<table>
+<thead>
+<tr>
+<th align="center">Index</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">nums</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">memo</td>
+<td align="center">G</td>
+<td align="center">G</td>
+<td align="center">B</td>
+<td align="center">B</td>
+<td align="center">B</td>
+<td align="center">G</td>
+<td align="center">G</td>
+</tr>
+</tbody></table>
+<p>这一阶段产生的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">enum Index &#123;</span><br><span class="line">    GOOD, BAD, UNKNOWN</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Solution &#123;</span><br><span class="line">    Index[] memo;</span><br><span class="line"></span><br><span class="line">    public boolean canJumpFromPosition(int position, int[] nums) &#123;</span><br><span class="line">        if (memo[position] != Index.UNKNOWN) &#123;</span><br><span class="line">            return memo[position] == Index.GOOD ? true : false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int furthestJump = Math.min(position + nums[position], nums.length - 1);</span><br><span class="line">        for (int nextPosition = position + 1; nextPosition &lt;= furthestJump; nextPosition++) &#123;</span><br><span class="line">            if (canJumpFromPosition(nextPosition, nums)) &#123;</span><br><span class="line">                memo[position] = Index.GOOD;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        memo[position] = Index.BAD;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public boolean canJump(int[] nums) &#123;</span><br><span class="line">        memo = new Index[nums.length];</span><br><span class="line">        for (int i = 0; i &lt; memo.length; i++) &#123;</span><br><span class="line">            memo[i] = Index.UNKNOWN;</span><br><span class="line">        &#125;</span><br><span class="line">        memo[memo.length - 1] = Index.GOOD;</span><br><span class="line">        return canJumpFromPosition(0, nums);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第三阶段：动态规划从底至上"><a href="#第三阶段：动态规划从底至上" class="headerlink" title="第三阶段：动态规划从底至上"></a>第三阶段：动态规划从底至上</h3><p>从上至下到从下至上的转换关键在于回溯的消除。回溯的消除通常是通过反转”从上至下“阶段的步骤来达成的。这一阶段仍然将所有的先置为U，除了最后一位是G</p>
+<table>
+<thead>
+<tr>
+<th align="center">Index</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">nums</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">memo</td>
+<td align="center">U</td>
+<td align="center">U</td>
+<td align="center">U</td>
+<td align="center">U</td>
+<td align="center">U</td>
+<td align="center">U</td>
+<td align="center">G</td>
+</tr>
+</tbody></table>
+<p>但不同的是我们从倒数第二位开始倒着看。对每一位算出能跳到的最远距离，然后在距离里的这些点看是否有能跳到最后一位的。该位置能跳到的最大距离中的位置有能跳到最末位的，显而易见该位置是也能跳到最末位的。</p>
+<p>步骤如下：第五位最多能跳到第六位，第六位有标记G，那么第五位也可以标记一个G；第四位不能跳；第三位能跳到第四位，但是没有G，则自己也没有标签G；…；第一位能跳到第五位，检查第二位到第五位，但凡有一个位置是能跳到最末位的，则第二位自己也是能够跳到最末位的。</p>
+<p>最终结果如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">Index</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">nums</td>
+<td align="center">2</td>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">memo</td>
+<td align="center">G</td>
+<td align="center">G</td>
+<td align="center">B</td>
+<td align="center">B</td>
+<td align="center">B</td>
+<td align="center">G</td>
+<td align="center">G</td>
+</tr>
+</tbody></table>
+<p>这一阶段产生的代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">enum Index &#123;</span><br><span class="line">    GOOD, BAD, UNKNOWN</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean canJump(int[] nums) &#123;</span><br><span class="line">        Index[] memo = new Index[nums.length];</span><br><span class="line">        for (int i = 0; i &lt; memo.length; i++) &#123;</span><br><span class="line">            memo[i] = Index.UNKNOWN;</span><br><span class="line">        &#125;</span><br><span class="line">        memo[memo.length - 1] = Index.GOOD;</span><br><span class="line"></span><br><span class="line">        for (int i = nums.length - 2; i &gt;= 0; i--) &#123;</span><br><span class="line">            int furthestJump = Math.min(i + nums[i], nums.length - 1);</span><br><span class="line">            for (int j = i + 1; j &lt;= furthestJump; j++) &#123;</span><br><span class="line">                if (memo[j] == Index.GOOD) &#123;</span><br><span class="line">                    memo[i] = Index.GOOD;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return memo[0] == Index.GOOD;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第四阶段：贪心算法"><a href="#第四阶段：贪心算法" class="headerlink" title="第四阶段：贪心算法"></a>第四阶段：贪心算法</h3><p>在这一阶段，仍然是最后一位设置为G，但是这一步已经不必用数组了，只注意最左的标签为G的位。第一步的话，索引6的位置是最左的标签为G的位，那么设置这样一个最左索引变量，这个变量在之后的操作中会不断得到更新。</p>
+<p>接下去从右向左遍历每一位，检查它能跳到的范围中是否包含一个最左标签为G的位置（<code>currPosition + nums[currPosition] &gt;= leftmostGoodIndex</code>），能的话更新最左标签索引，设置为当前索引。</p>
+<p>这一阶段代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public boolean canJump(int[] nums) &#123;</span><br><span class="line">        int lastCanJumpToTheEnd = nums.length-1;</span><br><span class="line">        for (int i = lastCanJumpToTheEnd - 1; i &gt;= 0; i--)&#123;</span><br><span class="line">            if(i + nums[i] &gt;= lastCanJumpToTheEnd) lastCanJumpToTheEnd = i;</span><br><span class="line">        &#125;</span><br><span class="line">        return lastCanJumpToTheEnd == 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#女娲补天" >
+    <span class="tag-code">女娲补天</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019/05/18/BoyerMooreVotingAlgorithm/">
+        <span class="nav-arrow">← </span>
+        
+          Boyer-Moore Voting Algorithm 摩尔投票算法
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019/06/06/datastructure-extender/">
+        
+          《数据结构》6-10章
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-text">题目</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="toc-nav-text">题解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E5%9B%9E%E6%BA%AF%E9%80%92%E5%BD%92"><span class="toc-nav-text">第一阶段：回溯递归</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E8%87%B3%E9%A1%B6%E5%90%91%E4%B8%8B"><span class="toc-nav-text">第二阶段：动态规划至顶向下</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%BB%8E%E5%BA%95%E8%87%B3%E4%B8%8A"><span class="toc-nav-text">第三阶段：动态规划从底至上</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%98%B6%E6%AE%B5%EF%BC%9A%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="toc-nav-text">第四阶段：贪心算法</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2019/05/24/LeetCode-55-DP/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

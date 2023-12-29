@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="">
+  <meta name="keyword" content="hexo-theme">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Microsoft Ignite-Azure Admin Challenge(2022/02/05 updated) | Daily Growing
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+  
+    
+<script src="/js/local-search.js"></script>
+
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Daily Growing</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/series/" class="item-link">Series</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      
+        <li class="menu-item menu-item-search right-list">
+    <a role="button" class="popup-trigger">
+        <i class="fa fa-search fa-fw"></i>
+    </a>
+</li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/series/" class="menu-link">Series</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+    
+      <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+            <span class="search-icon">
+                <i class="fa fa-search"></i>
+            </span>
+            <div class="search-input-container">
+                <input autocomplete="off" autocapitalize="off"
+                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
+                    type="search" class="search-input">
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa fa-times-circle"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+    
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Microsoft Ignite-Azure Admin Challenge(2022/02/05 updated)</h2>
+  <p class="post-date">2022-01-10</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/users/cloudskillschallenge/collections/8pm3fxd3kyjo?WT.mc_id=cloudskillschallenge_10d2f838-16b2-4c16-ba6d-bc85422e43c7">This challenge</a> is for developers to help implement, manage, and monitor an organization’s Microsoft Azure environment.</p>
+<span id="more"></span>
+
+<h1 id="Configure-storage-accounts"><a href="#Configure-storage-accounts" class="headerlink" title="Configure storage accounts"></a>Configure storage accounts</h1><h2 id="Implement-Azure-storage"><a href="#Implement-Azure-storage" class="headerlink" title="Implement Azure storage"></a>Implement Azure storage</h2><p>Can generally think of Azure storage in three categories.</p>
+<ul>
+<li><strong>Storage for Virtual Machines.</strong> Virtual machine storage includes disks and files. Disks are persistent block storage for Azure IaaS virtual machines. Files are fully managed file shares in the cloud.</li>
+<li><strong>Unstructured Data.</strong> Unstructured data includes <strong>Blobs</strong> and <strong>Data Lake Store</strong>. Blobs are highly scalable, <u>REST-based</u> cloud object store. Data Lake Store is <u>Hadoop Distributed File System (HDFS)</u> as a service.</li>
+<li><strong>Structured Data.</strong> Structured data includes <strong>Tables, Cosmos DB, and Azure SQL DB</strong>. Tables are a key&#x2F;value, autoscaling NoSQL store. Cosmos DB is a <u>globally distributed database service</u>. Azure SQL DB is a fully managed database-as-a-service built on SQL.</li>
+</ul>
+<h2 id="Explore-Azure-storage-services"><a href="#Explore-Azure-storage-services" class="headerlink" title="Explore Azure storage services"></a>Explore Azure storage services</h2><p>Azure Storage includes these data services, each of which is accessed through a storage account.</p>
+<ul>
+<li><strong>Azure Containers (Blobs)</strong>: A massively scalable object store for text and binary data.</li>
+<li><strong>Azure Files</strong>: Managed file shares for cloud or on-premises deployments.</li>
+<li><strong>Azure Queues</strong>: A messaging store for reliable messaging between application components.</li>
+<li><strong>Azure Tables</strong>: A NoSQL store for schemaless storage of structured data.</li>
+</ul>
+<h2 id="Determine-replication-strategies"><a href="#Determine-replication-strategies" class="headerlink" title="Determine replication strategies"></a>Determine replication strategies</h2><p>The data in your Azure storage account is always replicated to ensure durability and high availability. Azure Storage replication copies your data so that it is protected from planned and unplanned events ranging from transient hardware failures, network or power outages, massive natural disasters, and so on. </p>
+<ul>
+<li><strong>Locally redundant storage</strong>. LRS is the lowest-cost replication option and offers the least durability compared to other options. If a datacenter-level disaster (for example, fire or flooding) occurs, all replicas may be lost or unrecoverable.</li>
+<li><strong>Zone redundant storage</strong>. Zone Redundant Storage (ZRS) <u>synchronously replicates your data across three (3) storage clusters in a single region</u>. Each storage cluster is physically separated from the others and resides in its own availability zone. Each availability zone, and the ZRS cluster within it, is autonomous, with separate utilities and networking capabilities. Storing your data in a ZRS account ensures that you will be able access and manage your data if a zone becomes unavailable. ZRS provides excellent performance and low latency.</li>
+<li><strong>Geo-redundant storage</strong>. Geo-redundant storage (GRS) <u>replicates your data to a secondary region (hundreds of miles away from the primary location of the source data)</u>. GRS provides a higher level of durability even if there is a regional outage. GRS is designed to provide at least 99.99999999999999% (16 9’s) durability. When your storage account has GRS enabled, then your data is durable even when there is a complete regional outage or a disaster where the primary region isn’t recoverable.</li>
+<li><strong>Geo-zone redundant storage</strong>. Geo-zone-redundant storage (GZRS) <u>combines the high availability of zone-redundant storage with protection from regional outages as provided by geo-redundant storage</u>. Data in a GZRS storage account is replicated across three Azure availability zones in the primary region and also replicated to a secondary geographic region for protection from regional disasters. Each Azure region is paired with another region within the same geography, together making a regional pair.</li>
+</ul>
+<h1 id="Configure-blob-storage"><a href="#Configure-blob-storage" class="headerlink" title="Configure blob storage"></a>Configure blob storage</h1><h2 id="Implement-blob-storage"><a href="#Implement-blob-storage" class="headerlink" title="Implement blob storage"></a>Implement blob storage</h2><p>Azure Blob storage is a service that stores unstructured data in the cloud as objects&#x2F;blobs. Blob storage can store any type of text or binary data, such as a document, media file, or application installer. Blob storage is also referred to as object storage.</p>
+<p>Common uses of Blob storage include:</p>
+<ul>
+<li>Serving images or documents directly to a browser.</li>
+<li>Storing files for distributed access, such as installation.</li>
+<li>Streaming video and audio.</li>
+<li>Storing data for backup and restore, disaster recovery, and archiving.</li>
+<li>Storing data for analysis by an on-premises or Azure-hosted service.</li>
+</ul>
+<p>Blob storage offers three types of resources:</p>
+<ul>
+<li>The storage account</li>
+<li>Containers in the storage account</li>
+<li>Blobs in a container</li>
+</ul>
+<p><img src="https://docs.microsoft.com/en-us/learn/wwl-azure/configure-blob-storage/media/blob-storage-94fb52b8.png"></p>
+<h2 id="Create-blob-containers"><a href="#Create-blob-containers" class="headerlink" title="Create blob containers"></a>Create blob containers</h2><p><strong>Public access level</strong>: Specifies whether data in the container may be accessed publicly. By default, container data is private to the account owner.</p>
+<ul>
+<li>Use <strong>Private</strong> to ensure there is no anonymous access to the container and blobs.</li>
+<li>Use <strong>Blob</strong> to allow anonymous public read access for blobs only.</li>
+<li>Use <strong>Container</strong> to allow anonymous public read and list access to the entire container, including the blobs.</li>
+</ul>
+<h2 id="Create-blob-access-tiers"><a href="#Create-blob-access-tiers" class="headerlink" title="Create blob access tiers"></a>Create blob access tiers</h2><ul>
+<li><strong>Hot</strong>. The Hot tier is optimized for <u>frequent access</u> of objects in the storage account. New storage accounts are created in the Hot tier by default.</li>
+<li><strong>Cool</strong>. The Cool tier is optimized for <u>storing large amounts of data that is infrequently accessed and stored for at least 30 days</u>. Storing data in the Cool tier is more cost-effective, but accessing that data may be more expensive than accessing data in the Hot tier.</li>
+<li><strong>Archive</strong>. The Archive tier is optimized for <u>data that can tolerate several hours of retrieval latency and will remain in the Archive tier for at least 180 days</u>. The Archive tier is the most cost-effective option for storing data, but accessing that data is more expensive than accessing data in the Hot or Cool tiers.</li>
+</ul>
+<h2 id="Add-blob-lifecycle-management-rules"><a href="#Add-blob-lifecycle-management-rules" class="headerlink" title="Add blob lifecycle management rules"></a>Add blob lifecycle management rules</h2><p>The lifecycle management policy lets you:</p>
+<ul>
+<li>Transition blobs to a cooler storage tier (hot to cool, hot to archive, or cool to archive) to optimize for performance and cost.</li>
+<li>Delete blobs at the end of their lifecycles.</li>
+<li>Define rules to be run once per day at the storage account level.</li>
+<li>Apply rules to containers or a subset of blobs.</li>
+</ul>
+<h2 id="Determine-blob-object-replication"><a href="#Determine-blob-object-replication" class="headerlink" title="Determine blob object replication"></a>Determine blob object replication</h2><p>Object replication asynchronously copies block blobs in a container according to rules that you configure. The contents of the blob, any versions associated with the blob, and the blob’s metadata and properties are all copied from the source container to the destination container.</p>
+<h3 id="Considerations"><a href="#Considerations" class="headerlink" title="Considerations"></a>Considerations</h3><ul>
+<li>Object replication requires that blob versioning is enabled on both the source and destination accounts.</li>
+<li>Object replication doesn’t support blob snapshots. Any snapshots on a blob in the source account are not replicated to the destination account.</li>
+<li>Object replication is supported when the source and destination accounts are in the hot or cool tier. The source and destination accounts may be in different tiers.</li>
+<li>When you configure object replication, you create a replication policy that specifies the source storage account and the destination account. A replication policy includes one or more rules that specify a source container and a destination container and indicate which block blobs in the source container will be replicated.</li>
+</ul>
+<h2 id="Upload-blobs"><a href="#Upload-blobs" class="headerlink" title="Upload blobs"></a>Upload blobs</h2><p>A blob can be any type and size file. Azure Storage offers three types of blobs: <strong>block blobs, page blobs</strong>, and <strong>append blobs</strong>. You specify the blob type and access tier when you create the blob.</p>
+<ul>
+<li><strong>Block blobs (default)</strong> consist of blocks of data assembled to make a blob. Most scenarios using Blob storage employ block blobs. Block blobs are ideal for storing text and binary data in the cloud, like files, images, and videos.</li>
+<li><strong>Append blobs</strong> are like block blobs in that they are made up of blocks, but they are optimized for append operations, so they are useful for logging scenarios.</li>
+<li><strong>Page blobs</strong> can be up to 8 TB in size and are more efficient for frequent read&#x2F;write operations. Azure virtual machines use page blobs as OS and data disks.</li>
+</ul>
+<h1 id="Configure-storage-security"><a href="#Configure-storage-security" class="headerlink" title="Configure storage security"></a>Configure storage security</h1><h2 id="Review-storage-security-strategies"><a href="#Review-storage-security-strategies" class="headerlink" title="Review storage security strategies"></a>Review storage security strategies</h2><p>Azure Storage provides a comprehensive set of security capabilities that together enable developers to build secure applications.</p>
+<ul>
+<li><p><strong>Encryption</strong>. All data written to Azure Storage is automatically encrypted using Storage Service Encryption (SSE).</p>
+</li>
+<li><p><strong>Authentication</strong>. Azure Active Directory (Azure AD) and Role-Based Access Control (RBAC) are supported for Azure Storage for both resource management operations and data operations, as follows:</p>
+<ul>
+<li>You can assign RBAC roles scoped to the storage account to security principals and use Azure AD to authorize resource management operations such as key management.</li>
+<li>Azure AD integration is supported for data operations on the Blob and Queue services.</li>
+</ul>
+</li>
+<li><p><strong>Data in transit</strong>. Data can be secured in transit between an application and Azure by using Client-Side Encryption, HTTPS, or SMB 3.0.</p>
+</li>
+<li><p><strong>Disk encryption</strong>. OS and data disks used by Azure virtual machines can be encrypted using Azure Disk Encryption.</p>
+</li>
+<li><p><strong>Shared Access Signatures</strong>. Delegated access to the data objects in Azure Storage can be granted using Shared Access Signatures.</p>
+</li>
+</ul>
+<h2 id="Create-shared-access-signatures"><a href="#Create-shared-access-signatures" class="headerlink" title="Create shared access signatures"></a>Create shared access signatures</h2><p>A <strong>shared access signature (SAS)</strong> is a <u>URI that grants restricted access rights to Azure Storage resources</u>. You can provide a SAS to clients who shouldn’t have access to your storage account key. By distributing a SAS URI to these clients, <u>you grant them access to a resource for a specified period of time</u>. SAS is a secure way to share your storage resources without compromising your account keys.</p>
+<h2 id="Identify-URI-and-SAS-parameters"><a href="#Identify-URI-and-SAS-parameters" class="headerlink" title="Identify URI and SAS parameters"></a>Identify URI and SAS parameters</h2><p>When you create your SAS, a URI is created using parameters and tokens. The URI consists of your Storage Resource URI and the SAS token.</p>
+<h2 id="Determine-storage-service-encryption"><a href="#Determine-storage-service-encryption" class="headerlink" title="Determine storage service encryption"></a>Determine storage service encryption</h2><p>Azure <strong>Storage Service Encryption (SSE)</strong> for data at rest protects your data by ensuring your organizational security and compliance commitments are met.</p>
+<p>SSE automatically encrypts your data before persisting it to Azure-managed Disks, Azure Blob, Queue, Table storage, or Azure Files, and decrypts the data before retrieval.</p>
+<p>SSE encryption, encryption at rest, decryption, and key management are transparent to users. All data written to the Azure storage platform is encrypted through 256-bit AES encryption, one of the strongest block ciphers available.</p>
+<h2 id="Create-customer-managed-keys"><a href="#Create-customer-managed-keys" class="headerlink" title="Create customer managed keys"></a>Create customer managed keys</h2><p>The Azure Key Vault can manage your encryption keys. You can create your own encryption keys and store them in a key vault, or you can use Azure Key Vault’s APIs to generate encryption keys.</p>
+<p>Customer-managed keys give you more flexibility and control. You can create, disable, audit, rotate, and define access controls.</p>
+<h1 id="Configure-Azure-files-and-Azure-File-Sync"><a href="#Configure-Azure-files-and-Azure-File-Sync" class="headerlink" title="Configure Azure files and Azure File Sync"></a>Configure Azure files and Azure File Sync</h1><h2 id="Compare-files-to-blobs"><a href="#Compare-files-to-blobs" class="headerlink" title="Compare files to blobs"></a>Compare files to blobs</h2><p>File storage offers shared storage for applications using the industry standard SMB protocol. Microsoft Azure virtual machines and cloud services can share file data across application components via mounted shares, and on-premises applications can also access file data in the share.</p>
+<p>Applications running in Azure virtual machines or cloud services can mount a file storage share to access file data. This process is similar to how a desktop application would mount a typical SMB share. Any number of Azure virtual machines or roles can mount and access the File storage share simultaneously.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+<th>When to use</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Azure Files</td>
+<td>Provides an SMB interface, client libraries, and a REST interface that allows access from anywhere to stored files.</td>
+<td>You want to “lift and shift” an application to the cloud that already <strong>uses the native file system APIs to share data between it and other applications running in Azure</strong>. You want to store development and debugging tools that need to be accessed from many virtual machines.</td>
+<td></td>
+</tr>
+<tr>
+<td>Azure Blobs</td>
+<td>Provides client libraries and a REST interface that allows unstructured data to be stored and accessed at a massive scale in block blobs.</td>
+<td>You want your application to <strong>support streaming and random-access scenarios</strong>. You want to be able to access application data from anywhere.</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>Other distinguishing features, when selecting Azure files.</p>
+<ul>
+<li>Azure files are true directory objects. Azure blobs are a flat namespace.</li>
+<li>Azure files are accessed through file shares. Azure blobs are accessed through a container.</li>
+<li>Azure files provide shared access across multiple virtual machines. Azure disks are exclusive to a single virtual machine.</li>
+</ul>
+<h2 id="Manage-file-shares"><a href="#Manage-file-shares" class="headerlink" title="Manage file shares"></a>Manage file shares</h2><p>To access your files, you will need a storage account. After the storage account is created, provide the file share <strong>Name</strong> and the <strong>Quota</strong>. Quota refers to total size of files on the share.</p>
+<ul>
+<li><strong>Mapping file shares (Windows)</strong>. You can connect to your Azure file share with Windows or Windows Server. Just select Connect from your file share page.</li>
+<li><strong>Mounting file shares (Linux)</strong>. Azure file shares can be mounted in Linux distributions using the CIFS kernel client. File mounting can be done on-demand with the mount command or on-boot (persistent) by creating an entry in &#x2F;etc&#x2F;fstab.</li>
+</ul>
+<h2 id="Create-file-share-snapshots"><a href="#Create-file-share-snapshots" class="headerlink" title="Create file share snapshots"></a>Create file share snapshots</h2><p>Azure Files provides the capability to take share snapshots of file shares. Share snapshots capture a point-in-time, read-only copy of your data.</p>
+<p><strong>Share snapshots are incremental in nature</strong>. Only the data that has changed after your most recent share snapshot is saved. Incremental snapshots minimizes the time required to create the share snapshot and saves on storage costs. Even though share snapshots are saved incrementally, you need to retain only the most recent share snapshot in order to restore the share.</p>
+<h2 id="Implement-file-sync"><a href="#Implement-file-sync" class="headerlink" title="Implement file sync"></a>Implement file sync</h2><p>Use Azure File Sync to centralize your organization’s file shares in Azure Files, while keeping the flexibility, performance, and compatibility of an on-premises file server. Azure File Sync transforms Windows Server into a quick cache of your Azure file share. You can use any protocol that’s available on Windows Server to access your data locally, including SMB, NFS, and FTPS. You can have as many caches as you need across the world.</p>
+<h2 id="Identify-file-sync-components"><a href="#Identify-file-sync-components" class="headerlink" title="Identify file sync components"></a>Identify file sync components</h2><p><img src="https://docs.microsoft.com/en-us/learn/wwl-azure/configure-azure-files-file-sync/media/file-sync-components-c6561274.png"></p>
+<h2 id="Deploy-Azure-File-Sync"><a href="#Deploy-Azure-File-Sync" class="headerlink" title="Deploy Azure File Sync"></a>Deploy Azure File Sync</h2><p><img src="https://docs.microsoft.com/en-us/learn/wwl-azure/configure-azure-files-file-sync/media/file-sync-steps-b6fa9fd9.png"></p>
+<h1 id="Configure-storage-with-tools"><a href="#Configure-storage-with-tools" class="headerlink" title="Configure storage with tools"></a>Configure storage with tools</h1><h2 id="Use-Azure-Storage-Explorer"><a href="#Use-Azure-Storage-Explorer" class="headerlink" title="Use Azure Storage Explorer"></a>Use Azure Storage Explorer</h2><p>Azure Storage Explorer is a standalone app that makes it easy to work with Azure Storage data on Windows, macOS, and Linux. With Storage Explorer, you can access multiple accounts and subscriptions and manage all your storage content.<br><img src="https://docs.microsoft.com/en-us/learn/wwl-azure/configure-storage-tools/media/storage-explorer-304e94f3.png"></p>
+<h2 id="Use-the-import-and-export-service"><a href="#Use-the-import-and-export-service" class="headerlink" title="Use the import and export service"></a>Use the import and export service</h2><p>Azure Import&#x2F;Export service is used to securely import large amounts of data to Azure Blob storage and Azure Files by shipping disk drives to an Azure datacenter. This service can also be used to transfer data from Azure Blob storage to disk drives and ship to your on-premises sites. Data from one or more disk drives can be imported either to Azure Blob storage or Azure Files. With the Azure Import&#x2F;Export service, you supply your own disk drives and transfer data yourself.</p>
+<p><img src="https://docs.microsoft.com/en-us/learn/wwl-azure/configure-storage-tools/media/import-jobs-3dd387ae.png"><br><img src="https://docs.microsoft.com/en-us/learn/wwl-azure/configure-storage-tools/media/export-jobs-850746e1.png"></p>
+<p><strong>Import&#x2F;Export Tool (WAImportExport)</strong></p>
+<h2 id="Use-AzCopy"><a href="#Use-AzCopy" class="headerlink" title="Use AzCopy"></a>Use AzCopy</h2><p>An alternative method for transferring data is AzCopy. AzCopy v10 is the next-generation command-line utility for <strong>copying data to&#x2F;from Microsoft Azure Blob and File storage, which offers a redesigned command-line interface and new architecture for high-performance reliable data transfers</strong>. Using AzCopy, you can copy data between a file system and a storage account, or between storage accounts.</p>
+<h1 id="Create-an-Azure-Storage-account"><a href="#Create-an-Azure-Storage-account" class="headerlink" title="Create an Azure Storage account"></a>Create an Azure Storage account</h1><h2 id="Decide-how-many-storage-accounts-you-need"><a href="#Decide-how-many-storage-accounts-you-need" class="headerlink" title="Decide how many storage accounts you need"></a>Decide how many storage accounts you need</h2><p>Azure groups four of these data services together under the name Azure Storage. The four services are <strong>Azure Blobs, Azure Files, Azure Queues, and Azure Tables</strong>. The following illustration shows the elements of <strong>Azure Storage</strong>.<br><img src="https://docs.microsoft.com/en-us/learn/modules/create-azure-storage-account/media/2-azure-storage.png"></p>
+<p>A <strong>storage account</strong> is a container that groups a set of Azure Storage services together. Only data services from Azure Storage can be included in a storage account (Azure Blobs, Azure Files, Azure Queues, and Azure Tables).</p>
+<p>A storage account represents a collection of settings like location, replication strategy, and subscription owner. You need one storage account for each group of settings that you want to apply to your data. The following illustration shows two storage accounts that differ in one setting; that one difference is enough to require separate storage accounts.<br><img src="https://docs.microsoft.com/en-us/learn/modules/create-azure-storage-account/media/2-multiple-storage-accounts.png"></p>
+<h2 id="Choose-your-account-settings"><a href="#Choose-your-account-settings" class="headerlink" title="Choose your account settings"></a>Choose your account settings</h2><p>The storage account settings we’ve already covered apply to the data services in the account. Here, we will discuss the three settings that apply to the account itself, rather than to the data stored in the account:</p>
+<ul>
+<li>Name</li>
+<li>Deployment model: Microsoft recommends that you use <strong>Resource Manager</strong> for all new resources.</li>
+<li>Account kind: Microsoft recommends that you use the <strong>General-purpose v2</strong> option for new storage accounts.</li>
+</ul>
+<p>These settings impact how you manage your account and the cost of the services within it.</p>
+<h1 id="Control-access-to-Azure-Storage-with-shared-access-signatures"><a href="#Control-access-to-Azure-Storage-with-shared-access-signatures" class="headerlink" title="Control access to Azure Storage with shared access signatures"></a>Control access to Azure Storage with shared access signatures</h1><h2 id="Authorization-options-for-Azure-Storage"><a href="#Authorization-options-for-Azure-Storage" class="headerlink" title="Authorization options for Azure Storage"></a>Authorization options for Azure Storage</h2><p>Files stored in Azure Storage are accessed by clients over HTTP&#x2F;HTTPS. Azure checks each client request for authorization to access stored data. Four options are available for blob storage:</p>
+<ul>
+<li>Public access</li>
+<li>Azure Active Directory (Azure AD)</li>
+<li>Shared key</li>
+<li>Shared access signature (SAS)</li>
+</ul>
+<h3 id="Shared-access-signature"><a href="#Shared-access-signature" class="headerlink" title="Shared access signature"></a>Shared access signature</h3><p>A SAS lets you grant granular access to files in Azure Storage, such as <strong>read-only or read-write access</strong>, <strong>expiration time</strong>, after which the SAS no longer enables the client to access the chosen resources. A shared access signature is a key that grants permission to a storage resource, and should be protected in the same manner as an account key.</p>
+<p>Azure Storage supports three types of shared access signatures:</p>
+<ul>
+<li><strong>User delegation SAS</strong>: Can only be used for Blob storage and is secured with Azure AD credentials.</li>
+<li><strong>Service SAS</strong>: A service SAS is secured using a storage account key. A service SAS delegates access to a resource in any one of four Azure Storage services: Blob, Queue, Table, or File.</li>
+<li><strong>Account SAS</strong>: An account SAS is secured with a storage account key. An account SAS has the same controls as a service SAS, but can also control access to service-level operations, such as Get Service Stats.</li>
+</ul>
+<p>You can create a SAS ad-hoc by specifying all the options you need to control, including <strong>start time, expiration time</strong>, and permissions.</p>
+<p>If you plan to create a service SAS, there is also an option to associate it with a <strong>stored access policy</strong>. A stored access policy can be associated with up to five active SASs. You can control access and expiration at the stored access policy level. This is a good approach if you need to have granular control to change the expiration, or to revoke a SAS. The only way to revoke or change an ad-hoc SAS is to change the storage account keys.</p>
+<h2 id="Use-shared-access-signatures-to-delegate-access-to-Azure-Storage"><a href="#Use-shared-access-signatures-to-delegate-access-to-Azure-Storage" class="headerlink" title="Use shared access signatures to delegate access to Azure Storage"></a>Use shared access signatures to delegate access to Azure Storage</h2><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/learn/modules/control-access-to-azure-storage-with-sas/3-use-shared-access-signatures">More details</a></p>
+<h2 id="Exercise-Use-shared-access-signatures-to-delegate-access-to-Azure-Storage"><a href="#Exercise-Use-shared-access-signatures-to-delegate-access-to-Azure-Storage" class="headerlink" title="Exercise - Use shared access signatures to delegate access to Azure Storage"></a>Exercise - Use shared access signatures to delegate access to Azure Storage</h2><p>RECOMMAND<br><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/learn/modules/control-access-to-azure-storage-with-sas/4-exercise-use-shared-access-signatures">More details</a></p>
+<h2 id="Use-stored-access-policies-to-delegate-access-to-Azure-Storage"><a href="#Use-stored-access-policies-to-delegate-access-to-Azure-Storage" class="headerlink" title="Use stored access policies to delegate access to Azure Storage"></a>Use stored access policies to delegate access to Azure Storage</h2><p>A shared access signature (SAS) is a secure way to give access to clients without having to share your Azure credentials. This ease of use comes with a downside. Anyone with the correct SAS can access the file while it’s still valid. <strong>The only way you can revoke access to the storage is to regenerate access keys</strong>. Regeneration requires you to update all apps that are using the old shared key to use the new one. <strong>Another option is to associate the SASs with a stored access policy</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-us/learn/modules/control-access-to-azure-storage-with-sas/media/5-shared-acces-policy.png"></p>
+<h3 id="Create-stored-access-policies"><a href="#Create-stored-access-policies" class="headerlink" title="Create stored access policies"></a>Create stored access policies</h3><p>You can create a stored access policy with C# code by using the Azure portal or Azure CLI commands.</p>
+<h4 id="With-C-NET-code"><a href="#With-C-NET-code" class="headerlink" title="With C# .NET code"></a>With C# .NET code</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">BlobSignedIdentifier identifier = <span class="keyword">new</span> BlobSignedIdentifier</span><br><span class="line">&#123;</span><br><span class="line">    Id = <span class="string">&quot;stored access policy identifier&quot;</span>,</span><br><span class="line">    AccessPolicy = <span class="keyword">new</span> BlobAccessPolicy</span><br><span class="line">    &#123;</span><br><span class="line">        ExpiresOn = DateTimeOffset.UtcNow.AddHours(<span class="number">1</span>),</span><br><span class="line">        Permissions = <span class="string">&quot;rw&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">blobContainer.SetAccessPolicy(permissions: <span class="keyword">new</span> BlobSignedIdentifier[] &#123; identifier &#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="With-the-portal"><a href="#With-the-portal" class="headerlink" title="With the portal"></a>With the portal</h4><p><img src="https://docs.microsoft.com/en-us/learn/modules/control-access-to-azure-storage-with-sas/media/5-add-a-policy.png"></p>
+<h4 id="With-Azure-CLI-commands"><a href="#With-Azure-CLI-commands" class="headerlink" title="With Azure CLI commands"></a>With Azure CLI commands</h4><figure class="highlight plaintext"><figcaption><span>CLI</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">az storage container policy create \</span><br><span class="line">    --name &lt;stored access policy identifier&gt; \</span><br><span class="line">    --container-name &lt;container name&gt; \</span><br><span class="line">    --start &lt;start time UTC datetime&gt; \</span><br><span class="line">    --expiry &lt;expiry time UTC datetime&gt; \</span><br><span class="line">    --permissions &lt;(a)dd, (c)reate, (d)elete, (l)ist, (r)ead, or (w)rite&gt; \</span><br><span class="line">    --account-key &lt;storage account key&gt; \</span><br><span class="line">    --account-name &lt;storage account name&gt; \</span><br></pre></td></tr></table></figure>
+
+<h2 id="Exercise-Use-stored-access-policies-to-delegate-access-to-Azure-Storage"><a href="#Exercise-Use-stored-access-policies-to-delegate-access-to-Azure-Storage" class="headerlink" title="Exercise - Use stored access policies to delegate access to Azure Storage"></a>Exercise - Use stored access policies to delegate access to Azure Storage</h2><p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/learn/modules/control-access-to-azure-storage-with-sas/6-exercise-use-stored-access-policies">More details</a></p>
+<h1 id="Upload-download-and-manage-data-with-Azure-Storage-Explorer"><a href="#Upload-download-and-manage-data-with-Azure-Storage-Explorer" class="headerlink" title="Upload, download, and manage data with Azure Storage Explorer"></a>Upload, download, and manage data with Azure Storage Explorer</h1><p>In this module, you’ll learn about the features of Azure Storage Explorer, how to install it, and what it can connect to. Finally, you’ll use Storage Explorer to connect to Azure Cosmos DB and Data Lake, to create a database and upload data.</p>
+<p>By the end of this module, you’ll know how to use Storage Explorer to manipulate data in multiple Azure services.</p>
+<h2 id="Connect-Azure-Storage-Explorer-to-a-storage-account"><a href="#Connect-Azure-Storage-Explorer-to-a-storage-account" class="headerlink" title="Connect Azure Storage Explorer to a storage account"></a>Connect Azure Storage Explorer to a storage account</h2><h3 id="What-is-Storage-Explorer"><a href="#What-is-Storage-Explorer" class="headerlink" title="What is Storage Explorer?"></a>What is Storage Explorer?</h3></section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Azure" >
+    <span class="tag-code">Azure</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2021/11/22/MicrosoftIgnite-AzureDeveloperChallenge/">
+        <span class="nav-arrow">← </span>
+        
+          Microsoft Ignite-Azure Developer Challenge(2021/12/19 updated)
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2023/12/30/UIKitNotes/">
+        
+          UIKit notes(2023/12/30 updated)
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+    <!-- 二维码 END -->
+    
+      <!-- Utterances START -->
+      <div id="utterances"></div>
+      <script src="https://utteranc.es/client.js"
+        repo=""
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async></script>    
+      <!-- Utterances END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Configure-storage-accounts"><span class="toc-nav-text">Configure storage accounts</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Implement-Azure-storage"><span class="toc-nav-text">Implement Azure storage</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Explore-Azure-storage-services"><span class="toc-nav-text">Explore Azure storage services</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Determine-replication-strategies"><span class="toc-nav-text">Determine replication strategies</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Configure-blob-storage"><span class="toc-nav-text">Configure blob storage</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Implement-blob-storage"><span class="toc-nav-text">Implement blob storage</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Create-blob-containers"><span class="toc-nav-text">Create blob containers</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Create-blob-access-tiers"><span class="toc-nav-text">Create blob access tiers</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Add-blob-lifecycle-management-rules"><span class="toc-nav-text">Add blob lifecycle management rules</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Determine-blob-object-replication"><span class="toc-nav-text">Determine blob object replication</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Considerations"><span class="toc-nav-text">Considerations</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Upload-blobs"><span class="toc-nav-text">Upload blobs</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Configure-storage-security"><span class="toc-nav-text">Configure storage security</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Review-storage-security-strategies"><span class="toc-nav-text">Review storage security strategies</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Create-shared-access-signatures"><span class="toc-nav-text">Create shared access signatures</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Identify-URI-and-SAS-parameters"><span class="toc-nav-text">Identify URI and SAS parameters</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Determine-storage-service-encryption"><span class="toc-nav-text">Determine storage service encryption</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Create-customer-managed-keys"><span class="toc-nav-text">Create customer managed keys</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Configure-Azure-files-and-Azure-File-Sync"><span class="toc-nav-text">Configure Azure files and Azure File Sync</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Compare-files-to-blobs"><span class="toc-nav-text">Compare files to blobs</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Manage-file-shares"><span class="toc-nav-text">Manage file shares</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Create-file-share-snapshots"><span class="toc-nav-text">Create file share snapshots</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Implement-file-sync"><span class="toc-nav-text">Implement file sync</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Identify-file-sync-components"><span class="toc-nav-text">Identify file sync components</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Deploy-Azure-File-Sync"><span class="toc-nav-text">Deploy Azure File Sync</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Configure-storage-with-tools"><span class="toc-nav-text">Configure storage with tools</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Use-Azure-Storage-Explorer"><span class="toc-nav-text">Use Azure Storage Explorer</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Use-the-import-and-export-service"><span class="toc-nav-text">Use the import and export service</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Use-AzCopy"><span class="toc-nav-text">Use AzCopy</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Create-an-Azure-Storage-account"><span class="toc-nav-text">Create an Azure Storage account</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Decide-how-many-storage-accounts-you-need"><span class="toc-nav-text">Decide how many storage accounts you need</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Choose-your-account-settings"><span class="toc-nav-text">Choose your account settings</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Control-access-to-Azure-Storage-with-shared-access-signatures"><span class="toc-nav-text">Control access to Azure Storage with shared access signatures</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Authorization-options-for-Azure-Storage"><span class="toc-nav-text">Authorization options for Azure Storage</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Shared-access-signature"><span class="toc-nav-text">Shared access signature</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Use-shared-access-signatures-to-delegate-access-to-Azure-Storage"><span class="toc-nav-text">Use shared access signatures to delegate access to Azure Storage</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Exercise-Use-shared-access-signatures-to-delegate-access-to-Azure-Storage"><span class="toc-nav-text">Exercise - Use shared access signatures to delegate access to Azure Storage</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Use-stored-access-policies-to-delegate-access-to-Azure-Storage"><span class="toc-nav-text">Use stored access policies to delegate access to Azure Storage</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Create-stored-access-policies"><span class="toc-nav-text">Create stored access policies</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#With-C-NET-code"><span class="toc-nav-text">With C# .NET code</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#With-the-portal"><span class="toc-nav-text">With the portal</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#With-Azure-CLI-commands"><span class="toc-nav-text">With Azure CLI commands</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Exercise-Use-stored-access-policies-to-delegate-access-to-Azure-Storage"><span class="toc-nav-text">Exercise - Use stored access policies to delegate access to Azure Storage</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Upload-download-and-manage-data-with-Azure-Storage-Explorer"><span class="toc-nav-text">Upload, download, and manage data with Azure Storage Explorer</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Connect-Azure-Storage-Explorer-to-a-storage-account"><span class="toc-nav-text">Connect Azure Storage Explorer to a storage account</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#What-is-Storage-Explorer"><span class="toc-nav-text">What is Storage Explorer?</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'http://yoursite.com/2022/01/10/MicrosoftIgnite-AzureAdminChallenge/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', '/css/images/error_icon.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== '/css/images/error_icon.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+
+
+
+
+
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2023 | Powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      hljs.configure({useBR: true});
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>
