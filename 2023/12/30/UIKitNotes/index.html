@@ -10,7 +10,7 @@
   
   <title>
     
-      UIKit notes(2023/12/30 updated) | Daily Growing
+      UIKit notes(2024/01/09 updated) | Daily Growing
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -176,7 +176,7 @@
 </header>
 
     <div id="article-banner">
-  <h2>UIKit notes(2023/12/30 updated)</h2>
+  <h2>UIKit notes(2024/01/09 updated)</h2>
   <p class="post-date">2023-12-30</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
@@ -217,11 +217,11 @@
 <p><img src="https://docs-assets.developer.apple.com/published/c834d5ac04/scene-state@2x.png"></p>
 <p>Use scene transitions to perform the following tasks:</p>
 <ul>
-<li>When UIKit connects a scene to your app, configure your scene’s initial UI and load the data your scene needs.</li>
-<li>When transitioning to the foreground-active state, configure your UI and prepare to interact with the user.</li>
-<li>Upon leaving the foreground-active state, save data and quiet your app’s behavior.</li>
-<li>Upon entering the background state, finish crucial tasks, free up as much memory as possible, and prepare for your app snapshot.</li>
-<li>At scene disconnection, clean up any shared resources associated with the scene.</li>
+<li>When UIKit <strong>connects</strong> a scene to your app: configure scene’s initial UI and load the data.</li>
+<li>When transitioning to the <strong>foreground-active</strong> state: configure UI and prepare to interact with the user.</li>
+<li>Upon <strong>leaving the foreground-active</strong> state: save data and quiet your app’s behavior.</li>
+<li>Upon <strong>entering the background state</strong>: finish crucial tasks, free up as much memory as possible, and prepare for your app snapshot.</li>
+<li>At scene <strong>disconnection</strong>, clean up any shared resources associated with the scene.</li>
 <li>In addition to scene-related events, you must also respond to the launch of your app using your UIApplicationDelegate object.</li>
 </ul>
 <h5 id="Respond-to-app-based-life-cycle-events"><a href="#Respond-to-app-based-life-cycle-events" class="headerlink" title="Respond to app-based life-cycle events"></a>Respond to app-based life-cycle events</h5><p>In iOS 12 and earlier, and in apps that don’t support scenes, UIKit delivers all life-cycle events to the UIApplicationDelegate object. The app delegate manages all of your app’s windows, including those displayed on separate screens. As a result, app state transitions affect your app’s entire UI, including content on external displays.</p>
@@ -229,13 +229,25 @@
 <p><img src="https://docs-assets.developer.apple.com/published/64a2e0dab8/app-state@2x.png"></p>
 <p>Use app transitions to perform the following tasks:</p>
 <ul>
-<li>At launch, initialize your app’s data structures and UI.</li>
-<li>At activation, finish configuring your UI and prepare to interact with the user.</li>
-<li>Upon deactivation, save data and quiet your app’s behavior. See Preparing your UI to run in the background.</li>
-<li>Upon entering the background state, finish crucial tasks, free up as much memory as possible, and prepare for your app snapshot.</li>
-<li>At termination, stop all work immediately and release any shared resources.</li>
+<li>At <strong>launch</strong>, initialize your app’s data structures and UI. <code>~= connects</code></li>
+<li>At <strong>activation</strong>, finish configuring your UI and prepare to interact with the user. <code>~= foreground-active</code></li>
+<li>Upon <strong>deactivation</strong>, save data and quiet your app’s behavior. <code>~= leaving the foreground-active</code></li>
+<li>Upon <strong>entering the background state</strong>, finish crucial tasks, free up as much memory as possible, and prepare for your app snapshot. <code>same</code></li>
+<li>At <strong>termination</strong>, stop all work immediately and release any shared resources. <code>~= disconnection</code></li>
 </ul>
-</section>
+<h4 id="Behavioral-events"><a href="#Behavioral-events" class="headerlink" title="Behavioral events"></a>Behavioral events</h4><h5 id="Responding-to-memory-warnings"><a href="#Responding-to-memory-warnings" class="headerlink" title="Responding to memory warnings"></a>Responding to memory warnings</h5><p>If the system runs low on free memory and is unable to reclaim memory by terminating suspended apps, UIKit sends a low-memory warning to running apps. </p>
+<p>UIKit delivers low-memory warnings in the following ways:</p>
+<ul>
+<li>It calls the <code>applicationDidReceiveMemoryWarning(_:)</code> method of your app delegate.</li>
+<li>It calls the <code>didReceiveMemoryWarning()</code> method of any active UIViewController classes.</li>
+<li>It posts a <code>didReceiveMemoryWarningNotification</code> object to any registered observers.</li>
+<li>It delivers a warning to dispatch queues of type <code>DISPATCH_SOURCE_TYPE_MEMORYPRESSURE</code>.</li>
+</ul>
+<blockquote>
+<p>Important<br>Failure to reduce your app’s memory usage may result in your app’s termination. Therefore, consider writing any unsaved data to disk as part of your cleanup efforts.</p>
+</blockquote>
+<p>To test your app’s response to a low-memory warning, use the Simulate Memory Warning command in iOS Simulator.</p>
+<h4 id="Responding-to-the-launch-of-your-app"><a href="#Responding-to-the-launch-of-your-app" class="headerlink" title="Responding to the launch of your app"></a>Responding to the launch of your app</h4></section>
     <!-- Tags START -->
     
       <div class="tags">
@@ -289,7 +301,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Overview"><span class="toc-nav-text">Overview</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Essentials"><span class="toc-nav-text">Essentials</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#About-App-Development-with-UIKit"><span class="toc-nav-text">About App Development with UIKit</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#App-structure"><span class="toc-nav-text">App structure</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#App-and-environment"><span class="toc-nav-text">App and environment</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Life-cycle"><span class="toc-nav-text">Life cycle</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Managing-your-app%E2%80%99s-life-cycle"><span class="toc-nav-text">Managing your app’s life cycle</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Respond-to-scene-based-life-cycle-events"><span class="toc-nav-text">Respond to scene-based life-cycle events</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Respond-to-app-based-life-cycle-events"><span class="toc-nav-text">Respond to app-based life-cycle events</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Overview"><span class="toc-nav-text">Overview</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Essentials"><span class="toc-nav-text">Essentials</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#About-App-Development-with-UIKit"><span class="toc-nav-text">About App Development with UIKit</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#App-structure"><span class="toc-nav-text">App structure</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#App-and-environment"><span class="toc-nav-text">App and environment</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Life-cycle"><span class="toc-nav-text">Life cycle</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Managing-your-app%E2%80%99s-life-cycle"><span class="toc-nav-text">Managing your app’s life cycle</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Respond-to-scene-based-life-cycle-events"><span class="toc-nav-text">Respond to scene-based life-cycle events</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Respond-to-app-based-life-cycle-events"><span class="toc-nav-text">Respond to app-based life-cycle events</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Behavioral-events"><span class="toc-nav-text">Behavioral events</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Responding-to-memory-warnings"><span class="toc-nav-text">Responding to memory warnings</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Responding-to-the-launch-of-your-app"><span class="toc-nav-text">Responding to the launch of your app</span></a></li></ol></li></ol></li></ol></li></ol>
     
   </div>
 </aside>
