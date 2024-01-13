@@ -10,7 +10,7 @@
   
   <title>
     
-      UIKit notes(2024/01/09 updated) | Daily Growing
+      UIKit notes(2024/01/13 updated) | Daily Growing
     
   </title>
   <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -176,7 +176,7 @@
 </header>
 
     <div id="article-banner">
-  <h2>UIKit notes(2024/01/09 updated)</h2>
+  <h2>UIKit notes(2024/01/13 updated)</h2>
   <p class="post-date">2023-12-30</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
@@ -235,7 +235,7 @@
 <li>Upon <strong>entering the background state</strong>, finish crucial tasks, free up as much memory as possible, and prepare for your app snapshot. <code>same</code></li>
 <li>At <strong>termination</strong>, stop all work immediately and release any shared resources. <code>~= disconnection</code></li>
 </ul>
-<h4 id="Behavioral-events"><a href="#Behavioral-events" class="headerlink" title="Behavioral events"></a>Behavioral events</h4><h5 id="Responding-to-memory-warnings"><a href="#Responding-to-memory-warnings" class="headerlink" title="Responding to memory warnings"></a>Responding to memory warnings</h5><p>If the system runs low on free memory and is unable to reclaim memory by terminating suspended apps, UIKit sends a low-memory warning to running apps. </p>
+<h5 id="Behavioral-events-Responding-to-memory-warnings"><a href="#Behavioral-events-Responding-to-memory-warnings" class="headerlink" title="[Behavioral events]: Responding to memory warnings"></a>[Behavioral events]: Responding to memory warnings</h5><p>If the system runs low on free memory and is unable to reclaim memory by terminating suspended apps, UIKit sends a low-memory warning to running apps. </p>
 <p>UIKit delivers low-memory warnings in the following ways:</p>
 <ul>
 <li>It calls the <code>applicationDidReceiveMemoryWarning(_:)</code> method of your app delegate.</li>
@@ -243,11 +243,35 @@
 <li>It posts a <code>didReceiveMemoryWarningNotification</code> object to any registered observers.</li>
 <li>It delivers a warning to dispatch queues of type <code>DISPATCH_SOURCE_TYPE_MEMORYPRESSURE</code>.</li>
 </ul>
+<p><strong>Important</strong></p>
 <blockquote>
-<p>Important<br>Failure to reduce your app’s memory usage may result in your app’s termination. Therefore, consider writing any unsaved data to disk as part of your cleanup efforts.</p>
+<p>Failure to reduce your app’s memory usage may result in your app’s termination. Therefore, consider writing any unsaved data to disk as part of your cleanup efforts.</p>
 </blockquote>
 <p>To test your app’s response to a low-memory warning, use the Simulate Memory Warning command in iOS Simulator.</p>
-<h4 id="Responding-to-the-launch-of-your-app"><a href="#Responding-to-the-launch-of-your-app" class="headerlink" title="Responding to the launch of your app"></a>Responding to the launch of your app</h4></section>
+<h4 id="Responding-to-the-launch-of-your-app"><a href="#Responding-to-the-launch-of-your-app" class="headerlink" title="Responding to the launch of your app"></a>Responding to the launch of your app</h4><p>All apps have an associated process, which <strong>the UIApplication object represents</strong>. Apps also have an <strong>app delegate object</strong> — an object that conforms to the UIApplicationDelegate protocol — which responds to important events happening within that process. Even a scene-based app uses an app delegate to manage fundamental events like launch and termination. At launch time, UIKit automatically creates the UIApplication object and your app delegate. It then starts your app’s main event loop.</p>
+<ol>
+<li><strong>Provide a launch storyboard</strong>: When the user first launches your app on a device, the system displays your launch storyboard until your app is ready to display its UI. Displaying the launch storyboard assures the user that your app launched and is doing something. If your app initializes itself and readies its UI quickly, the user may see your launch storyboard only briefly.</li>
+</ol>
+<p><strong>Important</strong></p>
+<blockquote>
+<p>Don’t use a static image for your launch screen. In iOS 14 and later, the launch screen is limited to 25 MB.</p>
+</blockquote>
+<ol start="2">
+<li><p><strong>Initialize your app’s data structures</strong>: Put your app’s launch-time initialization code in one or both of the following methods: 1. <code>application(_:willFinishLaunchingWithOptions:) </code>2. <code>application(_:didFinishLaunchingWithOptions:)</code></p>
+</li>
+<li><p><strong>Move long-running tasks off the main thread</strong>: When the user launches your app, make a good impression by launching quickly. UIKit doesn’t present your app’s interface until after the <code>application(_:didFinishLaunchingWithOptions:)</code> method returns. Performing long-running tasks in that method or your <code>application(_:willFinishLaunchingWithOptions:)</code> method might make your app appear sluggish to the user.</p>
+</li>
+<li><p><strong>Determine why your app launched</strong> : When UIKit launches your app, it passes along <u>a launch options dictionary</u> to your <code>application(_:willFinishLaunchingWithOptions:)</code> and <code>application(_:didFinishLaunchingWithOptions:)</code> methods with information about why your app launched. The keys in that dictionary indicate important tasks to perform immediately. For example, they might reflect actions that the user started elsewhere and wants to continue in your app.</p>
+</li>
+</ol>
+<p><strong>Note</strong></p>
+<blockquote>
+<p>For a scene-based app, examine the options that UIKit passes to the <code>application(_:configurationForConnecting:options:)</code> method to determine why it created your scene.</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//The following code shows the app delegate method for an app that handles background location updates. When the location key is present, the app starts location updates immediately instead of deferring them until later. Starting location updates allows the Core Location framework to deliver the new location event.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AppDelegate</span>: <span class="title class_">UIResponder</span>, <span class="title class_">UIApplicationDelegate</span>, </span><br><span class="line">               <span class="title class_">CLLocationManagerDelegate</span> &#123;</span><br><span class="line">    </span><br><span class="line">   <span class="keyword">let</span> locationManager <span class="operator">=</span> <span class="type">CLLocationManager</span>()</span><br><span class="line">   <span class="keyword">func</span> <span class="title function_">application</span>(<span class="keyword">_</span> <span class="params">application</span>: <span class="type">UIApplication</span>,</span><br><span class="line">              <span class="params">didFinishLaunchingWithOptions</span> <span class="params">launchOptions</span>:</span><br><span class="line">              [<span class="params">UIApplicationLaunchOptionsKey</span>: <span class="keyword">Any</span>]<span class="operator">?</span>) -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">       </span><br><span class="line">      <span class="comment">// If launched because of new location data,</span></span><br><span class="line">      <span class="comment">//  start the visits service right away.</span></span><br><span class="line">      <span class="keyword">if</span> <span class="keyword">let</span> keys <span class="operator">=</span> launchOptions<span class="operator">?</span>.keys &#123;</span><br><span class="line">         <span class="keyword">if</span> keys.contains(.location) &#123;</span><br><span class="line">            locationManager.delegate <span class="operator">=</span> <span class="keyword">self</span></span><br><span class="line">            locationManager.startMonitoringVisits()</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">       </span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// other methods…</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Launch-time-About-the-app-launch-sequence"><a href="#Launch-time-About-the-app-launch-sequence" class="headerlink" title="[Launch time]: About the app launch sequence"></a>[Launch time]: About the app launch sequence</h5><p>Learn the order in which the system executes your code at app launch time.</p>
+</section>
     <!-- Tags START -->
     
       <div class="tags">
@@ -301,7 +325,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Overview"><span class="toc-nav-text">Overview</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Essentials"><span class="toc-nav-text">Essentials</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#About-App-Development-with-UIKit"><span class="toc-nav-text">About App Development with UIKit</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#App-structure"><span class="toc-nav-text">App structure</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#App-and-environment"><span class="toc-nav-text">App and environment</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Life-cycle"><span class="toc-nav-text">Life cycle</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Managing-your-app%E2%80%99s-life-cycle"><span class="toc-nav-text">Managing your app’s life cycle</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Respond-to-scene-based-life-cycle-events"><span class="toc-nav-text">Respond to scene-based life-cycle events</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Respond-to-app-based-life-cycle-events"><span class="toc-nav-text">Respond to app-based life-cycle events</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Behavioral-events"><span class="toc-nav-text">Behavioral events</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Responding-to-memory-warnings"><span class="toc-nav-text">Responding to memory warnings</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Responding-to-the-launch-of-your-app"><span class="toc-nav-text">Responding to the launch of your app</span></a></li></ol></li></ol></li></ol></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Overview"><span class="toc-nav-text">Overview</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Essentials"><span class="toc-nav-text">Essentials</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#About-App-Development-with-UIKit"><span class="toc-nav-text">About App Development with UIKit</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#App-structure"><span class="toc-nav-text">App structure</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#App-and-environment"><span class="toc-nav-text">App and environment</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Life-cycle"><span class="toc-nav-text">Life cycle</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Managing-your-app%E2%80%99s-life-cycle"><span class="toc-nav-text">Managing your app’s life cycle</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Respond-to-scene-based-life-cycle-events"><span class="toc-nav-text">Respond to scene-based life-cycle events</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Respond-to-app-based-life-cycle-events"><span class="toc-nav-text">Respond to app-based life-cycle events</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Behavioral-events-Responding-to-memory-warnings"><span class="toc-nav-text">[Behavioral events]: Responding to memory warnings</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Responding-to-the-launch-of-your-app"><span class="toc-nav-text">Responding to the launch of your app</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#Launch-time-About-the-app-launch-sequence"><span class="toc-nav-text">[Launch time]: About the app launch sequence</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
     
   </div>
 </aside>
